@@ -329,6 +329,71 @@ section {
     margin-bottom: var(--spacing-xs);
 }
 
+/* === SNSリンク === */
+.contact-sns {
+    margin: var(--spacing-md) 0;
+    text-align: center;
+}
+
+.sns-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sns-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.sns-link:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* === 実績カードの再生ボタン === */
+.work-card {
+    cursor: pointer;
+}
+
+.work-card[href] {
+    display: block;
+}
+
+.work-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: var(--transition);
+}
+
+.work-card:hover .work-play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #ffffff;
+}
+
+.work-placeholder {
+    position: relative;
+}
+
 /* === フッター === */
 .footer {
     background-color: var(--color-text);
