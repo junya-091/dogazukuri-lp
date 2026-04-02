@@ -96,6 +96,19 @@ a {
     margin-bottom: var(--spacing-md);
 }
 
+.hero-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
     color: rgba(255, 255, 255, 0.9);
@@ -173,11 +186,136 @@ section {
     color: var(--color-text-light);
 }
 
+/* === 課題提起セクション === */
+.problems {
+    background-color: var(--color-bg);
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.problem-card {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-border);
+    transition: var(--transition);
+}
+
+.problem-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.15);
+}
+
+.problem-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.problem-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+
+.problem-text {
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
 /* === 強みセクション === */
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-md);
+}
+
+.subsection-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+/* メインサービス */
+.main-service {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    color: #ffffff;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-service::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.main-service-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    backdrop-filter: blur(10px);
+}
+
+.main-service-content {
+    position: relative;
+    z-index: 1;
+}
+
+.main-service-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.main-service-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    color: #ffffff;
+}
+
+.main-service-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.95;
+}
+
+.main-service-features {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.main-service-features li {
+    padding: 0.75rem 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
 }
 
 .feature-card {
@@ -213,6 +351,35 @@ section {
 /* === 実績セクション === */
 .works {
     background-color: var(--color-bg-alt);
+}
+
+/* 成果数値 */
+.achievements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.achievement-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--color-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.achievement-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.achievement-label {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    font-weight: 600;
 }
 
 .works-grid {
@@ -378,6 +545,104 @@ section {
 
 .genre-item p {
     color: var(--color-text-light);
+}
+
+/* === 料金プランセクション === */
+.pricing {
+    background-color: var(--color-bg-alt);
+}
+
+.pricing-subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.pricing-card {
+    background: var(--color-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border: 2px solid var(--color-border);
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+.pricing-card-popular {
+    border: 3px solid var(--color-primary);
+    background: linear-gradient(135deg, #fff9f5 0%, #ffffff 100%);
+}
+
+.pricing-badge {
+    display: inline-block;
+    background-color: var(--color-bg-alt);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.pricing-badge-popular {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.pricing-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+
+.pricing-price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pricing-text {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing-features li {
+    padding: var(--spacing-xs) 0;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.pricing-note {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
 }
 
 /* === お問い合わせセクション === */
@@ -734,7 +999,16 @@ section {
 
     .feature-grid,
     .works-grid,
-    .genre-list {
+    .genre-list,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievements {
+        grid-template-columns: 1fr;
+    }
+
+    .main-service-features {
         grid-template-columns: 1fr;
     }
 }
