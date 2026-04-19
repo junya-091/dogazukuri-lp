@@ -10,145 +10,309 @@
     <meta property="og:description" content="動画制作・マルチカメラ配信・SNS運用・アニメーション・レタッチ・生成AI制作までワンストップで提供。企業のマーケティングや求人募集をお手伝いします。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://junya-091.github.io/dogazukuri-lp/">
+    <meta name="theme-color" content="#1a2332">
+
+    <!-- Google Fonts: preconnect + display=swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+
     <link rel="stylesheet" href="styles.css">
+
+    <!-- JSON-LD 構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ドーガづくり",
+      "description": "動画制作・マルチカメラ配信・SNS運用の総合プロデュース。1本5,000円〜の動画制作から継続運用までワンストップで対応。",
+      "url": "https://junya-091.github.io/dogazukuri-lp/",
+      "telephone": "",
+      "priceRange": "¥5,000〜",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      },
+      "areaServed": "JP",
+      "sameAs": [
+        "https://x.com/junnya09",
+        "https://www.instagram.com/junya_movie"
+      ]
+    }
+    </script>
 </head>
 <body>
-    <!-- カスタムカーソル -->
-    <div class="custom-cursor"></div>
 
-    <!-- ヒーローセクション -->
-    <section class="hero">
-        <div class="hero-bg">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
+    <!-- SITE NAVIGATION -->
+    <nav class="site-nav" id="siteNav" aria-label="グローバルナビゲーション">
+        <div class="site-nav-inner container">
+            <a href="#top" class="site-nav-brand" aria-label="ドーガづくり トップへ">
+                <span class="site-nav-brand-jp">ドーガづくり</span>
+                <span class="site-nav-brand-en"><em>DOGA ZUKURI</em></span>
+            </a>
+            <ul class="site-nav-links" id="siteNavLinks">
+                <li><a href="#services" class="site-nav-link">Services</a></li>
+                <li><a href="#works" class="site-nav-link">Works</a></li>
+                <li><a href="#pricing" class="site-nav-link">Pricing</a></li>
+                <li><a href="#faq" class="site-nav-link">FAQ</a></li>
+                <li><a href="#contact" class="site-nav-link site-nav-link-cta">Contact</a></li>
+            </ul>
+            <button type="button" class="site-nav-toggle" id="siteNavToggle" aria-controls="siteNavLinks" aria-expanded="false" aria-label="メニューを開く">
+                <span class="site-nav-toggle-bar"></span>
+                <span class="site-nav-toggle-bar"></span>
+                <span class="site-nav-toggle-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="top">
+
+    <!-- HERO -->
+    <header class="hero" role="banner">
+        <div class="hero-bg" aria-hidden="true">
+            <div class="hero-lines"></div>
+            <div class="hero-sweep"></div>
+            <div class="hero-filmstrip">
+                <svg viewBox="0 0 24 400" preserveAspectRatio="none" aria-hidden="true">
+                    <rect x="4" y="8"   width="16" height="24" rx="2"/>
+                    <rect x="4" y="48"  width="16" height="24" rx="2"/>
+                    <rect x="4" y="88"  width="16" height="24" rx="2"/>
+                    <rect x="4" y="128" width="16" height="24" rx="2"/>
+                    <rect x="4" y="168" width="16" height="24" rx="2"/>
+                    <rect x="4" y="208" width="16" height="24" rx="2"/>
+                    <rect x="4" y="248" width="16" height="24" rx="2"/>
+                    <rect x="4" y="288" width="16" height="24" rx="2"/>
+                    <rect x="4" y="328" width="16" height="24" rx="2"/>
+                    <rect x="4" y="368" width="16" height="24" rx="2"/>
+                </svg>
+            </div>
+            <div class="hero-play" aria-hidden="true">
+                <svg viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                    <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="0.6"/>
+                    <path d="M82 64 L148 100 L82 136 Z" fill="currentColor"/>
+                </svg>
             </div>
         </div>
-        <div class="hero-content">
+        <div class="hero-content container">
+            <p class="hero-eyebrow scroll-reveal">VIDEO PRODUCTION &nbsp;/&nbsp; <em>FOR SMB &amp; LOCAL SHOPS</em></p>
             <p class="hero-badge scroll-reveal">中小企業・店舗様向け</p>
-            <h1 class="hero-title blur-in">映像のチカラで<br>集客を2倍にする方法</h1>
-            <p class="hero-subtitle">動画制作・配信・SNS運用までワンストップ。<br>「作る」だけでなく「成果が出る」映像制作を</p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary"><span>無料で相談する</span></a>
-                <a href="#features" class="btn btn-secondary"><span>サービスを見る</span></a>
+            <h1 class="hero-title scroll-reveal"><span class="nowrap">映像のチカラで</span><br><span class="nowrap">集客を<span class="hero-title-accent">2倍</span>にする方法</span></h1>
+            <p class="hero-subtitle scroll-reveal delay-1"><span class="nowrap">動画制作・配信・SNS運用までワンストップ。</span> <span class="nowrap">「作る」だけでなく「成果が出る」映像制作を。</span></p>
+            <p class="hero-price-badge scroll-reveal delay-2">
+                <span class="hero-price-label">ENTRY PRICE</span>
+                <span class="hero-price-value">動画制作 <strong>1本 ¥5,000〜</strong></span>
+            </p>
+            <div class="hero-cta scroll-reveal delay-3">
+                <div class="hero-cta-item">
+                    <a href="#contact" class="btn btn-primary"><span>無料で相談する</span></a>
+                    <p class="cta-micro"><span class="nowrap">平均返信 2時間以内</span> / <span class="nowrap">見積もり無料</span></p>
+                </div>
+                <div class="hero-cta-item">
+                    <a href="#services" class="btn btn-secondary"><span>サービスを見る</span></a>
+                    <p class="cta-micro cta-micro-sub"><span class="nowrap">30秒で概要確認</span></p>
+                </div>
             </div>
+            <p class="hero-meta scroll-reveal delay-4">対応時間 8:00 – 19:00 &nbsp;/&nbsp; 土日も対応可 &nbsp;/&nbsp; 最短即日返信</p>
         </div>
-    </section>
+        <a href="#problems-title" class="hero-scroll-cue" aria-label="下へスクロール">
+            <span class="hero-scroll-cue-text">SCROLL</span>
+            <span class="hero-scroll-cue-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 4v16M5 13l7 7 7-7"/>
+                </svg>
+            </span>
+        </a>
+    </header>
 
-    <!-- 課題提起セクション -->
-    <section class="problems">
+    <!-- PROBLEMS // 01 -->
+    <section class="section problems" aria-labelledby="problems-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">こんなお悩みありませんか？</h2>
+            <div class="section-header">
+                <p class="section-label">// 01 &nbsp; PROBLEMS</p>
+                <h2 id="problems-title" class="section-title">こんなお悩み<br class="sp-only">ありませんか？</h2>
+                <p class="section-sub"><em>Common struggles we solve.</em></p>
+            </div>
             <div class="problem-grid">
-                <div class="problem-card scroll-reveal delay-1">
-                    <div class="problem-icon">😰</div>
+                <article class="problem-card scroll-reveal delay-1">
+                    <span class="problem-number">01</span>
                     <h3 class="problem-title">動画制作をどこに頼めばいい？</h3>
-                    <p class="problem-text">「制作会社に頼むと高い...」「社内にノウハウがない」そんな悩みを解決します</p>
-                </div>
-                <div class="problem-card scroll-reveal delay-2">
-                    <div class="problem-icon">📉</div>
-                    <h3 class="problem-title">SNSの投稿が続かない...</h3>
-                    <p class="problem-text">「企画・撮影・編集...時間がかかりすぎて続かない」継続的な運用をサポート</p>
-                </div>
-                <div class="problem-card scroll-reveal delay-3">
-                    <div class="problem-icon">💸</div>
-                    <h3 class="problem-title">広告費にお金を出しているが、効果出ているか分からない</h3>
-                    <p class="problem-text">「動画を作っても集客に繋がっていない...」成果に直結する映像制作を</p>
-                </div>
+                    <p class="problem-text">制作会社は高額、社内にノウハウもない。そんな依頼先の悩みを、相談しやすい価格とスピードで解決します。</p>
+                </article>
+                <article class="problem-card scroll-reveal delay-2">
+                    <span class="problem-number">02</span>
+                    <h3 class="problem-title">SNSの投稿が続かない…</h3>
+                    <p class="problem-text">企画・撮影・編集に時間が取られて続かない。継続できる仕組みづくりからサポートします。</p>
+                </article>
+                <article class="problem-card scroll-reveal delay-3">
+                    <span class="problem-number">03</span>
+                    <h3 class="problem-title">広告費が成果に繋がっているか分からない</h3>
+                    <p class="problem-text">動画を作っても集客に直結しない。目的から逆算した「成果が出る」映像を設計します。</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- 概要セクション -->
-    <section class="overview">
+    <!-- OVERVIEW // 02 -->
+    <section class="section overview" aria-labelledby="overview-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">サービス概要</h2>
-            <p class="overview-text scroll-reveal delay-1">
-                ドーガづくりは動画制作（撮影・編集）、マルチカメラ配信、SNS運用（企画・台本・投稿）、アニメーション、レタッチ、生成AI制作まで
-                あらゆる映像コンテンツをワンストップで提供するサービスです。
-                企業のマーケティング施策から求人募集動画まで、ビジネスの成果に直結する映像制作をお手伝いします。
+            <div class="section-header">
+                <p class="section-label">// 02 &nbsp; OVERVIEW</p>
+                <h2 id="overview-title" class="section-title">サービス概要</h2>
+                <p class="section-sub"><em>What we do, in one place.</em></p>
+            </div>
+            <p class="overview-text scroll-reveal">
+                ドーガづくりは<span class="nowrap">動画制作（撮影・編集）</span>、<span class="nowrap">マルチカメラ配信</span>、<span class="nowrap">SNS運用</span>、<span class="nowrap">アニメーション</span>、<span class="nowrap">レタッチ</span>、<span class="nowrap">生成AI制作</span>まで、<span class="nowrap">あらゆる映像コンテンツを<strong>ワンストップ</strong>で提供するサービスです。</span><br>
+                <span class="nowrap">企業のマーケティングから採用動画まで、</span><span class="nowrap"><em>ビジネスの成果に直結する映像</em>をお届けします。</span>
             </p>
         </div>
     </section>
 
-    <!-- サービスセクション -->
-    <section class="features" id="features">
+    <!-- SERVICES // 03 -->
+    <section class="section services" id="services" aria-labelledby="services-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">サービス</h2>
-
-            <!-- メインサービス -->
-            <div class="main-service scroll-reveal delay-1">
-                <div class="main-service-badge">🎯 主力サービス</div>
-                <div class="main-service-content">
-                    <div class="main-service-icon">🎬</div>
-                    <h3 class="main-service-title">動画制作（撮影・編集）</h3>
-                    <p class="main-service-text">
-                        企画立案〜撮影〜編集〜納品までワンストップで対応。4K撮影・ドローン撮影にも対応し、企業プロモーション、商品CM、求人動画など目的に合わせた動画を制作します。
-                    </p>
-                    <ul class="main-service-features">
-                        <li>✓ 企業プロモーション動画</li>
-                        <li>✓ 商品・サービス紹介動画</li>
-                        <li>✓ 採用・求人動画</li>
-                        <li>✓ 4K撮影・ドローン撮影対応</li>
-                    </ul>
-                </div>
+            <div class="section-header">
+                <p class="section-label">// 03 &nbsp; SERVICES</p>
+                <h2 id="services-title" class="section-title">サービス</h2>
+                <p class="section-sub"><em>Main service &amp; supporting lineup.</em></p>
             </div>
 
+            <!-- 主力サービス -->
+            <article class="main-service scroll-reveal">
+                <p class="main-service-badge">MAIN SERVICE</p>
+                <div class="main-service-body">
+                    <div class="main-service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="12" width="28" height="24" rx="2"/>
+                            <path d="M32 20l12-6v20l-12-6z"/>
+                        </svg>
+                    </div>
+                    <div class="main-service-text-wrap">
+                        <h3 class="main-service-title">動画制作（撮影・編集）</h3>
+                        <p class="main-service-text">
+                            企画立案〜撮影〜編集〜納品までワンストップで対応。4K撮影・ドローン撮影にも対応し、企業プロモーション・商品CM・採用動画など、目的に合わせて設計します。
+                        </p>
+                        <ul class="main-service-features">
+                            <li>企業プロモーション動画</li>
+                            <li>商品・サービス紹介動画</li>
+                            <li>採用・求人動画</li>
+                            <li>4K撮影・ドローン撮影対応</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
             <!-- サブサービス -->
-            <h3 class="subsection-title scroll-reveal">その他のサービス</h3>
+            <p class="subsection-label scroll-reveal">その他のサービス &nbsp;/&nbsp; <em>Supporting Lineup</em></p>
             <div class="feature-grid">
-                <div class="feature-card scroll-reveal delay-2">
-                    <div class="feature-icon">📹</div>
+                <article class="feature-card scroll-reveal delay-1">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="14" width="22" height="20" rx="2"/>
+                            <path d="M28 22l14-6v16l-14-6z"/>
+                            <circle cx="13" cy="24" r="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">マルチカメラ配信</h3>
-                    <p class="feature-text">
-                        イベント配信、ウェビナー、ライブ配信をマルチカメラでプロフェッショナルに演出。配信機材のレンタルから配信運用までトータルでサポートします。
-                    </p>
-                </div>
-                <div class="feature-card scroll-reveal delay-3">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">SNS運用</h3>
-                    <p class="feature-text">
-                        企画・台本作成・撮影・編集・投稿・分析までトータルでサポート。継続的な運用でフォロワー増加とエンゲージメント向上を実現します。<strong>1本5,000円〜</strong>からスタート可能。
-                    </p>
-                </div>
-                <div class="feature-card scroll-reveal delay-4">
-                    <div class="feature-icon">✨</div>
+                    <p class="feature-text">イベント配信・ウェビナー・ライブ配信をマルチカメラで演出。配信機材のレンタルから運用までトータルでサポート。</p>
+                </article>
+                <article class="feature-card scroll-reveal delay-2">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="14" y="4" width="20" height="40" rx="3"/>
+                            <line x1="20" y1="10" x2="28" y2="10"/>
+                            <circle cx="24" cy="38" r="1.2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">SNS運用・短尺動画</h3>
+                    <p class="feature-text">TikTok・Instagram Reels・YouTube Shortsまで、企画〜台本〜撮影〜編集〜投稿〜分析までをサポート。<strong>1本 ¥5,000〜</strong>でスタート可能。</p>
+                </article>
+                <article class="feature-card scroll-reveal delay-3">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M24 6l3.5 10.5L38 20l-10.5 3.5L24 34l-3.5-10.5L10 20l10.5-3.5z"/>
+                            <path d="M38 34l1.5 4L43 39.5l-3.5 1.5L38 45l-1.5-4L33 39.5l3.5-1.5z"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">アニメーション・レタッチ</h3>
-                    <p class="feature-text">
-                        2Dアニメーション、モーショングラフィックス、ロゴアニメーション、写真レタッチまで。静止画・動画を問わず、幅広い制作ニーズに対応します。
-                    </p>
-                </div>
-                <div class="feature-card scroll-reveal delay-5">
-                    <div class="feature-icon">🤖</div>
-                    <h3 class="feature-title">生成AI制作</h3>
-                    <p class="feature-text">
-                        最新の生成AI技術（動画生成、画像生成、音声生成など）を活用し、従来の制作プロセスを効率化。コストパフォーマンスの高い映像制作を実現します。
-                    </p>
-                </div>
+                    <p class="feature-text">2Dアニメーション、モーショングラフィックス、ロゴアニメーション、写真レタッチまで。静止画・動画問わず幅広く対応。</p>
+                </article>
+                <article class="feature-card scroll-reveal delay-4">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="10" y="14" width="28" height="22" rx="3"/>
+                            <circle cx="19" cy="25" r="2"/>
+                            <circle cx="29" cy="25" r="2"/>
+                            <line x1="24" y1="6" x2="24" y2="14"/>
+                            <line x1="14" y1="36" x2="14" y2="42"/>
+                            <line x1="34" y1="36" x2="34" y2="42"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">生成AI × 映像制作</h3>
+                    <p class="feature-text">最新の生成AI（動画・画像・音声生成）を活用し、制作プロセスを効率化。コストパフォーマンスの高い映像制作を実現。</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- 実績セクション -->
-    <section class="works">
+    <!-- DIFFERENTIATORS // 04 -->
+    <section class="section differentiators" aria-labelledby="diff-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">制作実績</h2>
+            <div class="section-header">
+                <p class="section-label">// 04 &nbsp; WHY US</p>
+                <h2 id="diff-title" class="section-title">選ばれる3つの理由</h2>
+                <p class="section-sub"><em>What sets us apart.</em></p>
+            </div>
+            <div class="diff-grid">
+                <article class="diff-card scroll-reveal delay-1">
+                    <span class="diff-number">01</span>
+                    <p class="diff-label">EASY TO TALK</p>
+                    <h3 class="diff-title">相談しやすさ</h3>
+                    <p class="diff-text">「こんな初歩的な質問をしていいのかな？」を無くすため、小さな疑問から一緒に整理します。予算・目的が曖昧な段階でも気軽にご相談ください。</p>
+                </article>
+                <article class="diff-card scroll-reveal delay-2">
+                    <span class="diff-number">02</span>
+                    <p class="diff-label">FAST RESPONSE</p>
+                    <h3 class="diff-title">最短即日返信</h3>
+                    <p class="diff-text">対応時間 <strong>8:00 – 19:00</strong> ／土日も対応可。お問い合わせから最短即日でファーストリプライ、スピード感を持って進行します。</p>
+                </article>
+                <article class="diff-card scroll-reveal delay-3">
+                    <span class="diff-number">03</span>
+                    <p class="diff-label">AI × VIDEO</p>
+                    <h3 class="diff-title">生成AI × 動画編集</h3>
+                    <p class="diff-text">生成AI（動画・画像・音声・コード）と従来の動画編集スキルを掛け算。制作の質を保ったまま、コストと納期を圧縮します。</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-            <!-- 成果数値 -->
-            <div class="achievements scroll-reveal delay-1">
+    <!-- WORKS // 05 -->
+    <section class="section works" id="works" aria-labelledby="works-title">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">// 05 &nbsp; PORTFOLIO</p>
+                <h2 id="works-title" class="section-title">制作実績</h2>
+                <p class="section-sub"><em>Numbers and works that speak for themselves.</em></p>
+            </div>
+
+            <!-- 実績数値 -->
+            <div class="achievements scroll-reveal">
                 <div class="achievement-item">
-                    <div class="achievement-number">800+</div>
-                    <div class="achievement-label">制作本数</div>
+                    <p class="achievement-label">TOTAL WORKS</p>
+                    <p class="achievement-number">800<span class="achievement-unit">本+</span></p>
+                    <p class="achievement-sub">累計制作本数</p>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-number">30+</div>
-                    <div class="achievement-label">クライアント様</div>
+                    <p class="achievement-label">CLIENTS</p>
+                    <p class="achievement-number">30<span class="achievement-unit">社+</span></p>
+                    <p class="achievement-sub">取引企業数</p>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-number">90%</div>
-                    <div class="achievement-label">継続率</div>
+                    <p class="achievement-label">RETENTION</p>
+                    <p class="achievement-number">90<span class="achievement-unit">%</span></p>
+                    <p class="achievement-sub">継続率</p>
                 </div>
             </div>
 
@@ -156,141 +320,393 @@
             <div class="works-single scroll-reveal delay-2">
                 <a href="https://youtube.com/playlist?list=PLB2I6LBVOxi4Pj22zJPSdzmQNFcC7oBZR" target="_blank" rel="noopener" class="work-card-large">
                     <div class="work-thumbnail">
-                        <img src="https://i.ytimg.com/vi/ijXQetPbhmg/maxresdefault.jpg" alt="制作実績サムネイル" class="work-thumbnail-img">
-                        <div class="work-play-button"></div>
+                        <img src="https://i.ytimg.com/vi/ijXQetPbhmg/maxresdefault.jpg" alt="制作実績サムネイル" class="work-thumbnail-img" loading="lazy" width="1280" height="720">
+                        <div class="work-play-button" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
                     </div>
                     <div class="work-info">
                         <h3 class="work-title">YouTubeで制作実績を見る</h3>
-                        <p class="work-category">制作実績プレイリスト</p>
+                        <p class="work-category">PLAYLIST &nbsp;/&nbsp; 制作実績プレイリスト</p>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 対応ジャンルセクション -->
-    <section class="genres">
+    <!-- GENRES // 06 -->
+    <section class="section genres" aria-labelledby="genres-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">対応ジャンル</h2>
+            <div class="section-header">
+                <p class="section-label">// 06 &nbsp; GENRES</p>
+                <h2 id="genres-title" class="section-title">対応ジャンル</h2>
+                <p class="section-sub"><em>Fields we cover.</em></p>
+            </div>
             <div class="genre-list">
-                <div class="genre-item scroll-reveal delay-1">
-                    <h3 class="genre-title">📈 マーケティング動画</h3>
-                    <p>企業プロモーション・サービス紹介・商品CM</p>
-                </div>
-                <div class="genre-item scroll-reveal delay-2">
-                    <h3 class="genre-title">👥 採用・求人動画</h3>
-                    <p>社員紹介・職場説明・採用PR動画</p>
-                </div>
-                <div class="genre-item scroll-reveal delay-3">
-                    <h3 class="genre-title">🎪 イベント配信</h3>
-                    <p>ウェビナー・ライブ配信・収録配信</p>
-                </div>
-                <div class="genre-item scroll-reveal delay-4">
-                    <h3 class="genre-title">📲 SNS運用</h3>
-                    <p>企画・台本作成・投稿・分析まで</p>
-                </div>
+                <article class="genre-item scroll-reveal delay-1">
+                    <p class="genre-number">G/01</p>
+                    <h3 class="genre-title">マーケティング動画</h3>
+                    <p class="genre-text">企業プロモーション・サービス紹介・商品CM</p>
+                </article>
+                <article class="genre-item scroll-reveal delay-2">
+                    <p class="genre-number">G/02</p>
+                    <h3 class="genre-title">採用・求人動画</h3>
+                    <p class="genre-text">社員紹介・職場説明・採用PR動画</p>
+                </article>
+                <article class="genre-item scroll-reveal delay-3">
+                    <p class="genre-number">G/03</p>
+                    <h3 class="genre-title">イベント配信</h3>
+                    <p class="genre-text">ウェビナー・ライブ配信・収録配信</p>
+                </article>
+                <article class="genre-item scroll-reveal delay-4">
+                    <p class="genre-number">G/04</p>
+                    <h3 class="genre-title">SNS運用</h3>
+                    <p class="genre-text">企画・台本作成・投稿・分析まで</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- 料金プランセクション -->
-    <section class="pricing">
+    <!-- PRICING // 07 -->
+    <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">料金プラン</h2>
-            <p class="pricing-subtitle scroll-reveal delay-1">ご要望・ご予算に合わせて最適なプランをご提案します</p>
+            <div class="section-header">
+                <p class="section-label">// 07 &nbsp; PRICING</p>
+                <h2 id="pricing-title" class="section-title">料金プラン</h2>
+                <p class="section-sub"><em>Start from ¥5,000.</em></p>
+            </div>
+            <p class="pricing-lead scroll-reveal">ご要望・ご予算に合わせて最適なプランをご提案します。</p>
+
+            <!-- Pricing選びヒント -->
+            <div class="pricing-hints scroll-reveal">
+                <p class="pricing-hints-label">プラン選びのヒント</p>
+                <div class="pricing-hints-grid">
+                    <div class="pricing-hint">
+                        <span class="pricing-hint-case">まず試したい</span>
+                        <span class="pricing-hint-arrow" aria-hidden="true">→</span>
+                        <span class="pricing-hint-plan">エントリー</span>
+                    </div>
+                    <div class="pricing-hint">
+                        <span class="pricing-hint-case">決まった予算で1本</span>
+                        <span class="pricing-hint-arrow" aria-hidden="true">→</span>
+                        <span class="pricing-hint-plan">ライト・スタンダード</span>
+                    </div>
+                    <div class="pricing-hint">
+                        <span class="pricing-hint-case">継続的に任せたい</span>
+                        <span class="pricing-hint-arrow" aria-hidden="true">→</span>
+                        <span class="pricing-hint-plan">月額プラン</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="pricing-grid">
-                <div class="pricing-card scroll-reveal delay-1">
-                    <div class="pricing-badge">ライト</div>
-                    <h3 class="pricing-title">単発動画制作</h3>
-                    <div class="pricing-price">¥50,000〜</div>
-                    <p class="pricing-text">1本の動画制作からご対応</p>
+                <!-- エントリー（先頭・フック） -->
+                <article class="pricing-card pricing-card-entry scroll-reveal delay-1">
+                    <p class="pricing-badge">ENTRY</p>
+                    <h3 class="pricing-title">エントリー</h3>
+                    <p class="pricing-price">¥5,000<span class="pricing-unit">〜 / 本</span></p>
+                    <p class="pricing-text">動画1本をお試し価格で。</p>
                     <ul class="pricing-features">
-                        <li>✓ 動画制作（1本）</li>
-                        <li>✓ 撮影・編集込み</li>
-                        <li>✓ 納品後の修正1回まで</li>
+                        <li>動画制作 1本から対応</li>
+                        <li>既存素材の編集もOK</li>
+                        <li>SNS各種サイズで納品</li>
                     </ul>
-                </div>
-                <div class="pricing-card pricing-card-popular scroll-reveal delay-2">
-                    <div class="pricing-badge-popular">🎯 人気</div>
+                    <a href="#contact" class="pricing-cta pricing-cta-solid">このプランで試す <span aria-hidden="true">→</span></a>
+                </article>
+
+                <!-- ライト -->
+                <article class="pricing-card scroll-reveal delay-2">
+                    <p class="pricing-badge">LIGHT</p>
+                    <h3 class="pricing-title">ライト</h3>
+                    <p class="pricing-price">¥50,000<span class="pricing-unit">〜</span></p>
+                    <p class="pricing-text">1本の動画制作から。</p>
+                    <ul class="pricing-features">
+                        <li>動画制作（1本）</li>
+                        <li>撮影・編集込み</li>
+                        <li>納品後の修正1回まで</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">このプランで相談する <span aria-hidden="true">→</span></a>
+                </article>
+
+                <!-- スタンダード（人気） -->
+                <article class="pricing-card pricing-card-popular scroll-reveal delay-3">
+                    <p class="pricing-badge pricing-badge-popular">POPULAR</p>
                     <h3 class="pricing-title">スタンダード</h3>
-                    <div class="pricing-price">¥100,000〜</div>
-                    <p class="pricing-text">3本セットで制作</p>
+                    <p class="pricing-price">¥100,000<span class="pricing-unit">〜</span></p>
+                    <p class="pricing-text">3本セットで制作。</p>
                     <ul class="pricing-features">
-                        <li>✓ 動画制作（3本）</li>
-                        <li>✓ 企画立案から対応</li>
-                        <li>✓ 納品後の修正2回まで</li>
-                        <li>✓ SNS用サイズも作成</li>
+                        <li>動画制作（3本）</li>
+                        <li>企画立案から対応</li>
+                        <li>納品後の修正2回まで</li>
+                        <li>SNS用サイズも作成</li>
                     </ul>
-                </div>
-                <div class="pricing-card scroll-reveal delay-3">
-                    <div class="pricing-badge">プレミアム</div>
+                    <a href="#contact" class="pricing-cta">このプランで相談する <span aria-hidden="true">→</span></a>
+                </article>
+
+                <!-- プレミアム（月額） -->
+                <article class="pricing-card scroll-reveal delay-4">
+                    <p class="pricing-badge">PREMIUM</p>
                     <h3 class="pricing-title">月額プラン</h3>
-                    <div class="pricing-price">¥80,000〜/月</div>
-                    <p class="pricing-text">継続的な運用をサポート</p>
+                    <p class="pricing-price">¥80,000<span class="pricing-unit">〜 / 月</span></p>
+                    <p class="pricing-text">継続的な運用をサポート。</p>
                     <ul class="pricing-features">
-                        <li>✓ 月2本の動画制作</li>
-                        <li>✓ SNS投稿・分析</li>
-                        <li>✓ 月1回の定例ミーティング</li>
-                        <li>✓ 随時相談対応</li>
+                        <li>月2本の動画制作</li>
+                        <li>SNS投稿・分析</li>
+                        <li>月1回の定例ミーティング</li>
+                        <li>随時相談対応</li>
                     </ul>
-                </div>
+                    <a href="#contact" class="pricing-cta">このプランで相談する <span aria-hidden="true">→</span></a>
+                </article>
             </div>
             <p class="pricing-note scroll-reveal">※ 価格は内容により変動します。詳しくはお問い合わせください。</p>
         </div>
     </section>
 
-    <!-- お問い合わせセクション -->
-    <section class="contact" id="contact">
+    <!-- FLOW // 08 -->
+    <section class="section flow" aria-labelledby="flow-title">
         <div class="container">
-            <h2 class="section-title animate-text scroll-reveal">お問い合わせ</h2>
-            <div class="contact-content scroll-reveal delay-1">
+            <div class="section-header">
+                <p class="section-label">// 08 &nbsp; FLOW</p>
+                <h2 id="flow-title" class="section-title">お仕事の流れ</h2>
+                <p class="section-sub"><em>From inquiry to delivery.</em></p>
+            </div>
+            <ol class="flow-list">
+                <li class="flow-step scroll-reveal delay-1">
+                    <p class="flow-step-label">STEP 01</p>
+                    <p class="flow-step-num">01</p>
+                    <h3 class="flow-step-title">お問い合わせ</h3>
+                    <p class="flow-step-text"><span class="nowrap">メールまたはSNSからご連絡ください。</span><span class="nowrap">24時間以内にご返信します。</span></p>
+                </li>
+                <li class="flow-step scroll-reveal delay-2">
+                    <p class="flow-step-label">STEP 02</p>
+                    <p class="flow-step-num">02</p>
+                    <h3 class="flow-step-title">ヒアリング・お見積もり</h3>
+                    <p class="flow-step-text"><span class="nowrap">オンライン面談可・見積もり無料。</span><span class="nowrap">目的と予算をじっくり整理します。</span></p>
+                </li>
+                <li class="flow-step scroll-reveal delay-3">
+                    <p class="flow-step-label">STEP 03</p>
+                    <p class="flow-step-num">03</p>
+                    <h3 class="flow-step-title">企画・制作</h3>
+                    <p class="flow-step-text"><span class="nowrap">撮影・編集・進捗共有まで。</span><span class="nowrap">小まめに確認を取りながら進めます。</span></p>
+                </li>
+                <li class="flow-step scroll-reveal delay-4">
+                    <p class="flow-step-label">STEP 04</p>
+                    <p class="flow-step-num">04</p>
+                    <h3 class="flow-step-title">納品・アフターフォロー</h3>
+                    <p class="flow-step-text"><span class="nowrap">修正対応込みで納品。</span><span class="nowrap">納品後の運用相談もお任せください。</span></p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- FAQ // 09 -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">// 09 &nbsp; FAQ</p>
+                <h2 id="faq-title" class="section-title">よくあるご質問</h2>
+                <p class="section-sub"><em>Questions we hear often.</em></p>
+            </div>
+            <div class="faq-list scroll-reveal">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">制作期間はどれくらいかかりますか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">内容によりますが、SNS向け短尺なら最短3〜5営業日、</span><span class="nowrap">企業プロモーション動画は2〜4週間が目安です。</span><span class="nowrap">お急ぎの案件もまずはご相談ください。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">修正は何回まで対応可能ですか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">プランにより1〜2回までを基本回数として含めています。</span><span class="nowrap">それ以上の修正もご相談いただけば柔軟に対応します。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">お支払い方法を教えてください。</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">銀行振込に対応しています。</span><span class="nowrap">単発案件は納品後の一括請求、</span><span class="nowrap">月額プランは月末締め翌月末払いが基本です。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">契約形態はどうなりますか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">業務委託契約が基本です。</span><span class="nowrap">ご希望に応じて発注書・請書でのやり取りや、</span><span class="nowrap">クライアント指定のフォーマットにも対応します。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">対応エリアはどこまでですか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">奈良を拠点に、関西圏を中心に撮影対応しています。</span><span class="nowrap">オンライン完結の案件は全国対応可、</span><span class="nowrap">遠方撮影も交通費実費でご相談ください。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">素材（写真・動画）はこちらで用意する必要がありますか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">どちらにも対応可能です。</span><span class="nowrap">既存素材の編集のみでもOK、</span><span class="nowrap">撮影から一括でお任せいただくことも可能です。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">途中キャンセルの場合、料金はどうなりますか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">進行フェーズに応じた実費相当のご請求となります。</span><span class="nowrap">詳細は契約時にご案内しますので、</span><span class="nowrap">ご不明な点は事前にお気軽にご確認ください。</span></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span class="faq-q-mark" aria-hidden="true">Q</span>
+                        <span class="faq-q-text">NDA（秘密保持契約）の締結は可能ですか？</span>
+                        <span class="faq-q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><span class="nowrap">もちろん対応可能です。</span><span class="nowrap">貴社フォーマットでも、</span><span class="nowrap">こちらの雛形でも対応できます。お気軽にお申し付けください。</span></p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT // 10 -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+            <div class="section-header section-header-light">
+                <p class="section-label">// 10 &nbsp; CONTACT</p>
+                <h2 id="contact-title" class="section-title">お問い合わせ</h2>
+                <p class="section-sub"><em>Let's start a conversation.</em></p>
+            </div>
+            <div class="contact-content scroll-reveal">
                 <p class="contact-text">
-                    まずは無料でご相談いただけます。<br>
-                    ご要望・ご予算に合わせて最適なプランをご提案します。
+                    <span class="nowrap">まずは無料でご相談いただけます。</span><br>
+                    <span class="nowrap">ご要望・ご予算に合わせて</span><span class="nowrap">最適なプランをご提案します。</span>
                 </p>
                 <div class="contact-cta">
-                    <a href="mailto:j.ajbj4@gmail.com" class="btn btn-primary btn-large">
-                        <span>📧 メールで相談する</span>
+                    <a href="mailto:j.ajbj4@gmail.com" class="btn btn-gold btn-large">
+                        <span>メールで相談する</span>
                     </a>
+                    <p class="cta-micro cta-micro-light"><span class="nowrap">24時間以内に必ずご返信します</span></p>
                 </div>
                 <div class="contact-sns">
-                    <p style="margin-bottom: 1rem; opacity: 0.9;">SNSでもお気軽にご相談ください</p>
+                    <p class="contact-sns-label">SNSでもお気軽にご相談ください</p>
                     <div class="sns-links">
-                        <a href="https://x.com/junnya09" target="_blank" rel="noopener" class="sns-link">
-                            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <a href="https://x.com/junnya09" target="_blank" rel="noopener" class="sns-link" aria-label="X（旧Twitter）">
+                            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                             </svg>
-                            X
+                            <span>X</span>
                         </a>
-                        <a href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener" class="sns-link">
-                            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <a href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener" class="sns-link" aria-label="Instagram">
+                            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
-                            Instagram
+                            <span>Instagram</span>
                         </a>
-                        <a href="https://line.me/" target="_blank" rel="noopener" class="sns-link sns-link-disabled">
-                            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <span class="sns-link sns-link-disabled" aria-label="LINE（準備中）">
+                            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M12 2C6.5 2 2 5.9 2 10c0 2.4 1.5 4.5 3.8 5.9-.1.8-.4 2.2-1 3.5 1.5-.1 3.3-.7 4.6-1.5.5.1 1.1.1 1.6.1 5.5 0 10-3.9 10-9s-4.5-8-10-8zm0 14.5c-.5 0-1 0-1.5-.1-1.2.8-2.9 1.4-4.3 1.4.5-1 .8-2 .9-2.7C5 14 3.8 12.1 3.8 10c0-3.9 3.7-7.1 8.2-7.1s8.2 3.2 8.2 7.1-3.7 7.5-8.2 7.5z"/>
                             </svg>
-                            LINE（準備中）
-                        </a>
+                            <span>LINE（準備中）</span>
+                        </span>
                     </div>
                 </div>
                 <div class="contact-info">
-                    <p>対応時間：8:00 - 19:00</p>
+                    <p>対応時間：8:00 – 19:00 &nbsp;/&nbsp; 土日も対応可</p>
                     <p>最短即日ご返信</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- フッター -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">&copy; 2026 ドーガづくり. All rights reserved.</p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <!-- ブランドカラム -->
+                <div class="footer-col footer-col-brand">
+                    <p class="footer-brand">
+                        <span class="footer-brand-jp">ドーガづくり</span>
+                        <span class="footer-brand-en"><em>DOGA ZUKURI</em></span>
+                    </p>
+                    <p class="footer-tagline"><span class="nowrap">映像のチカラで、</span><span class="nowrap">ビジネスに成果を。</span></p>
+                    <div class="footer-sns">
+                        <a href="https://x.com/junnya09" target="_blank" rel="noopener" class="footer-sns-link" aria-label="X（旧Twitter）">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener" class="footer-sns-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ナビカラム -->
+                <div class="footer-col footer-col-nav">
+                    <p class="footer-col-title">NAVIGATION</p>
+                    <ul class="footer-nav">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- 情報カラム -->
+                <div class="footer-col footer-col-info">
+                    <p class="footer-col-title">INFORMATION</p>
+                    <dl class="footer-info">
+                        <dt>所在地</dt>
+                        <dd>奈良県</dd>
+                        <dt>対応時間</dt>
+                        <dd>8:00 – 19:00</dd>
+                        <dt>対応日</dt>
+                        <dd>土日も対応可</dd>
+                        <dt>対応範囲</dt>
+                        <dd>関西中心<span class="nowrap">（全国オンライン可）</span></dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-text">&copy; 2026 ドーガづくり. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#privacy">プライバシーポリシー</a></li>
+                    <li><a href="#tokutei">特商法表記</a></li>
+                </ul>
+            </div>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="scripts.js" defer></script>
 </body>
 </html>

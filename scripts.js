@@ -1,95 +1,153 @@
-// === Intersection Observer for scroll animations ===
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+/* ==========================================================================
+   ドーガづくり LP — Navy × Gold Edition
+   - Intersection Observer (scroll reveal)
+   - Site nav: scroll-detection / hamburger / smooth anchor with offset
+   ========================================================================== */
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-        }
-    });
-}, observerOptions);
+(function () {
+    'use strict';
 
-document.querySelectorAll('.scroll-reveal').forEach(el => {
-    observer.observe(el);
-});
+    // --- Motion preference ---
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// === Custom cursor ===
-const cursor = document.querySelector('.custom-cursor');
+    // ======================================================================
+    // 1. Scroll reveal (Intersection Observer)
+    // ======================================================================
+    const revealTargets = document.querySelectorAll('.scroll-reveal');
 
-if (cursor) {
-    let cursorX = 0, cursorY = 0;
-    let cursorFollowX = 0, cursorFollowY = 0;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        revealTargets.forEach(function (el) {
+            el.classList.add('revealed');
+        });
+    } else {
+        const observerOptions = {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        };
 
-    document.addEventListener('mousemove', (e) => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-    });
+        const observer = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    document.querySelectorAll('a, button, .btn').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-
-    function animateCursor() {
-        cursorFollowX += (cursorX - cursorFollowX) * 0.4;
-        cursorFollowY += (cursorY - cursorFollowY) * 0.4;
-
-        cursor.style.left = cursorFollowX + 'px';
-        cursor.style.top = cursorFollowY + 'px';
-
-        requestAnimationFrame(animateCursor);
+        revealTargets.forEach(function (el) {
+            observer.observe(el);
+        });
     }
-    animateCursor();
-}
 
-// === Parallax scrolling ===
-let ticking = false;
+    // ======================================================================
+    // 2. Site nav — scroll detection (.site-nav--scrolled)
+    // ======================================================================
+    const siteNav = document.getElementById('siteNav');
+    if (siteNav) {
+        const SCROLL_THRESHOLD = 80;
+        let ticking = false;
 
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const scrolled = window.pageYOffset;
-            const heroBg = document.querySelector('.hero-bg');
-            if (heroBg && scrolled < window.innerHeight) {
-                heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        const updateNavState = function () {
+            if (window.scrollY > SCROLL_THRESHOLD) {
+                siteNav.classList.add('site-nav--scrolled');
+            } else {
+                siteNav.classList.remove('site-nav--scrolled');
             }
             ticking = false;
-        });
-        ticking = true;
+        };
+
+        const onScroll = function () {
+            if (!ticking) {
+                window.requestAnimationFrame(updateNavState);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateNavState();
     }
-});
 
-// === Magnetic button effect ===
-document.querySelectorAll('.btn-primary, .btn-large').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
+    // ======================================================================
+    // 3. Mobile hamburger toggle (body.nav-open)
+    // ======================================================================
+    const navToggle = document.getElementById('siteNavToggle');
+    const navLinks = document.getElementById('siteNavLinks');
 
-        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    if (navToggle && navLinks) {
+        const closeNav = function () {
+            document.body.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'メニューを開く');
+        };
+
+        const openNav = function () {
+            document.body.classList.add('nav-open');
+            navToggle.setAttribute('aria-expanded', 'true');
+            navToggle.setAttribute('aria-label', 'メニューを閉じる');
+        };
+
+        navToggle.addEventListener('click', function () {
+            if (document.body.classList.contains('nav-open')) {
+                closeNav();
+            } else {
+                openNav();
+            }
+        });
+
+        // Close when a nav link is clicked
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                closeNav();
+            });
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+                closeNav();
+                navToggle.focus();
+            }
+        });
+    }
+
+    // ======================================================================
+    // 4. Smooth scroll with nav-height offset
+    // ======================================================================
+    const getNavHeight = function () {
+        if (!siteNav) return 0;
+        return siteNav.getBoundingClientRect().height || 64;
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#' || href.length < 2) return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+
+            const offset = getNavHeight() + 8;
+            const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({
+                top: targetTop,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
+
+            // Move focus for accessibility (without the visual jump)
+            if (target instanceof HTMLElement) {
+                const prevTabIndex = target.getAttribute('tabindex');
+                target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
+                if (prevTabIndex === null) {
+                    target.addEventListener('blur', function handler() {
+                        target.removeAttribute('tabindex');
+                        target.removeEventListener('blur', handler);
+                    });
+                }
+            }
+        });
     });
-
-    btn.addEventListener('mouseleave', () => {
-        btn.style.transform = '';
-    });
-});
-
-// === Character-by-character animation ===
-document.querySelectorAll('.animate-text').forEach(el => {
-    const text = el.textContent;
-    el.textContent = '';
-
-    text.split('').forEach((char, i) => {
-        const span = document.createElement('span');
-        span.className = 'char-animation';
-        span.style.animationDelay = `${i * 0.05}s`;
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        el.appendChild(span);
-    });
-});
-
-// === Glitch effect control ===
-// ※ブラーインエフェクトに変更したため削除（アニメーションは自動完了）
+})();
