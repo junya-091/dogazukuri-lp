@@ -314,6 +314,9 @@
     const navLinks = document.getElementById('siteNavLinks');
     const revealTargets = document.querySelectorAll('.scroll-reveal');
     const countTargets = document.querySelectorAll('.count-up');
+    const heroSequence = document.querySelector('.hero-sequence');
+    const heroIntroScene = document.getElementById('heroIntroScene');
+    const heroWorksScene = document.getElementById('heroWorksScene');
     const heroPreviewGrid = document.getElementById('heroPreviewGrid');
     const workGrid = document.getElementById('workGrid');
     const workFilters = document.getElementById('workFilters');
@@ -324,6 +327,72 @@
     const initialVisibleCount = 12;
     let activeFilter = 'all';
     let visibleCount = initialVisibleCount;
+
+    const clamp = function (value, min, max) {
+        return Math.min(Math.max(value, min), max);
+    };
+
+    const scrollRange = function (progress, start, end) {
+        const ratio = clamp((progress - start) / (end - start), 0, 1);
+        return ratio * ratio * (3 - 2 * ratio);
+    };
+
+    const setSceneInteractive = function (scene, interactive) {
+        if (!scene) return;
+        scene.toggleAttribute('inert', !interactive);
+        scene.setAttribute('aria-hidden', interactive ? 'false' : 'true');
+    };
+
+    const initHeroSequence = function () {
+        if (!heroSequence || !heroIntroScene || !heroWorksScene) return;
+
+        if (prefersReducedMotion) {
+            setSceneInteractive(heroIntroScene, true);
+            setSceneInteractive(heroWorksScene, true);
+            return;
+        }
+
+        heroSequence.classList.add('hero-sequence--enhanced');
+        let frameRequested = false;
+        let activeScene = '';
+
+        const updateHeroSequence = function () {
+            const rect = heroSequence.getBoundingClientRect();
+            const travel = Math.max(heroSequence.offsetHeight - window.innerHeight, 1);
+            const progress = clamp(-rect.top / travel, 0, 1);
+            const introExit = scrollRange(progress, 0.2, 0.44);
+            const worksEnter = scrollRange(progress, 0.34, 0.56);
+            const worksExit = scrollRange(progress, 0.84, 1);
+            const backgroundExit = scrollRange(progress, 0.86, 1);
+            const introOpacity = 1 - introExit;
+            const worksOpacity = worksEnter * (1 - worksExit);
+
+            heroSequence.style.setProperty('--hero-bg-opacity', String(1 - backgroundExit));
+            heroSequence.style.setProperty('--hero-intro-opacity', String(introOpacity));
+            heroSequence.style.setProperty('--hero-intro-y', `${-48 * introExit}px`);
+            heroSequence.style.setProperty('--hero-works-opacity', String(worksOpacity));
+            heroSequence.style.setProperty('--hero-works-y', `${42 * (1 - worksEnter) - 24 * worksExit}px`);
+
+            const nextActiveScene = progress < 0.43 ? 'intro' : (progress < 0.98 ? 'works' : 'none');
+            if (nextActiveScene !== activeScene) {
+                setSceneInteractive(heroIntroScene, nextActiveScene === 'intro');
+                setSceneInteractive(heroWorksScene, nextActiveScene === 'works');
+                activeScene = nextActiveScene;
+            }
+
+            frameRequested = false;
+        };
+
+        const requestHeroUpdate = function () {
+            if (frameRequested) return;
+            frameRequested = true;
+            requestAnimationFrame(updateHeroSequence);
+        };
+
+        updateHeroSequence();
+        window.addEventListener('scroll', requestHeroUpdate, { passive: true });
+        window.addEventListener('resize', requestHeroUpdate);
+    };
 
     const updateNavState = function () {
         if (!siteNav) return;
@@ -595,7 +664,9 @@
 
         const rect = worksSection.getBoundingClientRect();
         const worksVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        mobileStickyCta.classList.toggle('mobile-sticky-cta--hidden', worksVisible);
+        const heroRect = heroSequence ? heroSequence.getBoundingClientRect() : null;
+        const heroVisible = heroRect && heroRect.top < window.innerHeight && heroRect.bottom > 0;
+        mobileStickyCta.classList.toggle('mobile-sticky-cta--hidden', worksVisible || heroVisible);
     };
 
     const initStickyCta = function () {
@@ -605,6 +676,7 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
+        initHeroSequence();
         initNav();
         initReveal();
         initCountUp();

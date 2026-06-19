@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=hero-20260619">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,44 +66,67 @@
     </nav>
 
     <main id="main">
-        <header class="hero" id="top">
-            <div class="hero-grid-overlay" aria-hidden="true"></div>
-            <div class="container hero-inner">
-                <section class="hero-copy" aria-labelledby="hero-title">
-                    <p class="eyebrow scroll-reveal">SNS VIDEO / RECRUIT PR / AI MOVIE</p>
-                    <h1 id="hero-title" class="hero-title scroll-reveal">
-                        SNS動画・採用PR・AI映像まで。<br>
-                        伝わる動画を、<span class="title-keep">企画から制作します。</span>
-                    </h1>
-                    <p class="hero-lead scroll-reveal delay-1">
-                        撮影・編集・SNS運用・生成AI活用までワンストップ。900本以上の制作経験をもとに、見られるだけで終わらない動画づくりをサポートします。
-                    </p>
-                    <div class="hero-actions scroll-reveal delay-2">
-                        <a class="btn btn-primary" href="#contact">まずは相談する</a>
-                        <a class="btn btn-secondary" href="#works">制作実績を見る</a>
-                    </div>
-                    <ul class="hero-proof scroll-reveal delay-3" aria-label="対応実績">
-                        <li>900本以上制作</li>
-                        <li>30社以上対応</li>
-                        <li>100万回再生超え実績</li>
-                        <li>SNS / 採用 / 店舗 / AI映像</li>
-                    </ul>
-                </section>
+        <section class="hero-sequence" id="top" aria-labelledby="hero-title">
+            <div class="hero-sticky">
+                <picture class="hero-background" aria-hidden="true">
+                    <source
+                        type="image/webp"
+                        srcset="assets/hero/hero-character-960.webp 960w, assets/hero/hero-character-1920.webp 1920w, assets/hero/hero-character-2560.webp 2560w"
+                        sizes="100vw">
+                    <img
+                        src="assets/hero/hero-character-1920.webp"
+                        width="1920"
+                        height="1081"
+                        alt=""
+                        decoding="async"
+                        fetchpriority="high">
+                </picture>
+                <div class="hero-scrim" aria-hidden="true"></div>
+                <div class="hero-grid-overlay" aria-hidden="true"></div>
 
-                <section class="hero-console scroll-reveal delay-1" aria-label="制作実績プレビュー">
-                    <div class="console-top">
-                        <span class="rec-dot" aria-hidden="true"></span>
-                        <span>WORKS PREVIEW</span>
-                        <span class="timecode">00:09:00</span>
+                <div class="hero-scene hero-scene--intro" id="heroIntroScene">
+                    <div class="container hero-intro-inner">
+                        <section class="hero-copy">
+                            <p class="eyebrow scroll-reveal">SNS VIDEO / RECRUIT PR / AI MOVIE</p>
+                            <h1 id="hero-title" class="hero-title scroll-reveal">
+                                SNS動画・採用PR・<br>AI映像まで。<br>
+                                伝わる動画を、<span class="title-keep">企画から制作します。</span>
+                            </h1>
+                            <p class="hero-lead scroll-reveal delay-1">
+                                撮影・編集・SNS運用・生成AI活用までワンストップ。900本以上の制作経験をもとに、見られるだけで終わらない動画づくりをサポートします。
+                            </p>
+                            <div class="hero-actions scroll-reveal delay-2">
+                                <a class="btn btn-primary" href="#contact">まずは相談する</a>
+                                <a class="btn btn-secondary" href="#works">制作実績を見る</a>
+                            </div>
+                            <ul class="hero-proof scroll-reveal delay-3" aria-label="対応実績">
+                                <li>900本以上制作</li>
+                                <li>30社以上対応</li>
+                                <li>100万回再生超え実績</li>
+                                <li>SNS / 採用 / 店舗 / AI映像</li>
+                            </ul>
+                        </section>
                     </div>
-                    <div class="hero-preview-grid" id="heroPreviewGrid"></div>
-                    <div class="console-bottom">
-                        <span>900+ PROJECTS</span>
-                        <span>EDIT / SHOOT / AI / SNS</span>
+                </div>
+
+                <div class="hero-scene hero-scene--works" id="heroWorksScene">
+                    <div class="container hero-works-inner">
+                        <section class="hero-console" aria-label="制作実績プレビュー">
+                            <div class="console-top">
+                                <span class="rec-dot" aria-hidden="true"></span>
+                                <span>WORKS PREVIEW</span>
+                                <span class="timecode">00:09:00</span>
+                            </div>
+                            <div class="hero-preview-grid" id="heroPreviewGrid"></div>
+                            <div class="console-bottom">
+                                <span>900+ PROJECTS</span>
+                                <span>EDIT / SHOOT / AI / SNS</span>
+                            </div>
+                        </section>
                     </div>
-                </section>
+                </div>
             </div>
-        </header>
+        </section>
 
         <section class="section stats-section" aria-labelledby="stats-title">
             <div class="container">
@@ -479,6 +502,6 @@
         <a href="#contact">制作について相談する</a>
     </div>
 
-    <script src="scripts.js" defer></script>
+    <script src="scripts.js?v=hero-20260619" defer></script>
 </body>
 </html>
