@@ -28,6 +28,7 @@
         {
             title: '配当管理ツール解説',
             image: 'assets/works/work-wide-03.jpg',
+            url: 'https://youtu.be/tGgwI5klNRE',
             category: 'pr',
             aspect: 'wide'
         },
@@ -47,6 +48,7 @@
         {
             title: 'AI解説動画',
             image: 'assets/works/work-wide-06.jpg',
+            url: 'https://youtu.be/4jF-W4IyOpE',
             category: 'ai',
             aspect: 'wide'
         },
@@ -60,6 +62,7 @@
         {
             title: '楽器弾いてみた',
             image: 'assets/works/work-wide-08.jpg',
+            url: 'https://youtu.be/_WqIKayOqpY',
             category: 'event',
             aspect: 'wide'
         },
@@ -73,30 +76,35 @@
         {
             title: '商品PV',
             image: 'assets/works/work-wide-10.jpg',
+            url: 'https://youtu.be/3S0DLx4xRoA',
             category: 'pr',
             aspect: 'wide'
         },
         {
             title: 'アニメーション',
             image: 'assets/works/work-wide-11.jpg',
+            url: 'https://youtu.be/w6j7Z4yre5w?si=FElVC0XHO6pUjaTc',
             category: 'ai',
             aspect: 'wide'
         },
         {
             title: 'Amazon商品PV',
             image: 'assets/works/work-wide-12.jpg',
+            url: 'https://youtu.be/21_NE5654Lc',
             category: 'pr',
             aspect: 'wide'
         },
         {
             title: '個別塾PV',
             image: 'assets/works/work-wide-13.jpg',
+            url: 'https://youtu.be/Xzwvb6AoqeI?si=t8Nc5Nzv55gTuNvS',
             category: 'school',
             aspect: 'wide'
         },
         {
             title: 'ポートフォリオ',
             image: 'assets/works/work-wide-14.jpg',
+            url: 'https://youtu.be/x_SnvOmTMlM',
             category: 'pr',
             aspect: 'wide'
         },
@@ -109,12 +117,14 @@
         {
             title: 'Amazon商品使用方法解説',
             image: 'assets/works/work-wide-16.jpg',
+            url: 'https://youtu.be/BIaHU3LDTPE',
             category: 'pr',
             aspect: 'wide'
         },
         {
             title: 'キャリア教育',
             image: 'assets/works/work-wide-17.jpg',
+            url: 'https://youtu.be/nJRq_3Ye_5A',
             category: 'school',
             aspect: 'wide'
         },
@@ -127,7 +137,7 @@
         {
             title: 'きのこ×復讐劇🍄',
             image: 'assets/works/work-wide-19.jpg',
-            url: 'https://x.com/junnya09/status/2060375370537509177?s=20',
+            url: 'https://www.instagram.com/reel/DY9wCyhBkIv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
             category: 'ai',
             aspect: 'wide'
         },
@@ -140,120 +150,140 @@
         {
             title: '病院紹介',
             image: 'assets/works/work-short-01.jpg',
+            url: 'https://www.tiktok.com/@tsusewko1fb/video/7317938908371619079',
             category: 'school',
             aspect: 'short'
         },
         {
             title: '社員研修',
             image: 'assets/works/work-short-02.jpg',
+            url: 'https://www.tiktok.com/@uenishikougyou/video/7362469879561080071',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '作業着紹介',
             image: 'assets/works/work-short-03.jpg',
+            url: 'https://www.tiktok.com/@sagyouhukuk/video/7381765447508626695',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '社員募集',
             image: 'assets/works/work-short-04.jpg',
+            url: 'https://www.tiktok.com/@kameda_7777/video/7645235742394109204',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '楽器弾いてみた',
             image: 'assets/works/work-short-05.jpg',
+            url: 'https://www.tiktok.com/@himobass/video/7436332310984789255',
             category: 'event',
             aspect: 'short'
         },
         {
             title: '飲食店紹介',
             image: 'assets/works/work-short-06.jpg',
+            url: 'https://www.tiktok.com/@mogu_bistro.coffee/video/7355048178502192392',
             category: 'pr',
             aspect: 'short'
         },
         {
             title: '看護師募集',
             image: 'assets/works/work-short-07.jpg',
+            url: 'https://www.tiktok.com/@heartland_kango/video/7485985711611497729',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '看護学校紹介',
             image: 'assets/works/work-short-08.jpg',
+            url: 'https://www.tiktok.com/@heartlandshigisannurse/video/7503445447286066450',
             category: 'school',
             aspect: 'short'
         },
         {
             title: 'ホワイトニング商品紹介',
             image: 'assets/works/work-short-09.jpg',
+            url: 'https://www.tiktok.com/@hanikoishitemasu/video/7563599286643019016',
             category: 'pr',
             aspect: 'short'
         },
         {
             title: '個別塾紹介',
             image: 'assets/works/work-short-10.jpg',
+            url: 'https://youtube.com/shorts/KqEVd9BJSzU',
             category: 'school',
             aspect: 'short'
         },
         {
             title: '看護師の1日',
             image: 'assets/works/work-short-11.jpg',
+            url: 'https://www.tiktok.com/@tsusewko1fb/video/7311639810538491154',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '社長紹介',
             image: 'assets/works/work-short-12.jpg',
+            url: 'https://www.tiktok.com/@uenishikougyou/video/7377312905458437383',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '作業靴紹介',
             image: 'assets/works/work-short-13.jpg',
+            url: 'https://www.tiktok.com/@sagyouhukuk/video/7431490697435352338',
             category: 'pr',
             aspect: 'short'
         },
         {
             title: '会社紹介',
             image: 'assets/works/work-short-14.jpg',
+            url: 'https://www.tiktok.com/@kameda_7777/video/7558339815297535248',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '看護師紹介',
             image: 'assets/works/work-short-15.jpg',
+            url: 'https://www.tiktok.com/@heartland_kango/video/7549124021602848008',
             category: 'recruit',
             aspect: 'short'
         },
         {
             title: '看護学校あるある',
             image: 'assets/works/work-short-16.jpg',
+            url: 'https://www.tiktok.com/@heartlandshigisannurse/video/7469712440222141704',
             category: 'school',
             aspect: 'short'
         },
         {
             title: '美容クリニック紹介',
             image: 'assets/works/work-short-17.jpg',
+            url: 'https://www.tiktok.com/@gakuennmaewellnessclinic/video/7489307140901834004',
             category: 'pr',
             aspect: 'short'
         },
         {
             title: 'ホワイトニング商品紹介',
             image: 'assets/works/work-short-18.jpg',
+            url: 'https://www.tiktok.com/@hanikoishitemasu/video/7542833594755157266',
             category: 'pr',
             aspect: 'short'
         },
         {
             title: '清掃の豆知識紹介',
             image: 'assets/works/work-short-19.jpg',
+            url: 'https://www.tiktok.com/@kameda_7777/video/7611467000652565780',
             category: 'pr',
             aspect: 'short'
         },
         {
             title: '美装屋の1日',
             image: 'assets/works/work-short-20.jpg',
+            url: 'https://www.tiktok.com/@kameda_7777/video/7595882830865894676',
             category: 'recruit',
             aspect: 'short'
         }
@@ -266,17 +296,17 @@
     });
     const heroPreviewItems = [
         workItems[0],
+        workItems[2],
         workItems[4],
+        workItems[5],
+        workItems[6],
+        workItems[7],
         workItems[8],
+        workItems[9],
+        workItems[10],
+        workItems[12],
+        workItems[15],
         workItems[18],
-        workItems[20],
-        workItems[23],
-        workItems[25],
-        workItems[26],
-        workItems[29],
-        workItems[31],
-        workItems[36],
-        workItems[39]
     ];
 
     const siteNav = document.getElementById('siteNav');
