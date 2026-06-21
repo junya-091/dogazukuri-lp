@@ -324,7 +324,7 @@
     const worksSection = document.getElementById('works');
     const mobileStickyCta = document.querySelector('.mobile-sticky-cta');
     const mobileViewport = window.matchMedia('(max-width: 760px)');
-    const initialVisibleCount = 12;
+    const initialVisibleCount = 24;
     let activeFilter = 'all';
     let visibleCount = initialVisibleCount;
 
@@ -592,7 +592,7 @@
 
         if (loadMoreButton) {
             loadMoreButton.addEventListener('click', function () {
-                visibleCount += 12;
+                visibleCount += 16;
                 renderWorks();
             });
         }

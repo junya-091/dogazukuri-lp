@@ -1043,9 +1043,12 @@ button {
         font-size: 3rem;
     }
 
-    .stats-grid,
-    .work-grid {
+    .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .work-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .service-grid,
@@ -1181,13 +1184,21 @@ button {
     }
 
     .stats-grid,
-    .work-grid,
     .card-grid.three,
     .service-grid,
     .pricing-grid,
     .timeline,
     .profile-list {
         grid-template-columns: 1fr;
+    }
+
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .work-grid .work-body h3 {
+        font-size: 0.82rem;
     }
 
     .timeline-item {
