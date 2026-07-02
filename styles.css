@@ -828,6 +828,61 @@ button {
     margin: 20px 0 24px;
 }
 
+.pricing-banner {
+    margin: 0 0 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(80, 227, 194, 0.14), rgba(255, 255, 255, 0.03));
+    color: var(--text);
+}
+
+.pricing-banner strong {
+    margin-right: 12px;
+    color: var(--cyan);
+    font-family: var(--font-display);
+    font-weight: 800;
+}
+
+.pricing-common {
+    margin: 0 0 22px;
+    color: var(--text-muted);
+}
+
+.price-badge {
+    align-self: flex-start;
+    margin: 0 0 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--cyan);
+    color: #06111d;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.price-card--wide {
+    grid-column: 1 / -1;
+    min-height: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.price-card--wide h3 {
+    margin: 0 0 6px;
+}
+
+.price-card--wide p:last-child {
+    margin-bottom: 0;
+}
+
+.price-card--wide a {
+    margin-top: 0;
+    padding: 0 22px;
+}
+
 .comparison-wrap {
     overflow-x: auto;
     border: 1px solid var(--line);
