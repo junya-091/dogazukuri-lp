@@ -195,6 +195,31 @@ button {
     background: var(--cyan);
 }
 
+.nav-links .nav-ai-page {
+    gap: 8px;
+    padding: 0 18px;
+    border: 1px solid var(--cyan);
+    border-radius: 999px;
+    color: var(--cyan);
+    background: rgba(80, 227, 194, 0.06);
+}
+
+.nav-links .nav-ai-page:hover {
+    color: #06111d;
+    background: var(--cyan);
+}
+
+.nav-links .nav-ai-page:active,
+.nav-links .nav-cta:active,
+.nav-ai-mobile:active {
+    transform: translateY(1px);
+}
+
+.nav-ai-page-short,
+.nav-ai-mobile {
+    display: none;
+}
+
 .nav-toggle {
     display: none;
     width: 44px;
@@ -1059,6 +1084,22 @@ button {
 }
 
 @media (max-width: 1060px) {
+    .nav-links a {
+        padding-inline: 10px;
+    }
+
+    .nav-links .nav-ai-page {
+        padding-inline: 14px;
+    }
+
+    .nav-ai-page-full {
+        display: none;
+    }
+
+    .nav-ai-page-short {
+        display: inline;
+    }
+
     .hero-intro-inner,
     .section-head.split,
     .profile-panel,
@@ -1101,6 +1142,36 @@ button {
 
     .nav-toggle {
         display: block;
+        flex: 0 0 44px;
+    }
+
+    .nav-inner {
+        gap: 8px;
+    }
+
+    .brand-sub {
+        display: none;
+    }
+
+    .nav-ai-mobile {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-height: 44px;
+        margin-left: auto;
+        padding: 0 13px;
+        border: 1px solid var(--cyan);
+        border-radius: 999px;
+        color: var(--cyan);
+        font-weight: 800;
+        font-size: 0.86rem;
+        background: rgba(80, 227, 194, 0.06);
+    }
+
+    .nav-ai-mobile:hover {
+        color: #06111d;
+        background: var(--cyan);
     }
 
     .nav-links {
@@ -1126,6 +1197,20 @@ button {
     .nav-links a {
         justify-content: flex-start;
         width: 100%;
+    }
+
+    .nav-links .nav-ai-page {
+        justify-content: space-between;
+        margin: 6px 0;
+        padding-inline: 16px;
+    }
+
+    .nav-ai-page-full {
+        display: inline;
+    }
+
+    .nav-ai-page-short {
+        display: none;
     }
 
     .hero-scene {
