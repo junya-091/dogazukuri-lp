@@ -1,7 +1,9 @@
+const heroConfig = window.DOGAZUKURI_VARIANT && window.DOGAZUKURI_VARIANT.hero;
 const heroFrame = document.querySelector('.ai-hero-media iframe[data-src]');
 const reduceHeroMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const heroEnabled = !heroConfig || heroConfig.enabled !== false && heroConfig.visible !== false;
 
-if (heroFrame && !reduceHeroMotion) {
+if (heroFrame && heroEnabled && !reduceHeroMotion) {
     heroFrame.src = heroFrame.dataset.src;
 
     window.onYouTubeIframeAPIReady = () => {

@@ -289,11 +289,28 @@
         }
     ].map(function (item) {
         return Object.assign({
+            id: item.image.replace(/^.*\//, '').replace(/\.[^.]+$/, ''),
             url: worksListUrl,
             categoryLabel: categoryLabels[item.category],
             alt: `${item.title}の制作実績サムネイル`
         }, item);
     });
+
+    const variantWorkIds = function () {
+        const variant = window.DOGAZUKURI_VARIANT;
+        if (!variant || !Array.isArray(variant.workIds)) return null;
+
+        const ids = variant.workIds.filter(Boolean);
+        return new Set(ids);
+    };
+
+    const visibleWorkItems = function () {
+        const ids = variantWorkIds();
+        if (!ids) return workItems;
+        return workItems.filter(function (item) {
+            return ids.has(item.id);
+        });
+    };
 
     const siteNav = document.getElementById('siteNav');
     const navToggle = document.getElementById('siteNavToggle');
@@ -432,7 +449,7 @@
     const renderWorksWall = function () {
         if (!worksWallMosaic) return;
         worksWallMosaic.replaceChildren();
-        workItems.forEach(function (item) {
+        visibleWorkItems().forEach(function (item) {
             const tile = document.createElement('div');
             tile.className = `works-wall__tile works-wall__tile--${item.aspect}`;
             tile.appendChild(createImage(item, 'lazy'));
@@ -441,8 +458,9 @@
     };
 
     const filteredWorks = function () {
-        if (activeFilter === 'all') return workItems;
-        return workItems.filter(function (item) {
+        const items = visibleWorkItems();
+        if (activeFilter === 'all') return items;
+        return items.filter(function (item) {
             if (activeFilter === 'sns') {
                 return item.aspect === 'short';
             }
