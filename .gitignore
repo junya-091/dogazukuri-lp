@@ -3,3 +3,4 @@
 *.bak*
 docs/
 dist/
+.wrangler/
