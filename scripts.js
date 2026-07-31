@@ -289,7 +289,7 @@
         }
     ].map(function (item) {
         return Object.assign({
-            id: item.image.replace(/^.*\//, '').replace(/\.[^.]+$/, ''),
+            id: item.image.replace(/^.*\//, '').replace(/\.[^.]+$/, '').replace(/^work-/, ''),
             url: worksListUrl,
             categoryLabel: categoryLabels[item.category],
             alt: `${item.title}の制作実績サムネイル`
