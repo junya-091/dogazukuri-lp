@@ -20,7 +20,7 @@ for (const id of Array.from({ length: 20 }, (_, i) => `short-${String(i + 1).pad
 const knownIds = {
   workIds: knownWorkIds,
   aiMediaIds: new Set(['character-short', 'city-timelapse', 'ramen-story', 'food-sizzle', 'fantasy-world', 'pov-city']),
-  publishedWorkIds: new Set(['after-school', 'ai-explainer', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day'])
+  publishedWorkIds: new Set(['after-school', 'ai-explainer', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day', 'fluorescent-noise'])
 };
 for (const [key, known] of Object.entries(knownIds)) {
   const values = config[key];
@@ -28,6 +28,15 @@ for (const [key, known] of Object.entries(knownIds)) {
 }
 const heroKeys = ['desktop', 'large', 'mobile'];
 if (!config.hero || heroKeys.some((key) => typeof config.hero[key] !== 'string')) fail('hero must define desktop, large, and mobile assets');
+if (config.heroVideo !== undefined) {
+  if (!config.heroVideo || typeof config.heroVideo !== 'object' || Array.isArray(config.heroVideo)) fail('heroVideo must be an object');
+  for (const key of ['id', 'youtubeId', 'poster']) {
+    if (typeof config.heroVideo?.[key] !== 'string' || !config.heroVideo[key]) fail(`heroVideo.${key} must be a non-empty string`);
+  }
+  if (typeof config.heroVideo?.poster === 'string') {
+    try { await readFile(join(root, config.heroVideo.poster)); } catch { fail(`heroVideo poster missing: ${config.heroVideo.poster}`); }
+  }
+}
 for (const [key, asset] of Object.entries(config.hero || {})) {
   try { await readFile(join(root, asset)); } catch { fail(`hero asset missing for ${key}: ${asset}`); }
 }
