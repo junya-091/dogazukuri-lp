@@ -353,7 +353,8 @@ button {
 
 .hero-actions,
 .works-actions,
-.contact-actions {
+.contact-actions,
+.demo-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
