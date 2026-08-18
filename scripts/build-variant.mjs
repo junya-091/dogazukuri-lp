@@ -67,6 +67,12 @@ for (const page of publicPages) {
       return match;
     }
   });
+  if (page === 'ai-ad-media.html' && config.heroVideo) {
+    html = html.replace(/src="assets\/works\/work-wide-01\.jpg"/g, `src="${config.heroVideo.poster}"`);
+    html = html.replace(/data-hero-id="after-school"/g, `data-hero-id="${config.heroVideo.id}"`);
+    const youtubeEmbedUrl = `https://www.youtube-nocookie.com/embed/${config.heroVideo.youtubeId}?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=${config.heroVideo.youtubeId}&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;enablejsapi=1&amp;cc_load_policy=0`;
+    html = html.replace(/(<iframe id="aiHeroVideo"[^>]*?)data-src="https:\/\/www\.youtube-nocookie\.com\/embed\/[^"]*\?[^"]*"/, `$1data-src="${youtubeEmbedUrl}"`);
+  }
   const payload = { ...config, siteUrl, pageUrls: { home: siteUrl, aiAdMedia: `${siteUrl}/ai-ad-media.html` } };
   const script = `<script>window.DOGAZUKURI_VARIANT=${JSON.stringify(payload)};</script>`;
   html = html.replace(/<\/head>/i, `  ${script}\n</head>`);

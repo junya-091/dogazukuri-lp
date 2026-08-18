@@ -15,7 +15,8 @@ if (heroFrame && heroVideo) {
         playsinline: '1',
         rel: '0',
         modestbranding: '1',
-        enablejsapi: '1'
+        enablejsapi: '1',
+        cc_load_policy: '0'
     });
     heroFrame.dataset.heroId = heroVideo.id;
     heroFrame.dataset.src = `https://www.youtube-nocookie.com/embed/${heroVideo.youtubeId}?${params}`;
