@@ -946,6 +946,337 @@ button {
     background: rgba(80, 227, 194, 0.08);
 }
 
+/* === Video Signage === */
+.signage-section {
+    background: linear-gradient(180deg, rgba(80, 227, 194, 0.045), transparent 68%);
+}
+
+.signage-section .section-head h2 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+.signage-section .section-head h2 span {
+    display: block;
+}
+
+.signage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.signage-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+    transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.signage-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--line-strong);
+}
+
+.signage-media-placeholder,
+.signage-visual {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    min-width: 0;
+    margin: 0 0 20px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background:
+        linear-gradient(135deg, rgba(80, 227, 194, 0.18), transparent 48%),
+        linear-gradient(180deg, var(--surface-soft), var(--surface));
+}
+
+.signage-media-placeholder::before,
+.signage-visual::before {
+    content: "";
+    position: absolute;
+    inset: 12% 18%;
+    border: clamp(8px, 1.4vw, 14px) solid #07111d;
+    border-radius: 4px;
+    background:
+        linear-gradient(135deg, rgba(80, 227, 194, 0.28), transparent 48%),
+        linear-gradient(180deg, #25415a, #102238);
+    box-shadow: 0 20px 28px rgba(0, 0, 0, 0.28);
+}
+
+.signage-media-placeholder::after,
+.signage-visual::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    width: 22%;
+    height: 8%;
+    border-radius: 2px 2px 0 0;
+    background: #091522;
+    transform: translateX(-50%);
+}
+
+.signage-media-placeholder[data-media-slot="large-signage"]::before,
+.signage-card--large .signage-visual::before {
+    inset: 7% 26%;
+}
+
+.signage-media-placeholder[data-media-slot="large-signage"]::after,
+.signage-card--large .signage-visual::after {
+    bottom: 2%;
+    width: 34%;
+    height: 11%;
+}
+
+.signage-visual img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.signage-visual--image::before,
+.signage-visual--image::after {
+    content: none;
+}
+
+.signage-visual--image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.signage-media-placeholder figcaption {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    z-index: 2;
+    margin: 0;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+}
+
+.signage-card__body {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.signage-label {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    min-height: 30px;
+    margin: 0 0 14px;
+    color: var(--cyan);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.signage-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.45rem;
+    line-height: 1.35;
+}
+
+.signage-card > .price-label {
+    align-self: flex-start;
+    margin: 0 0 14px;
+}
+
+.signage-card__body > p:not(.signage-label):not(.signage-catch):not(.signage-price):not(.signage-note) {
+    margin: 0 0 16px;
+    color: var(--text-muted);
+}
+
+.signage-card h4 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.signage-copy,
+.signage-note,
+.signage-list {
+    color: var(--text-muted);
+}
+
+.signage-copy {
+    margin: 0 0 18px;
+}
+
+.signage-catch {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.55;
+}
+
+.signage-list,
+.signage-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.signage-list li,
+.signage-tags li {
+    min-width: 0;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.signage-card__body > ul,
+.signage-card > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+}
+
+.signage-card__body > ul li,
+.signage-card > ul li {
+    min-width: 0;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.signage-price {
+    margin: auto 0 8px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.signage-price__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    min-width: 0;
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+}
+
+.signage-price__label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.signage-price__value {
+    min-width: 0;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.signage-price__item--estimate {
+    padding: 10px 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: calc(var(--radius) - 4px);
+    background: rgba(80, 227, 194, 0.08);
+}
+
+.signage-price__item--estimate .signage-price__label {
+    color: var(--cyan);
+}
+
+.signage-price__item--estimate .signage-price__value {
+    color: var(--cyan);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.signage-note {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+}
+
+.signage-cta {
+    width: 100%;
+    min-height: 48px;
+}
+
+.signage-card__body > a,
+.signage-card > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: auto;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    color: var(--cyan);
+    font-weight: 800;
+    text-align: center;
+}
+
+.signage-card__body > a:hover,
+.signage-card > a:hover {
+    color: #06111d;
+    background: var(--cyan);
+}
+
+.signage-card__body > a:focus-visible,
+.signage-card > a:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+.signage-cta:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+.signage-support {
+    max-width: 740px;
+    margin: 28px auto 0;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.signage-support h3 {
+    margin: 0 0 8px;
+    font-size: 1.18rem;
+}
+
+.signage-support p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
 .profile-panel,
 .contact-panel {
     display: grid;
@@ -1271,13 +1602,33 @@ button {
         font-size: 2rem;
     }
 
+    .signage-section .section-head h2 {
+        font-size: 1.65rem;
+    }
+
     .card-grid.three,
     .card-grid.four,
     .service-grid,
     .pricing-grid,
+    .signage-grid,
     .timeline,
     .profile-list {
         grid-template-columns: 1fr;
+    }
+
+    .signage-card__body,
+    .signage-support {
+        padding: 20px;
+    }
+
+    .signage-card {
+        padding: 0;
+    }
+
+    .signage-media-placeholder,
+    .signage-visual {
+        margin-right: 0;
+        margin-left: 0;
     }
 
     .work-grid {
