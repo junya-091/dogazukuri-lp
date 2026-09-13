@@ -1,0 +1,10 @@
+Duck.glb
+
+Source: Khronos glTF Sample Assets, Models/Duck/glTF-Binary/Duck.glb
+https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/Duck
+
+SPDX-FileCopyrightText: 2006 Sony
+SPDX-License-Identifier: SCEA
+
+The Duck sample is derived from Sony Computer Entertainment's COLLADA duck.
+See LICENSE-SCEA-1.0.txt for the SCEA Shared Source License, Version 1.0.

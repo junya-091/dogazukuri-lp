@@ -1,0 +1,44 @@
+{
+  "room": {
+    "width": 8,
+    "depth": 6,
+    "height": 2.4
+  },
+  "camera": {
+    "orbitTarget": [3.9, 0.15, 3.0],
+    "orbitDist": 13.5,
+    "orbitTheta": 0.42,
+    "orbitPhi": 0.62
+  },
+  "objects": [
+    {
+      "id": "sofa",
+      "label": "ソファ",
+      "prop": "sofa",
+      "position": [1.08, 0, 4.62],
+      "rotation": [0, 0, 0]
+    },
+    {
+      "id": "dining",
+      "label": "テーブル",
+      "prop": "dining",
+      "position": [2.06, 0, 2.28],
+      "rotation": [0, 0, 0]
+    },
+    {
+      "id": "desk",
+      "label": "机",
+      "prop": "desk",
+      "position": [7.4, 0, 2.72],
+      "rotation": [0, 0, 0]
+    },
+    {
+      "id": "duck",
+      "label": "アヒル",
+      "model": "models/Duck.glb",
+      "position": [2.06, 0.76, 2.28],
+      "rotation": [0, 0.55, 0],
+      "fitHeight": 0.26
+    }
+  ]
+}

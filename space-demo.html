@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08111f">
+    <meta name="description" content="ドーガづくりの1LDKと仮想スタジオを、歩行・俯瞰・360°モードで体験できます。">
+    <title>3D空間体験 | ドーガづくり</title>
+    <link rel="canonical" href="https://junya-091.github.io/dogazukuri-lp/space-demo.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="space-demo.css">
+    <script type="module" src="space-demo.bundle.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#space-canvas">3D空間へ移動</a>
+    <main class="space-app">
+        <header class="space-header">
+            <a class="brand" href="index.html#top" aria-label="ドーガづくり トップへ戻る">ドーガづくり <span>SPACE DEMO</span></a>
+            <a class="back-link" href="index.html#demo-title">LPへ戻る</a>
+        </header>
+
+        <section class="space-intro" aria-labelledby="space-title">
+            <div>
+                <p class="eyebrow">INTERACTIVE EXPERIENCE</p>
+                <h1 id="space-title">歩ける3D／360°体験</h1>
+                <p>空間を切り替え、視点を動かして、部屋のつながりを確かめてみてください。</p>
+            </div>
+            <p id="space-status" class="status" role="status" aria-live="polite">3D空間を準備しています…</p>
+        </section>
+
+        <div class="workspace">
+            <section class="viewport-card" aria-label="3D空間">
+                <div class="viewport-toolbar">
+                    <span id="room-label">1LDK</span>
+                    <span class="keyboard-hint">WASD／矢印で移動 · ドラッグで視点 · Escで解除</span>
+                </div>
+                <div id="space-wrap" class="viewport-wrap">
+                    <canvas id="space-canvas" aria-label="操作可能な3D空間。キーボードまたは画面上の操作を利用してください"></canvas>
+                    <p id="space-error" class="error-panel" hidden><strong>3D空間を読み込めなかった</strong><span data-error-text></span><button id="retry-button" type="button">もう一度試す</button></p>
+                    <div id="touch-controls" class="touch-controls" hidden aria-label="タッチ操作">
+                        <div class="move-pad" aria-label="移動操作">
+                            <button type="button" data-move="forward" aria-label="前へ移動">▲</button>
+                            <button type="button" data-move="left" aria-label="左へ移動">◀</button>
+                            <button type="button" data-move="back" aria-label="後ろへ移動">▼</button>
+                            <button type="button" data-move="right" aria-label="右へ移動">▶</button>
+                        </div>
+                        <button id="touch-interact" type="button">近くを調べる</button>
+                    </div>
+                </div>
+                <div class="mode-row" role="group" aria-label="視点モード">
+                    <button type="button" data-mode="orbit" aria-pressed="true">俯瞰</button>
+                    <button type="button" data-mode="walk" aria-pressed="false">歩く</button>
+                    <button type="button" data-mode="pano" aria-pressed="false">360°</button>
+                    <button type="button" id="interact">近くを調べる <kbd>E</kbd></button>
+                </div>
+            </section>
+
+            <aside class="side-panel" aria-label="空間と移動の操作">
+                <section class="control-card">
+                    <h2>空間を選ぶ</h2>
+                    <div class="space-switch" role="group" aria-label="体験する空間">
+                        <button type="button" data-space="apt" aria-pressed="true">1LDK</button>
+                        <button type="button" data-space="studio" aria-pressed="false">スタジオ</button>
+                    </div>
+                </section>
+                <section class="control-card">
+                    <h2>間取りから移動</h2>
+                    <p>行きたいエリアを選ぶと、その場所へ移動する。</p>
+                    <div id="floor-plan" class="floor-plan" role="group" aria-label="間取りエリアへの移動"></div>
+                </section>
+                <section class="control-card help-card">
+                    <h2>操作方法</h2>
+                    <ul>
+                        <li>歩行: WASD／矢印キー</li>
+                        <li>視点: 画面をドラッグ</li>
+                        <li>調べる: Eキーまたはボタン</li>
+                        <li>俯瞰: ドラッグで回転、ホイールで拡大</li>
+                        <li>360°: ドラッグで見回し、ホイールでズーム</li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+        <p class="license-note">3D空間は体験用のサンプルだ。Duckモデルの権利情報は <a href="models/ATTRIBUTION.txt">ライセンス表記</a> で確認できます。</p>
+    </main>
+</body>
+</html>

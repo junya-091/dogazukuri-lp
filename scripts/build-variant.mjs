@@ -1,9 +1,23 @@
-import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
-import { join, relative, resolve, sep } from 'node:path';
+import { cp, lstat, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { basename, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
-const dist = join(root, 'dist');
+const outputOverride = process.env.DOGAZUKURI_BUILD_OUT_DIR;
+if (!outputOverride) throw new Error('DOGAZUKURI_BUILD_OUT_DIR is required; builds must use a fresh /private/tmp/dogazukuri-build-* directory');
+const dist = resolve(outputOverride || join(root, 'dist'));
+if (outputOverride) {
+  const tempRoot = resolve('/private/tmp');
+  const relativeOutput = relative(tempRoot, dist);
+  if (!outputOverride.startsWith('/') || relativeOutput.startsWith('..') || relativeOutput === '' || relativeOutput === '..' || !basename(dist).startsWith('dogazukuri-build-')) throw new Error('DOGAZUKURI_BUILD_OUT_DIR must be a new dogazukuri-build-* directory under /private/tmp');
+  try {
+    await lstat(dist);
+    throw new Error('DOGAZUKURI_BUILD_OUT_DIR already exists; refusing to overwrite it');
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  await mkdir(dist);
+}
 const variantName = process.env.DOGAZUKURI_VARIANT || 'base';
 const siteUrl = (process.env.PUBLIC_SITE_URL || 'https://junya-091.github.io/dogazukuri-lp').replace(/\/+$/, '');
 
@@ -42,9 +56,9 @@ for (const [key, asset] of Object.entries(config.hero || {})) {
 }
 if (process.exitCode) process.exit();
 
-await rm(dist, { recursive: true, force: true });
+if (!outputOverride) await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
-const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'package.json']);
+const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'src', 'node_modules', 'package.json', 'package-lock.json', 'PLAN.md']);
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (sourceOnly.has(entry.name) || entry.name.startsWith('.') || entry.name.includes('.bak')) continue;
   await cp(join(root, entry.name), join(dist, entry.name), { recursive: true });

@@ -3,6 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-variant.mjs"
+    "build": "node scripts/build-variant.mjs && node scripts/build-space-demo.mjs"
+  },
+  "devDependencies": {
+    "three": "0.186.0",
+    "esbuild": "0.28.2"
   }
 }
