@@ -55,7 +55,7 @@ if (config.heroVideo !== undefined) {
 for (const [key, asset] of Object.entries(config.hero || {})) {
   try { await readFile(join(root, asset)); } catch { fail(`hero asset missing for ${key}: ${asset}`); }
 }
-const heroMotionAssetPath = 'assets/hero/hero-motion.mp4';
+const heroMotionAssetPath = 'assets/hero/hero-motion-web.mp4';
 try {
   const heroMotionAssetStat = await lstat(join(root, heroMotionAssetPath));
   if (!heroMotionAssetStat.isFile() || heroMotionAssetStat.size === 0) fail('hero motion asset must be a non-empty file: ' + heroMotionAssetPath);
@@ -71,6 +71,10 @@ const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'src'
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (sourceOnly.has(entry.name) || entry.name.startsWith('.') || entry.name.includes('.bak')) continue;
   await cp(join(root, entry.name), join(dist, entry.name), { recursive: true });
+}
+
+for (const excludedHeroAsset of ['assets/hero/hero-motion.mp4', 'assets/hero/hero-motion_4k60.mp4']) {
+  await rm(join(dist, excludedHeroAsset), { force: true });
 }
 
 const publicPages = ['index.html', 'ai-ad-media.html'];

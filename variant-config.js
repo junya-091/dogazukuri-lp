@@ -20,5 +20,6 @@ window.DOGAZUKURI_VARIANT = {
         large: 'assets/hero/hero-illustrator-2560.webp',
         mobile: 'assets/hero/hero-illustrator-960.webp'
     },
+    heroMotionAsset: 'assets/hero/hero-motion-web.mp4',
     siteUrl: 'https://junya-091.github.io/dogazukuri-lp'
 };
