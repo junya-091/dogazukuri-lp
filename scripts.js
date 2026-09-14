@@ -194,10 +194,13 @@
         {
             title: 'ショート美容',
             id: 'ai-short-beauty',
+            image: 'assets/works/ai-short-beauty.png',
             url: 'https://youtube.com/shorts/fBdeoHmu7kw',
             category: 'ai',
             categories: ['ai', 'sns'],
-            aspect: 'short'
+            aspect: 'short',
+            alt: '毛穴トラブルをキャラクターで紹介する美容ショート動画のサムネイル',
+            webp: false
         },
         {
             title: '社員研修',
