@@ -482,6 +482,20 @@ button {
     height: 100%;
 }
 
+.work-image-placeholder {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    padding: 20px;
+    color: var(--text);
+    background: radial-gradient(90% 90% at 50% 20%, rgba(62, 197, 190, 0.22), transparent 72%), var(--surface-soft);
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+}
+
 .work-thumb img {
     width: 100%;
     height: 100%;
@@ -535,11 +549,20 @@ button {
 }
 
 .works-wall__tile picture,
-.works-wall__tile img {
+.works-wall__tile img,
+.works-wall__tile .work-image-placeholder {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+.works-wall__tile img {
     object-fit: cover;
+}
+
+.works-wall__tile .work-image-placeholder {
+    padding: 8px;
+    font-size: 0.62rem;
 }
 
 .works-wall__scrim {
@@ -737,6 +760,12 @@ button {
     margin: 0 0 8px;
     font-size: 0.98rem;
     line-height: 1.5;
+}
+
+.work-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .work-category {

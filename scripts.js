@@ -61,6 +61,15 @@
             aspect: 'wide'
         },
         {
+            title: '影も踊る夜_CapCutハッカソン',
+            id: 'ai-shadow-dance',
+            image: 'assets/works/ai-shadow-dance.jpg',
+            webp: false,
+            url: 'https://youtu.be/eP7ILm_4kB0',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
             title: '懇親会',
             image: 'assets/works/work-wide-07.jpg',
             url: 'https://youtu.be/S_oA73fIqlw?si=GMyx3ECYU9IrmpsW',
@@ -89,6 +98,16 @@
             aspect: 'wide'
         },
         {
+            title: '10秒CM',
+            id: 'ai-ten-sec-cm',
+            image: 'assets/works/ai-ten-sec-cm.jpg',
+            webp: false,
+            url: 'https://youtu.be/YFCQCLu1mfk',
+            category: 'ai',
+            categories: ['ai', 'pr'],
+            aspect: 'wide'
+        },
+        {
             title: 'アニメーション',
             image: 'assets/works/work-wide-11.jpg',
             url: 'https://youtu.be/w6j7Z4yre5w?si=FElVC0XHO6pUjaTc',
@@ -100,6 +119,16 @@
             image: 'assets/works/work-wide-12.jpg',
             url: 'https://youtu.be/21_NE5654Lc',
             category: 'pr',
+            aspect: 'wide'
+        },
+        {
+            title: '月灯フィナッシェ',
+            id: 'ai-moonlight-financier',
+            image: 'assets/works/ai-moonlight-financier.jpg',
+            webp: false,
+            url: 'https://youtu.be/9-na9SnI3Pg',
+            category: 'ai',
+            categories: ['ai', 'pr'],
             aspect: 'wide'
         },
         {
@@ -160,6 +189,14 @@
             image: 'assets/works/work-short-01.jpg',
             url: 'https://www.tiktok.com/@tsusewko1fb/video/7317938908371619079',
             category: 'school',
+            aspect: 'short'
+        },
+        {
+            title: 'ショート美容',
+            id: 'ai-short-beauty',
+            url: 'https://youtube.com/shorts/fBdeoHmu7kw',
+            category: 'ai',
+            categories: ['ai', 'sns'],
             aspect: 'short'
         },
         {
@@ -295,14 +332,18 @@
             category: 'recruit',
             aspect: 'short'
         }
-    ].map(function (item) {
+    ].map(function (item, index) {
         return Object.assign({
-            id: item.image.replace(/^.*\//, '').replace(/\.[^.]+$/, '').replace(/^work-/, ''),
+            id: item.id || (item.image ? item.image.replace(/^.*\//, '').replace(/\.[^.]+$/, '').replace(/^work-/, '') : `untitled-${index + 1}`),
             url: worksListUrl,
-            categoryLabel: categoryLabels[item.category],
+            categories: item.categories || [item.category],
             alt: `${item.title}の制作実績サムネイル`
         }, item);
     });
+
+    const categoriesFor = function (item) {
+        return Array.isArray(item.categories) ? item.categories : (item.category ? [item.category] : []);
+    };
 
     const variantWorkIds = function () {
         const variant = window.DOGAZUKURI_VARIANT;
@@ -484,6 +525,14 @@
     };
 
     const createImage = function (item, loading) {
+        if (!item.image) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'work-image-placeholder';
+            placeholder.textContent = 'サムネイル準備中';
+            placeholder.setAttribute('aria-hidden', 'true');
+            return placeholder;
+        }
+
         const picture = document.createElement('picture');
         if (item.webp !== false) {
             const source = document.createElement('source');
@@ -517,10 +566,7 @@
         const items = visibleWorkItems();
         if (activeFilter === 'all') return items;
         return items.filter(function (item) {
-            if (activeFilter === 'sns') {
-                return item.aspect === 'short';
-            }
-            return item.category === activeFilter;
+            return categoriesFor(item).includes(activeFilter) || (activeFilter === 'sns' && item.aspect === 'short');
         });
     };
 
@@ -550,10 +596,15 @@
             body.className = 'work-body';
             const title = document.createElement('h3');
             title.textContent = item.title;
-            const category = document.createElement('span');
-            category.className = 'work-category';
-            category.textContent = item.categoryLabel;
-            body.append(title, category);
+            const categories = document.createElement('div');
+            categories.className = 'work-categories';
+            categoriesFor(item).forEach(function (categoryId) {
+                const category = document.createElement('span');
+                category.className = 'work-category';
+                category.textContent = categoryLabels[categoryId] || categoryId;
+                categories.appendChild(category);
+            });
+            body.append(title, categories);
 
             card.append(thumb, body);
             workGrid.appendChild(card);
