@@ -8,7 +8,12 @@ window.DOGAZUKURI_VARIANT = {
         'short-11', 'short-12', 'short-13', 'short-14', 'short-15', 'short-16', 'short-17', 'short-18', 'short-19', 'short-20'
     ],
     aiMediaIds: ['character-short', 'ramen-story', 'food-sizzle', 'pov-city'],
-    publishedWorkIds: ['after-school', 'ai-explainer', 'mushroom-revenge', 'beisoya-day'],
+    publishedWorkIds: ['after-school', 'ai-explainer', 'ai-kawaii', 'mushroom-revenge', 'beisoya-day', 'fluorescent-noise'],
+    heroVideo: {
+        id: 'fluorescent-noise',
+        youtubeId: 'IrjjmpI-zqk',
+        poster: 'assets/ai-media/fluorescent-noise.jpg'
+    },
     hero: {
         desktop: 'assets/hero/hero-illustrator-1920.webp',
         large: 'assets/hero/hero-illustrator-2560.webp',

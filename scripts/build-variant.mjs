@@ -34,7 +34,7 @@ for (const id of Array.from({ length: 20 }, (_, i) => `short-${String(i + 1).pad
 const knownIds = {
   workIds: knownWorkIds,
   aiMediaIds: new Set(['character-short', 'city-timelapse', 'ramen-story', 'food-sizzle', 'fantasy-world', 'pov-city']),
-  publishedWorkIds: new Set(['after-school', 'ai-explainer', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day', 'fluorescent-noise'])
+  publishedWorkIds: new Set(['after-school', 'ai-explainer', 'ai-kawaii', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day', 'fluorescent-noise'])
 };
 knownWorkIds.add('ai-kawaii');
 for (const [key, known] of Object.entries(knownIds)) {
