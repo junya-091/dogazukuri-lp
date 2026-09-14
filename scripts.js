@@ -20,6 +20,14 @@
             aspect: 'wide'
         },
         {
+            title: '【AIアニメ】可愛い＝正義',
+            image: 'assets/works/ai-kawaii.jpg',
+            webp: false,
+            url: 'https://youtu.be/d0p2AaWFGf0',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
             title: '失敗しない塾選び',
             image: 'assets/works/work-wide-02.jpg',
             category: 'school',
@@ -318,6 +326,8 @@
     const revealTargets = document.querySelectorAll('.scroll-reveal');
     const countTargets = document.querySelectorAll('.count-up');
     const heroSequence = document.querySelector('.hero-sequence');
+    const heroMotionVideo = document.getElementById('heroMotionVideo');
+    const heroMotionToggle = document.getElementById('heroMotionToggle');
     const worksWallMosaic = document.getElementById('worksWallMosaic');
     const workGrid = document.getElementById('workGrid');
     const workFilters = document.getElementById('workFilters');
@@ -379,6 +389,50 @@
         });
     };
 
+    const initHeroMotion = function () {
+        const variant = window.DOGAZUKURI_VARIANT;
+        if (!heroMotionVideo || !heroMotionToggle || prefersReducedMotion || !variant || typeof variant.heroMotionAsset !== 'string') return;
+
+        const updateToggleLabel = function () {
+            const label = heroMotionVideo.paused ? '背景動画を再生する' : '背景動画を一時停止する';
+            heroMotionToggle.textContent = label;
+            heroMotionToggle.setAttribute('aria-label', label);
+        };
+
+        heroMotionVideo.addEventListener('error', function () {
+            heroMotionVideo.pause();
+            heroMotionVideo.hidden = true;
+            heroMotionVideo.removeAttribute('src');
+            heroMotionVideo.load();
+            heroMotionToggle.hidden = true;
+        }, { once: true });
+        heroMotionVideo.addEventListener('play', updateToggleLabel);
+        heroMotionVideo.addEventListener('pause', updateToggleLabel);
+        heroMotionToggle.addEventListener('click', function () {
+            if (heroMotionVideo.paused) {
+                const playback = heroMotionVideo.play();
+                if (playback && typeof playback.then === 'function') {
+                    playback.then(updateToggleLabel).catch(updateToggleLabel);
+                } else {
+                    updateToggleLabel();
+                }
+                return;
+            }
+            heroMotionVideo.pause();
+        });
+
+        heroMotionVideo.hidden = false;
+        heroMotionToggle.hidden = false;
+        heroMotionVideo.src = variant.heroMotionAsset;
+        heroMotionVideo.load();
+        const playback = heroMotionVideo.play();
+        if (playback && typeof playback.then === 'function') {
+            playback.then(updateToggleLabel).catch(updateToggleLabel);
+        } else {
+            updateToggleLabel();
+        }
+    };
+
     const animateCount = function (el) {
         const target = Number(el.dataset.count || el.textContent || 0);
         if (!target || el.dataset.counted === 'true') return;
@@ -431,10 +485,12 @@
 
     const createImage = function (item, loading) {
         const picture = document.createElement('picture');
-        const source = document.createElement('source');
-        source.type = 'image/webp';
-        source.srcset = item.image.replace(/\.jpg$/, '.webp');
-        picture.appendChild(source);
+        if (item.webp !== false) {
+            const source = document.createElement('source');
+            source.type = 'image/webp';
+            source.srcset = item.image.replace(/\.jpg$/, '.webp');
+            picture.appendChild(source);
+        }
 
         const img = document.createElement('img');
         img.src = item.image;
@@ -614,6 +670,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         initNav();
+        initHeroMotion();
         initReveal();
         initCountUp();
         initWorks();

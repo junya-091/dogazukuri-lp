@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=experience3d-20260914">
+    <link rel="stylesheet" href="styles.css?v=hero-motion-20260914">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -91,25 +91,42 @@
                         decoding="async"
                         fetchpriority="high">
                 </picture>
+                <video
+                    class="hero-motion-video"
+                    id="heroMotionVideo"
+                    aria-hidden="true"
+                    tabindex="-1"
+                    muted
+                    playsinline
+                    loop
+                    preload="none"
+                    poster="assets/hero/hero-illustrator-1920.webp"
+                    hidden></video>
                 <div class="hero-scrim" aria-hidden="true"></div>
                 <div class="hero-grid-overlay" aria-hidden="true"></div>
+                <button
+                    class="hero-motion-toggle"
+                    id="heroMotionToggle"
+                    type="button"
+                    aria-label="背景動画を一時停止する"
+                    hidden>背景動画を一時停止する</button>
 
                 <div class="hero-scene hero-scene--intro" id="heroIntroScene">
                     <div class="container hero-intro-inner">
                         <section class="hero-copy">
                             <p class="eyebrow scroll-reveal">SNS VIDEO / RECRUIT PR / AI MOVIE</p>
-                            <h1 id="hero-title" class="hero-title scroll-reveal">
+                            <h1 id="hero-title" class="hero-title scroll-reveal delay-1">
                                 SNS動画・採用PR・<br>AI映像まで。<br>
                                 伝わる動画を、<span class="title-keep">企画から制作します。</span>
                             </h1>
-                            <p class="hero-lead scroll-reveal delay-1">
+                            <p class="hero-lead scroll-reveal delay-2">
                                 撮影・編集・SNS運用・生成AI活用までワンストップ。900本以上の制作経験をもとに、見られるだけで終わらない動画づくりをサポートします。
                             </p>
-                            <div class="hero-actions scroll-reveal delay-2">
+                            <div class="hero-actions scroll-reveal delay-3">
                                 <a class="btn btn-primary" href="#contact">まずは相談する</a>
                                 <a class="btn btn-secondary" href="#works">制作実績を見る</a>
                             </div>
-                            <ul class="hero-proof scroll-reveal delay-3" aria-label="対応実績">
+                            <ul class="hero-proof scroll-reveal delay-4" aria-label="対応実績">
                                 <li>900本以上制作</li>
                                 <li>30社以上対応</li>
                                 <li>100万回再生超え実績</li>
@@ -623,6 +640,6 @@
     </div>
 
     <script src="variant-config.js" defer></script>
-    <script src="scripts.js?v=works-id-fix-20260731" defer></script>
+    <script src="scripts.js?v=hero-motion-20260914" defer></script>
 </body>
 </html>

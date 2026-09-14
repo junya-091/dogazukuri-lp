@@ -36,6 +36,7 @@ const knownIds = {
   aiMediaIds: new Set(['character-short', 'city-timelapse', 'ramen-story', 'food-sizzle', 'fantasy-world', 'pov-city']),
   publishedWorkIds: new Set(['after-school', 'ai-explainer', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day', 'fluorescent-noise'])
 };
+knownWorkIds.add('ai-kawaii');
 for (const [key, known] of Object.entries(knownIds)) {
   const values = config[key];
   if (!Array.isArray(values) || values.length === 0 || new Set(values).size !== values.length || values.some((id) => typeof id !== 'string' || !known.has(id))) fail(`${key} must be a non-empty subset of known IDs`);
@@ -53,6 +54,14 @@ if (config.heroVideo !== undefined) {
 }
 for (const [key, asset] of Object.entries(config.hero || {})) {
   try { await readFile(join(root, asset)); } catch { fail(`hero asset missing for ${key}: ${asset}`); }
+}
+const heroMotionAssetPath = 'assets/hero/hero-motion.mp4';
+try {
+  const heroMotionAssetStat = await lstat(join(root, heroMotionAssetPath));
+  if (!heroMotionAssetStat.isFile() || heroMotionAssetStat.size === 0) fail('hero motion asset must be a non-empty file: ' + heroMotionAssetPath);
+  else config.heroMotionAsset = heroMotionAssetPath;
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
 }
 if (process.exitCode) process.exit();
 
