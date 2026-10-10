@@ -1,0 +1,20 @@
+exclude:
+  - PLAN.md
+  - CHATGPT_HANDOFF.md
+  - AGENTS.md
+  - README.md
+  - docs
+  - dist
+  - scripts
+  - src
+  - variants
+  - node_modules
+  - package.json
+  - package-lock.json
+  - "*.bak*"
+  - Gemfile
+  - Gemfile.lock
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

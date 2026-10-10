@@ -797,6 +797,22 @@ button {
     transition: transform 180ms ease, border-color 180ms ease;
 }
 
+.work-card--short-start {
+    grid-column-start: 1;
+}
+
+.copy-line {
+    display: block;
+    max-width: 100%;
+}
+
+.copy-chunk {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
 .work-card:hover {
     transform: translateY(-4px);
     border-color: var(--line-strong);

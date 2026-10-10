@@ -394,10 +394,12 @@
         const items = ids ? workItems.filter(function (item) {
             return ids.has(item.id);
         }) : workItems.slice();
-        const priority = window.DOGAZUKURI_VARIANT && window.DOGAZUKURI_VARIANT.workPriorityIds;
-        if (!Array.isArray(priority) || !priority.length) return items;
+        const configuredPriority = window.DOGAZUKURI_VARIANT && window.DOGAZUKURI_VARIANT.workPriorityIds;
+        const priority = Array.isArray(configuredPriority) ? configuredPriority : [];
         const ranks = new Map(priority.map(function (id, index) { return [id, index]; }));
         return items.sort(function (a, b) {
+            const aspectOrder = Number(a.aspect === 'short') - Number(b.aspect === 'short');
+            if (aspectOrder) return aspectOrder;
             const aRank = ranks.has(a.id) ? ranks.get(a.id) : priority.length;
             const bRank = ranks.has(b.id) ? ranks.get(b.id) : priority.length;
             return aRank - bRank;
@@ -599,33 +601,71 @@
     const renderWorksWall = function () {
         if (!worksWallMosaic) return;
         worksWallMosaic.replaceChildren();
-        const items = visibleWorkItems().filter(function (item) { return Boolean(item.image); });
-        const wide = items.filter(function (item) { return item.aspect === 'wide'; });
-        const short = items.filter(function (item) { return item.aspect === 'short'; });
-        const lanes = [
-            { aspect: 'wide', items: wide.filter(function (_, index) { return index % 2 === 0; }) },
-            { aspect: 'short', items: short },
-            { aspect: 'wide', items: wide.filter(function (_, index) { return index % 2 === 1; }) }
-        ];
+        const hasVideoUrl = function (item) {
+            if (!item.image || !item.url || item.url === worksListUrl) return false;
+            try {
+                const url = new URL(item.url);
+                const host = url.hostname.replace(/^www\./, '');
+                if (url.protocol !== 'https:') return false;
+                if (host === 'youtu.be') return /^\/[\w-]{11}\/?$/.test(url.pathname);
+                if (host === 'youtube.com') return (url.pathname === '/watch' && /^[\w-]{11}$/.test(url.searchParams.get('v') || '')) || /^\/shorts\/[\w-]{11}\/?$/.test(url.pathname);
+                if (host === 'tiktok.com') return /^\/@[^/]+\/video\/\d+\/?$/.test(url.pathname);
+                if (host === 'instagram.com') return /^\/(?:reel|reels|p)\/[^/]+\/?$/.test(url.pathname);
+                return false;
+            } catch (_) {
+                return false;
+            }
+        };
+        const items = visibleWorkItems().filter(hasVideoUrl);
+        const thumbnails = new Map();
         const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
         let paused = false;
         let lastLayout = '';
         let resizeFrame = 0;
+        let revision = 0;
+        worksWallMosaic.dataset.state = 'loading';
+
+        const loadThumbnail = async function (item, originalOnly) {
+            const sources = !originalOnly && item.webp !== false && /\.jpg$/.test(item.image)
+                ? [item.image.replace(/\.jpg$/, '.webp'), item.image] : [item.image];
+            for (const source of sources) {
+                const loaded = await new Promise(function (resolve) {
+                    const img = new Image();
+                    img.decoding = 'async';
+                    img.fetchPriority = 'low';
+                    img.onload = function () { resolve(img.naturalWidth > 0 && img.naturalHeight > 0); };
+                    img.onerror = function () { resolve(false); };
+                    img.src = source;
+                });
+                if (loaded) return source;
+            }
+            return null;
+        };
 
         const buildRows = function () {
             const width = worksWallMosaic.clientWidth;
             const height = worksWallMosaic.clientHeight;
             const gap = parseFloat(getComputedStyle(worksWallMosaic).getPropertyValue('--wall-gap')) || 4;
-            const layout = `${width}:${height}:${gap}`;
+            const layout = `${width}:${height}:${gap}:${revision}`;
             if (!width || !height || layout === lastLayout) return;
             lastLayout = layout;
+            const readyItems = items.filter(function (item) { return thumbnails.has(item.id); });
+            const wide = readyItems.filter(function (item) { return item.aspect === 'wide'; });
+            const short = readyItems.filter(function (item) { return item.aspect === 'short'; });
+            const lowerWide = wide.filter(function (_, index) { return index % 2 === 1; });
+            const lanes = [
+                { aspect: 'wide', items: wide.filter(function (_, index) { return index % 2 === 0; }) },
+                { aspect: 'short', items: short },
+                { aspect: 'wide', items: lowerWide.length ? lowerWide : wide }
+            ];
             const rowHeight = (height - gap * 2) / 3;
             const rows = document.createDocumentFragment();
             lanes.forEach(function (lane, index) {
-                if (!lane.items.length) return;
                 const row = document.createElement('div');
                 row.className = `works-wall__row works-wall__row--${lane.aspect}`;
                 row.dataset.direction = index % 2 ? 'right' : 'left';
+                rows.appendChild(row);
+                if (!lane.items.length) return;
                 const track = document.createElement('div');
                 track.className = 'works-wall__track';
                 const group = document.createElement('div');
@@ -637,26 +677,26 @@
                         const tile = document.createElement('div');
                         tile.className = `works-wall__tile works-wall__tile--${lane.aspect}`;
                         tile.dataset.workId = item.id;
-                        const picture = createImage(item, 'eager');
-                        const img = picture.querySelector('img');
-                        if (img) {
-                            img.alt = '';
-                            img.setAttribute('fetchpriority', 'low');
-                        }
-                        tile.appendChild(picture);
+                        const img = document.createElement('img');
+                        img.alt = '';
+                        img.src = thumbnails.get(item.id);
+                        img.width = lane.aspect === 'short' ? 1080 : 1280;
+                        img.height = lane.aspect === 'short' ? 1920 : 720;
+                        img.decoding = 'async';
+                        img.setAttribute('fetchpriority', 'low');
+                        tile.appendChild(img);
                         group.appendChild(tile);
                     });
                 }
                 track.appendChild(group);
                 track.appendChild(group.cloneNode(true));
                 row.appendChild(track);
-                rows.appendChild(row);
             });
             worksWallMosaic.replaceChildren(rows);
             worksWallMosaic.querySelectorAll('.works-wall__track').forEach(function (track) {
                 const distance = track.firstElementChild.getBoundingClientRect().width;
                 track.style.setProperty('--wall-distance', `${distance}px`);
-                track.style.setProperty('--wall-duration', `${distance / 12}s`);
+                track.style.setProperty('--wall-duration', `${distance / 14.4}s`);
             });
         };
         const updateMotion = function () {
@@ -679,6 +719,36 @@
             cancelAnimationFrame(resizeFrame);
             resizeFrame = requestAnimationFrame(buildRows);
         };
+        worksWallMosaic.addEventListener('error', function (event) {
+            const tile = event.target.closest && event.target.closest('[data-work-id]');
+            if (!tile || !thumbnails.has(tile.dataset.workId)) return;
+            const item = items.find(function (candidate) { return candidate.id === tile.dataset.workId; });
+            if (!item) return;
+            const failedSource = thumbnails.get(item.id);
+            thumbnails.delete(item.id);
+            worksWallMosaic.dataset.state = thumbnails.size ? 'ready' : 'empty';
+            revision += 1;
+            scheduleResize();
+            if (failedSource !== item.image) {
+                loadThumbnail(item, true).then(function (source) {
+                    if (!source) return;
+                    thumbnails.set(item.id, source);
+                    worksWallMosaic.dataset.state = 'ready';
+                    revision += 1;
+                    scheduleResize();
+                });
+            }
+        }, true);
+        Promise.all(items.map(async function (item) {
+            const source = await loadThumbnail(item, false);
+            if (source) {
+                thumbnails.set(item.id, source);
+                revision += 1;
+                scheduleResize();
+            }
+        })).then(function () {
+            worksWallMosaic.dataset.state = thumbnails.size ? 'ready' : 'empty';
+        });
         if ('ResizeObserver' in window) {
             const observer = new ResizeObserver(scheduleResize);
             observer.observe(worksWallMosaic);
@@ -700,10 +770,15 @@
         const items = filteredWorks();
         const visibleItems = items.slice(0, visibleCount);
         workGrid.replaceChildren();
+        let shortGroupStarted = false;
 
         visibleItems.forEach(function (item) {
             const card = document.createElement('a');
             card.className = `work-card work-card--${item.aspect}`;
+            if (item.aspect === 'short' && !shortGroupStarted) {
+                card.classList.add('work-card--short-start');
+                shortGroupStarted = true;
+            }
             card.dataset.workId = item.id;
             card.href = item.url;
             card.target = '_blank';

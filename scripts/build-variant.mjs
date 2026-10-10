@@ -73,7 +73,7 @@ if (process.exitCode) process.exit();
 
 if (!outputOverride) await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
-const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'src', 'node_modules', 'package.json', 'package-lock.json', 'PLAN.md', 'CHATGPT_HANDOFF.md']);
+const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'src', 'node_modules', 'package.json', 'package-lock.json', 'PLAN.md', 'CHATGPT_HANDOFF.md', '_config.yml']);
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (sourceOnly.has(entry.name) || entry.name.startsWith('.') || entry.name.includes('.bak')) continue;
   await cp(join(root, entry.name), join(dist, entry.name), { recursive: true });
