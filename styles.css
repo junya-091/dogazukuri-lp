@@ -526,26 +526,94 @@ button {
 }
 
 .works-wall__mosaic {
+    --wall-gap: 4px;
     position: absolute;
     inset: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    grid-auto-rows: 96px;
-    grid-auto-flow: dense;
-    gap: 4px;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: var(--wall-gap);
+}
+
+.works-wall__row {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.works-wall__track,
+.works-wall__group {
+    display: flex;
+    width: max-content;
+    height: 100%;
+}
+
+.works-wall__track {
+    animation: works-wall-scroll var(--wall-duration, 240s) linear infinite;
+    will-change: transform;
+}
+
+.works-wall__group {
+    flex: 0 0 auto;
+    gap: var(--wall-gap);
+    padding-right: var(--wall-gap);
+}
+
+.works-wall__row[data-direction="right"] .works-wall__track {
+    animation-direction: reverse;
+}
+
+.works-wall__mosaic.is-paused .works-wall__track {
+    animation-play-state: paused;
+}
+
+@keyframes works-wall-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(calc(var(--wall-distance, 0px) * -1), 0, 0); }
 }
 
 .works-wall__tile {
+    flex: 0 0 auto;
+    height: 100%;
     overflow: hidden;
     background: var(--surface-soft);
 }
 
 .works-wall__tile--wide {
-    grid-column: span 2;
+    aspect-ratio: 16 / 9;
 }
 
 .works-wall__tile--short {
-    grid-row: span 2;
+    aspect-ratio: 9 / 16;
+}
+
+.works-wall__motion-toggle {
+    display: block;
+    min-height: 44px;
+    margin: 12px auto 0;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    background: rgba(6, 14, 26, 0.8);
+    font: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.works-wall__motion-toggle[hidden] {
+    display: none;
+}
+
+.works-wall__motion-toggle:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .works-wall__track {
+        animation: none;
+        transform: none;
+        will-change: auto;
+    }
 }
 
 .works-wall__tile picture,
@@ -1819,9 +1887,7 @@ button {
     }
 
     .works-wall__mosaic {
-        grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
-        grid-auto-rows: 70px;
-        gap: 3px;
+        --wall-gap: 3px;
     }
 
     .works-wall__panel {

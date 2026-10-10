@@ -36,10 +36,16 @@ const knownIds = {
   aiMediaIds: new Set(['character-short', 'city-timelapse', 'ramen-story', 'food-sizzle', 'fantasy-world', 'pov-city']),
   publishedWorkIds: new Set(['after-school', 'ai-explainer', 'ai-kawaii', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day', 'fluorescent-noise', 'ai-short-beauty', 'ai-shadow-dance', 'ai-ten-sec-cm', 'ai-moonlight-financier'])
 };
-for (const id of ['ai-kawaii', 'ai-short-beauty', 'ai-shadow-dance', 'ai-ten-sec-cm', 'ai-moonlight-financier']) knownWorkIds.add(id);
+const addedAiIds = ['ai-beat-delivery', 'ai-whiteboard', 'ai-contact-error', 'ai-laundromat'];
+for (const id of ['ai-kawaii', 'ai-short-beauty', 'ai-shadow-dance', 'ai-ten-sec-cm', 'ai-moonlight-financier', ...addedAiIds]) knownWorkIds.add(id);
+for (const id of addedAiIds) knownIds.publishedWorkIds.add(id);
 for (const [key, known] of Object.entries(knownIds)) {
   const values = config[key];
   if (!Array.isArray(values) || values.length === 0 || new Set(values).size !== values.length || values.some((id) => typeof id !== 'string' || !known.has(id))) fail(`${key} must be a non-empty subset of known IDs`);
+}
+for (const [priorityKey, idsKey] of [['workPriorityIds', 'workIds'], ['publishedWorkPriorityIds', 'publishedWorkIds']]) {
+  const priority = config[priorityKey];
+  if (priority !== undefined && (!Array.isArray(priority) || new Set(priority).size !== priority.length || priority.some((id) => typeof id !== 'string' || !config[idsKey]?.includes(id)))) fail(`${priorityKey} must contain unique IDs included in ${idsKey}`);
 }
 const heroKeys = ['desktop', 'large', 'mobile'];
 if (!config.hero || heroKeys.some((key) => typeof config.hero[key] !== 'string')) fail('hero must define desktop, large, and mobile assets');
@@ -67,7 +73,7 @@ if (process.exitCode) process.exit();
 
 if (!outputOverride) await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
-const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'src', 'node_modules', 'package.json', 'package-lock.json', 'PLAN.md']);
+const sourceOnly = new Set(['.git', 'dist', 'docs', 'variants', 'scripts', 'src', 'node_modules', 'package.json', 'package-lock.json', 'PLAN.md', 'CHATGPT_HANDOFF.md']);
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (sourceOnly.has(entry.name) || entry.name.startsWith('.') || entry.name.includes('.bak')) continue;
   await cp(join(root, entry.name), join(dist, entry.name), { recursive: true });

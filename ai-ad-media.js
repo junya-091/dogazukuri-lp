@@ -23,6 +23,16 @@
     };
     apply('[data-ai-media-id]', variant && variant.aiMediaIds);
     apply('[data-published-work-id]', variant && variant.publishedWorkIds);
+    const priorityGrid = document.querySelector('[data-published-priority]');
+    const priorityIds = variant && variant.publishedWorkPriorityIds;
+    if (priorityGrid && Array.isArray(priorityIds)) {
+        const cards = new Map(Array.from(document.querySelectorAll('[data-published-work-id]')).map(card => [card.dataset.publishedWorkId, card]));
+        priorityIds.forEach(id => {
+            const card = cards.get(id);
+            if (card && !card.hidden) priorityGrid.appendChild(card);
+        });
+        priorityGrid.hidden = !priorityGrid.childElementCount;
+    }
 })();
 
 document.querySelectorAll('[data-load-embed]').forEach(button => {

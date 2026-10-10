@@ -13,6 +13,39 @@
     };
     const workItems = [
         {
+            title: 'ショート_ビート配達',
+            id: 'ai-beat-delivery',
+            image: 'assets/works/ai-beat-delivery.jpg',
+            url: 'https://youtu.be/CXVjPOJr_ac',
+            category: 'ai',
+            categories: ['ai', 'sns'],
+            aspect: 'short'
+        },
+        {
+            title: 'ホワイトボードアニメーション風',
+            id: 'ai-whiteboard',
+            image: 'assets/works/ai-whiteboard.jpg',
+            url: 'https://youtu.be/MwvuvXKViIM',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '接触誤差',
+            id: 'ai-contact-error',
+            image: 'assets/works/ai-contact-error.jpg',
+            url: 'https://youtu.be/689KBL8jVkg',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '乾燥機が止まるまで',
+            id: 'ai-laundromat',
+            image: 'assets/works/ai-laundromat.jpg',
+            url: 'https://youtu.be/YobIW86xPCI',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
             title: '《放課後に残された僕らへ》',
             image: 'assets/works/work-wide-01.jpg',
             url: 'https://youtu.be/_PX9zNt_RBM?si=2OZE7c_Oglg2RqLN',
@@ -358,9 +391,16 @@
 
     const visibleWorkItems = function () {
         const ids = variantWorkIds();
-        if (!ids) return workItems;
-        return workItems.filter(function (item) {
+        const items = ids ? workItems.filter(function (item) {
             return ids.has(item.id);
+        }) : workItems.slice();
+        const priority = window.DOGAZUKURI_VARIANT && window.DOGAZUKURI_VARIANT.workPriorityIds;
+        if (!Array.isArray(priority) || !priority.length) return items;
+        const ranks = new Map(priority.map(function (id, index) { return [id, index]; }));
+        return items.sort(function (a, b) {
+            const aRank = ranks.has(a.id) ? ranks.get(a.id) : priority.length;
+            const bRank = ranks.has(b.id) ? ranks.get(b.id) : priority.length;
+            return aRank - bRank;
         });
     };
 
@@ -373,6 +413,7 @@
     const heroMotionVideo = document.getElementById('heroMotionVideo');
     const heroMotionToggle = document.getElementById('heroMotionToggle');
     const worksWallMosaic = document.getElementById('worksWallMosaic');
+    const worksWallToggle = document.getElementById('worksWallToggle');
     const workGrid = document.getElementById('workGrid');
     const workFilters = document.getElementById('workFilters');
     const loadMoreButton = document.getElementById('loadMoreWorks');
@@ -550,6 +591,7 @@
         img.width = item.aspect === 'short' ? 1080 : 1280;
         img.height = item.aspect === 'short' ? 1920 : 720;
         img.loading = loading || 'lazy';
+        img.decoding = 'async';
         picture.appendChild(img);
         return picture;
     };
@@ -557,12 +599,92 @@
     const renderWorksWall = function () {
         if (!worksWallMosaic) return;
         worksWallMosaic.replaceChildren();
-        visibleWorkItems().forEach(function (item) {
-            const tile = document.createElement('div');
-            tile.className = `works-wall__tile works-wall__tile--${item.aspect}`;
-            tile.appendChild(createImage(item, 'lazy'));
-            worksWallMosaic.appendChild(tile);
-        });
+        const items = visibleWorkItems().filter(function (item) { return Boolean(item.image); });
+        const wide = items.filter(function (item) { return item.aspect === 'wide'; });
+        const short = items.filter(function (item) { return item.aspect === 'short'; });
+        const lanes = [
+            { aspect: 'wide', items: wide.filter(function (_, index) { return index % 2 === 0; }) },
+            { aspect: 'short', items: short },
+            { aspect: 'wide', items: wide.filter(function (_, index) { return index % 2 === 1; }) }
+        ];
+        const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let paused = false;
+        let lastLayout = '';
+        let resizeFrame = 0;
+
+        const buildRows = function () {
+            const width = worksWallMosaic.clientWidth;
+            const height = worksWallMosaic.clientHeight;
+            const gap = parseFloat(getComputedStyle(worksWallMosaic).getPropertyValue('--wall-gap')) || 4;
+            const layout = `${width}:${height}:${gap}`;
+            if (!width || !height || layout === lastLayout) return;
+            lastLayout = layout;
+            const rowHeight = (height - gap * 2) / 3;
+            const rows = document.createDocumentFragment();
+            lanes.forEach(function (lane, index) {
+                if (!lane.items.length) return;
+                const row = document.createElement('div');
+                row.className = `works-wall__row works-wall__row--${lane.aspect}`;
+                row.dataset.direction = index % 2 ? 'right' : 'left';
+                const track = document.createElement('div');
+                track.className = 'works-wall__track';
+                const group = document.createElement('div');
+                group.className = 'works-wall__group';
+                const tileWidth = rowHeight * (lane.aspect === 'short' ? 9 / 16 : 16 / 9);
+                const repeats = Math.max(1, Math.ceil((width + tileWidth) / (lane.items.length * (tileWidth + gap))));
+                for (let repeat = 0; repeat < repeats; repeat += 1) {
+                    lane.items.forEach(function (item) {
+                        const tile = document.createElement('div');
+                        tile.className = `works-wall__tile works-wall__tile--${lane.aspect}`;
+                        tile.dataset.workId = item.id;
+                        const picture = createImage(item, 'eager');
+                        const img = picture.querySelector('img');
+                        if (img) {
+                            img.alt = '';
+                            img.setAttribute('fetchpriority', 'low');
+                        }
+                        tile.appendChild(picture);
+                        group.appendChild(tile);
+                    });
+                }
+                track.appendChild(group);
+                track.appendChild(group.cloneNode(true));
+                row.appendChild(track);
+                rows.appendChild(row);
+            });
+            worksWallMosaic.replaceChildren(rows);
+            worksWallMosaic.querySelectorAll('.works-wall__track').forEach(function (track) {
+                const distance = track.firstElementChild.getBoundingClientRect().width;
+                track.style.setProperty('--wall-distance', `${distance}px`);
+                track.style.setProperty('--wall-duration', `${distance / 12}s`);
+            });
+        };
+        const updateMotion = function () {
+            worksWallMosaic.classList.toggle('is-paused', paused || motionPreference.matches);
+            if (!worksWallToggle) return;
+            worksWallToggle.hidden = motionPreference.matches;
+            worksWallToggle.setAttribute('aria-pressed', String(paused));
+            worksWallToggle.textContent = paused ? '背景の動きを再開する' : '背景の動きを止める';
+        };
+        if (worksWallToggle) {
+            worksWallToggle.addEventListener('click', function () {
+                paused = !paused;
+                updateMotion();
+            });
+        }
+        motionPreference.addEventListener('change', updateMotion);
+        updateMotion();
+        buildRows();
+        const scheduleResize = function () {
+            cancelAnimationFrame(resizeFrame);
+            resizeFrame = requestAnimationFrame(buildRows);
+        };
+        if ('ResizeObserver' in window) {
+            const observer = new ResizeObserver(scheduleResize);
+            observer.observe(worksWallMosaic);
+        } else {
+            window.addEventListener('resize', scheduleResize);
+        }
     };
 
     const filteredWorks = function () {
@@ -582,6 +704,7 @@
         visibleItems.forEach(function (item) {
             const card = document.createElement('a');
             card.className = `work-card work-card--${item.aspect}`;
+            card.dataset.workId = item.id;
             card.href = item.url;
             card.target = '_blank';
             card.rel = 'noopener';
