@@ -46,6 +46,81 @@
             aspect: 'wide'
         },
         {
+            title: 'おかしなともだち',
+            id: 'ai-okashina-tomodachi',
+            image: 'assets/works/ai-okashina-tomodachi.jpg',
+            webp: false,
+            url: 'https://youtu.be/dXMUJbRWLv0',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '月曜の憂鬱、踊って飛ばそう💃',
+            id: 'ai-monday-dance',
+            image: 'assets/works/ai-monday-dance.jpg',
+            webp: false,
+            url: 'https://youtu.be/ui0d18JvLrM',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '既読つけない主義',
+            id: 'ai-kidoku',
+            image: 'assets/works/ai-kidoku.jpg',
+            webp: false,
+            url: 'https://youtu.be/CcHoSJJHOQg',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '館内では走らないで🌙',
+            id: 'ai-kannai',
+            image: 'assets/works/ai-kannai.jpg',
+            webp: false,
+            url: 'https://youtu.be/qMFWEQl3GSY',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '【AI戦闘アニメ】紅蓮の魔術師 VS 氷晶の魔導士｜Wan3.0',
+            id: 'ai-wan3-battle',
+            image: 'assets/works/ai-wan3-battle.jpg',
+            webp: false,
+            url: 'https://youtu.be/pbDD7CZktT0',
+            category: 'ai',
+            aspect: 'wide'
+        },
+        {
+            title: '香川県西部をめぐる30秒CM',
+            id: 'ai-kagawa-cm',
+            image: 'assets/works/ai-kagawa-cm.jpg',
+            webp: false,
+            url: 'https://youtu.be/feTTRg9m_Js',
+            category: 'ai',
+            categories: ['ai', 'pr'],
+            aspect: 'wide'
+        },
+        {
+            title: '【非公式CM】日本通信SIM「合理的50GBプラン」｜50GB・月額2,178円',
+            id: 'ai-sim-cm',
+            image: 'assets/works/ai-sim-cm.jpg',
+            webp: false,
+            url: 'https://youtube.com/shorts/-VnOGsJUFc8',
+            category: 'ai',
+            categories: ['ai', 'pr', 'sns'],
+            aspect: 'short'
+        },
+        {
+            title: '妹×兄Vlog📱',
+            id: 'ai-sibling-vlog',
+            image: 'assets/works/ai-sibling-vlog.jpg',
+            webp: false,
+            url: 'https://youtube.com/shorts/X8FRQRTve-U',
+            category: 'ai',
+            categories: ['ai', 'sns'],
+            aspect: 'short'
+        },
+        {
             title: '《放課後に残された僕らへ》',
             image: 'assets/works/work-wide-01.jpg',
             url: 'https://youtu.be/_PX9zNt_RBM?si=2OZE7c_Oglg2RqLN',

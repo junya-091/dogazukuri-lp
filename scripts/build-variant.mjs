@@ -36,7 +36,7 @@ const knownIds = {
   aiMediaIds: new Set(['character-short', 'city-timelapse', 'ramen-story', 'food-sizzle', 'fantasy-world', 'pov-city']),
   publishedWorkIds: new Set(['after-school', 'ai-explainer', 'ai-kawaii', 'mushroom-revenge', 'whitening-01', 'whitening-02', 'beisoya-day', 'fluorescent-noise', 'ai-short-beauty', 'ai-shadow-dance', 'ai-ten-sec-cm', 'ai-moonlight-financier'])
 };
-const addedAiIds = ['ai-beat-delivery', 'ai-whiteboard', 'ai-contact-error', 'ai-laundromat'];
+const addedAiIds = ['ai-beat-delivery', 'ai-whiteboard', 'ai-contact-error', 'ai-laundromat', 'ai-okashina-tomodachi', 'ai-monday-dance', 'ai-kidoku', 'ai-kannai', 'ai-wan3-battle', 'ai-kagawa-cm', 'ai-sim-cm', 'ai-sibling-vlog'];
 for (const id of ['ai-kawaii', 'ai-short-beauty', 'ai-shadow-dance', 'ai-ten-sec-cm', 'ai-moonlight-financier', ...addedAiIds]) knownWorkIds.add(id);
 for (const id of addedAiIds) knownIds.publishedWorkIds.add(id);
 for (const [key, known] of Object.entries(knownIds)) {
