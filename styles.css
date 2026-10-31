@@ -727,6 +727,10 @@ button {
     color: var(--text-muted);
 }
 
+.section-head + .section-lead {
+    margin-bottom: 36px;
+}
+
 .info-card,
 .service-card,
 .price-card,
@@ -799,6 +803,24 @@ button {
 
 .work-card--short-start {
     grid-column-start: 1;
+}
+
+body {
+    word-break: auto-phrase;
+    overflow-wrap: break-word;
+}
+
+p,
+li,
+summary {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
 }
 
 .copy-line {
@@ -936,7 +958,7 @@ button {
     background: rgba(255, 255, 255, 0.04);
 }
 
-.timeline-item span {
+.timeline-item > span {
     display: block;
     margin-bottom: 32px;
     color: var(--orange);
@@ -1038,7 +1060,7 @@ button {
     color: var(--text-muted);
 }
 
-.price-badge {
+.price-card .price-badge {
     align-self: flex-start;
     margin: 0 0 12px;
     padding: 4px 12px;
@@ -1119,7 +1141,7 @@ button {
     overflow-wrap: break-word;
 }
 
-.signage-section .section-head h2 span {
+.signage-section .section-head h2 > span {
     display: block;
 }
 
@@ -2072,5 +2094,29 @@ button {
 
     .experience3d-card__body {
         padding: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .copy-chunk {
+        white-space: normal;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-name,
+    .nav-ai-mobile {
+        white-space: nowrap;
+    }
+
+    .brand-name {
+        font-size: 0.9rem;
+    }
+
+    .nav-ai-mobile {
+        padding-inline: 10px;
+        font-size: 0.8rem;
     }
 }

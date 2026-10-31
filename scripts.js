@@ -22,7 +22,7 @@
             aspect: 'short'
         },
         {
-            title: 'ホワイトボードアニメーション風',
+            title: 'ホワイトボード\u200bアニメーション風',
             id: 'ai-whiteboard',
             image: 'assets/works/ai-whiteboard.jpg',
             url: 'https://youtu.be/MwvuvXKViIM',
@@ -230,7 +230,7 @@
             aspect: 'wide'
         },
         {
-            title: '月灯フィナッシェ',
+            title: '月灯フィナンシェ',
             id: 'ai-moonlight-financier',
             image: 'assets/works/ai-moonlight-financier.jpg',
             webp: false,
@@ -260,7 +260,7 @@
             aspect: 'wide'
         },
         {
-            title: 'Amazon商品使用方法解説',
+            title: 'Amazon商品\u200b使用方法解説',
             image: 'assets/works/work-wide-16.jpg',
             url: 'https://youtu.be/BIaHU3LDTPE',
             category: 'pr',
@@ -360,7 +360,7 @@
             aspect: 'short'
         },
         {
-            title: 'ホワイトニング商品紹介',
+            title: 'ホワイトニング\u200b商品紹介',
             image: 'assets/works/work-short-09.jpg',
             url: 'https://www.tiktok.com/@hanikoishitemasu/video/7563599286643019016',
             category: 'pr',
@@ -416,14 +416,14 @@
             aspect: 'short'
         },
         {
-            title: '美容クリニック紹介',
+            title: '美容クリニック\u200b紹介',
             image: 'assets/works/work-short-17.jpg',
             url: 'https://www.tiktok.com/@gakuennmaewellnessclinic/video/7489307140901834004',
             category: 'pr',
             aspect: 'short'
         },
         {
-            title: 'ホワイトニング商品紹介',
+            title: 'ホワイトニング\u200b商品紹介',
             image: 'assets/works/work-short-18.jpg',
             url: 'https://www.tiktok.com/@hanikoishitemasu/video/7542833594755157266',
             category: 'pr',
