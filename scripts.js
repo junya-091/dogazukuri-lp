@@ -13,7 +13,7 @@
     };
     const workItems = [
         {
-            title: 'ショート_ビート配達',
+            title: 'ビート配達人',
             id: 'ai-beat-delivery',
             image: 'assets/works/ai-beat-delivery.jpg',
             url: 'https://youtu.be/CXVjPOJr_ac',
@@ -169,7 +169,7 @@
             aspect: 'wide'
         },
         {
-            title: '影も踊る夜_CapCutハッカソン',
+            title: '影も踊る夜｜CapCutハッカソン',
             id: 'ai-shadow-dance',
             image: 'assets/works/ai-shadow-dance.jpg',
             webp: false,
@@ -185,7 +185,7 @@
             aspect: 'wide'
         },
         {
-            title: '楽器弾いてみた',
+            title: '星丘公園 / Hump Back（ベースカバー）',
             image: 'assets/works/work-wide-08.jpg',
             url: 'https://youtu.be/_WqIKayOqpY',
             category: 'event',
@@ -360,7 +360,7 @@
             aspect: 'short'
         },
         {
-            title: 'ホワイトニング\u200b商品紹介',
+            title: 'ホワイトニング\u200b商品紹介 01',
             image: 'assets/works/work-short-09.jpg',
             url: 'https://www.tiktok.com/@hanikoishitemasu/video/7563599286643019016',
             category: 'pr',
@@ -423,7 +423,7 @@
             aspect: 'short'
         },
         {
-            title: 'ホワイトニング\u200b商品紹介',
+            title: 'ホワイトニング\u200b商品紹介 02',
             image: 'assets/works/work-short-18.jpg',
             url: 'https://www.tiktok.com/@hanikoishitemasu/video/7542833594755157266',
             category: 'pr',

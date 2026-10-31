@@ -112,8 +112,8 @@ a:focus-visible,summary:focus-visible,video:focus-visible{outline:3px solid #fff
 .ai-hero-scrim {
     z-index: -1;
     background:
-        linear-gradient(90deg, rgba(3, 13, 24, .94) 0%, rgba(3, 13, 24, .78) 45%, rgba(3, 13, 24, .48) 72%, rgba(3, 13, 24, .58) 100%),
-        linear-gradient(0deg, rgba(6, 19, 33, .68), transparent 55%);
+        linear-gradient(0deg, var(--ai-bg) 0%, var(--ai-bg) 32%, transparent 52%),
+        linear-gradient(90deg, rgba(3, 13, 24, .94) 0%, rgba(3, 13, 24, .78) 45%, rgba(3, 13, 24, .48) 72%, rgba(3, 13, 24, .58) 100%);
 }
 
 .ai-hero-inner {
@@ -137,8 +137,8 @@ a:focus-visible,summary:focus-visible,video:focus-visible{outline:3px solid #fff
 
     .ai-hero-scrim {
         background:
-            linear-gradient(90deg, rgba(3, 13, 24, .92), rgba(3, 13, 24, .6)),
-            linear-gradient(0deg, rgba(6, 19, 33, .72), transparent 55%);
+            linear-gradient(0deg, var(--ai-bg) 0%, var(--ai-bg) 30%, transparent 50%),
+            linear-gradient(90deg, rgba(3, 13, 24, .92), rgba(3, 13, 24, .6));
     }
 }
 
@@ -396,5 +396,35 @@ a:focus-visible,summary:focus-visible,video:focus-visible{outline:3px solid #fff
         width: 100%;
         max-width: 360px;
         margin-inline: auto;
+    }
+}
+
+/* 端数のカードは左寄せにせず中央に置く */
+@media (min-width: 561px) {
+    .media-grid,
+    .embed-wide-grid,
+    .embed-vertical-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .media-grid > .media-card {
+        flex: 0 1 calc((100% - 40px) / 3);
+    }
+
+    .embed-wide-grid > .embed-card {
+        flex: 0 1 calc((100% - 20px) / 2);
+    }
+
+    .embed-vertical-grid > .embed-card {
+        flex: 0 1 calc((100% - 60px) / 4);
+    }
+}
+
+@media (min-width: 561px) and (max-width: 850px) {
+    .media-grid > .media-card,
+    .embed-vertical-grid > .embed-card {
+        flex-basis: calc((100% - 20px) / 2);
     }
 }

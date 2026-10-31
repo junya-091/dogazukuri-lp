@@ -974,6 +974,7 @@ h4 {
 }
 
 .price-card.featured {
+    position: relative;
     border-color: var(--line-strong);
     background:
         linear-gradient(180deg, rgba(80, 227, 194, 0.16), rgba(255, 255, 255, 0.035));
@@ -1061,8 +1062,10 @@ h4 {
 }
 
 .price-card .price-badge {
-    align-self: flex-start;
-    margin: 0 0 12px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
     padding: 4px 12px;
     border-radius: 999px;
     background: var(--cyan);
@@ -1537,6 +1540,20 @@ h4 {
 
 .contact-actions {
     justify-content: flex-end;
+}
+
+@media (min-width: 761px) {
+    .contact-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: fit-content;
+    }
+}
+
+@media (min-width: 1061px) {
+    .contact-actions {
+        margin-left: auto;
+    }
 }
 
 .footer {
