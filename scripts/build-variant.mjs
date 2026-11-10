@@ -69,6 +69,10 @@ try {
 } catch (error) {
   if (error.code !== 'ENOENT') throw error;
 }
+// ONE TAKE layout: the home page needs its self-hosted libs, fonts, modules and hero frames.
+for (const required of ['css/core.css', 'css/fonts.css', 'js/core.js', 'js/home.js', 'js/data/works.js', 'lib/gsap.min.js', 'lib/ScrollTrigger.min.js', 'lib/lenis.min.js', 'assets/hero/seq/d/001.webp', 'assets/hero/seq/d/090.webp', 'assets/hero/seq/m/001.webp', 'assets/hero/seq/m/090.webp']) {
+  try { await lstat(join(root, required)); } catch { fail(`required file missing: ${required}`); }
+}
 if (process.exitCode) process.exit();
 
 if (!outputOverride) await rm(dist, { recursive: true, force: true });
@@ -89,7 +93,8 @@ for (const page of publicPages) {
   let html = await readFile(output, 'utf8');
   const pageUrl = `${siteUrl}/${page === 'index.html' ? '' : page}`;
   html = html.replace(/(<link\s+rel=["']canonical["']\s+href=["'])[^"']*(["'])/i, `$1${pageUrl}$2`)
-    .replace(/(<meta\s+property=["']og:url["']\s+content=["'])[^"']*(["'])/i, `$1${pageUrl}$2`);
+    .replace(/(<meta\s+property=["']og:url["']\s+content=["'])[^"']*(["'])/i, `$1${pageUrl}$2`)
+    .replace(/(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["'])https:\/\/junya-091\.github\.io\/dogazukuri-lp\/([^"']*)(["'])/gi, `$1${siteUrl}/$2$3`);
   if (!/<link\s+rel=["']canonical["']/i.test(html)) html = html.replace(/<\/head>/i, `  <link rel="canonical" href="${pageUrl}">\n</head>`);
   html = html.replace(/(<script\s+type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (match, open, json, close) => {
     try {
@@ -100,6 +105,8 @@ for (const page of publicPages) {
       return match;
     }
   });
+  // Legacy AI-page markup rewrite: each replace is a no-op when the pattern is absent. The redesigned
+  // AI page reads window.DOGAZUKURI_VARIANT.heroVideo at runtime instead (injected below).
   if (page === 'ai-ad-media.html' && config.heroVideo) {
     html = html.replace(/src="assets\/works\/work-wide-01\.jpg"/g, `src="${config.heroVideo.poster}"`);
     html = html.replace(/data-hero-id="after-school"/g, `data-hero-id="${config.heroVideo.id}"`);
