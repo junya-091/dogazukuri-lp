@@ -3,7 +3,8 @@
    企画 = markers / 台本 = text clips / 撮影 = footage drops onto V1+A1 /
    編集 = laser cut + ripple delete / テロップ = subtitles typed into SUB /
    納品 = render bar + export to each platform.
-   Desktop/tablet: pinned and scrubbed by scroll. Mobile: plays once in view.
+   Desktop (≥1024px wide, ≥680px tall): pinned and scrubbed by scroll.
+   Tablet / phone / short windows: no pin, plays once in view.
    Reduced motion: the finished timeline, static, next to the full step list.
    ========================================================================== */
 import { qs, qsa, clamp } from '../core.js';
@@ -191,7 +192,7 @@ export function init(ctx) {
   ngIdx.forEach((ni) => {
     const at = pos[ni];
     tl.to(laser, { left: () => `${laneX0() + (at / 100) * laneW()}px`, duration: 0.22, ease: 'power2.inOut' });
-    tl.fromTo(spark, { opacity: 1, scale: 0.4, left: () => `${laneX0() + (at / 100) * laneW()}px`, top: () => `${lane('v1').offsetTop + qs('.nle__tracks', nle).offsetTop + 18}px` }, { opacity: 0, scale: 1.8, duration: 0.18, ease: 'power1.out' });
+    tl.fromTo(spark, { opacity: 1, scale: 0.4, left: () => `${laneX0() + (at / 100) * laneW()}px`, top: () => `${lane('v1').offsetTop + qs('.nle__tracks', nle).offsetTop + 18}px` }, { opacity: 0, scale: 1.8, duration: 0.18, ease: 'power1.out', immediateRender: false });
     tl.to([v1[ni], a1[ni]], { scaleY: 0, opacity: 0, duration: 0.12, ease: 'steps(3)' }, '<');
     // ripple: everything to the right slides left by the gap
     const w = RAW[ni].w;
@@ -206,7 +207,7 @@ export function init(ctx) {
   tl.set(subs, { opacity: 1 });
   tl.to(st, { head: 96, duration: 1.4, ease: 'none' }, 'p4');
   SUBS.forEach((s, i) => {
-    tl.to(st.sub, { [i]: 1, duration: 0.24, ease: 'none' }, `p4+=${(s.l / 96) * 1.4 - 0.1}`);
+    tl.to(st.sub, { [i]: 1, duration: 0.24, ease: 'none' }, `p4+=${Math.max(0, (s.l / 96) * 1.4 - 0.1).toFixed(3)}`);
   });
   // 6 納品 — render bar, then export to each platform
   P(5);
@@ -230,8 +231,24 @@ export function init(ctx) {
 
   /* ---------- drive: pinned scrub (≥768) / autoplay (phones) ---------- */
   const mm = gsap.matchMedia();
-  mm.add('(min-width: 768px)', () => {
+  mm.add('(min-width: 1024px) and (min-height: 680px)', () => {
     root.classList.add('is-pinned');
+    // fit the copy column into one screen on short windows (type scales via --fit)
+    const copyEl = qs('.pf__copy', root);
+    const fit = () => {
+      const nav = qs('.nav');
+      const avail = window.innerHeight - (nav ? nav.offsetHeight : 72) - 12 - 44 - 20;
+      let k = 1;
+      root.style.setProperty('--fit', '1');
+      for (let n = 0; n < 4; n++) {
+        const h = copyEl.offsetHeight;
+        if (h <= avail) break;
+        k = Math.max(0.7, k * (avail / h) * 0.985);
+        root.style.setProperty('--fit', k.toFixed(3));
+      }
+    };
+    fit();
+    ScrollTrigger.addEventListener('refreshInit', fit);
     const stc = ScrollTrigger.create({
       trigger: root,
       start: 'top top',
@@ -242,9 +259,9 @@ export function init(ctx) {
       scrub: 0.6,
       animation: tl
     });
-    return () => { root.classList.remove('is-pinned'); stc.kill(); };
+    return () => { ScrollTrigger.removeEventListener('refreshInit', fit); root.style.removeProperty('--fit'); root.classList.remove('is-pinned'); stc.kill(); };
   });
-  mm.add('(max-width: 767px)', () => {
+  mm.add('(max-width: 1023px), (max-height: 679px)', () => {
     tl.progress(0);
     let played = false;
     const io = new IntersectionObserver(([e]) => {

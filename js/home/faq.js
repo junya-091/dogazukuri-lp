@@ -18,6 +18,8 @@ export function init(ctx) {
   const root = qs('#faq');
   if (!root) return;
   const cues = qsa('.srt__cue', root);
+  const list = qs('.srt', root);
+  if (list) list.classList.add('is-built');
   let t = 1000;
   cues.forEach((d, i) => {
     const sum = qs('summary', d);
