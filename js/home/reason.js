@@ -288,7 +288,7 @@ export function init(ctx) {
     const st = ScrollTrigger.create({
       trigger: viewport,
       start: 'top top',
-      end: () => `+=${Math.round(window.innerHeight * 2.1)}`,
+      end: () => `+=${Math.round(window.innerHeight * 2)}`,
       pin: true,
       pinSpacing: true,
       anticipatePin: 1,
