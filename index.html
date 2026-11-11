@@ -153,38 +153,152 @@
 
         <!-- SEC:02 (owner H1) -->
         <section class="sec sec-stats" id="worksWall" data-clip="実績" data-accent="yellow" aria-labelledby="works-wall-title">
-            <h2 id="works-wall-title">900本以上の動画を、<br>カタチにしてきました。</h2>
-            <dl class="plain-grid u-mt-m">
-                <div><dt>Works</dt><dd class="t-num" style="font-size:4rem">900+</dd></div>
-                <div><dt>Clients</dt><dd class="t-num" style="font-size:4rem">30+</dd></div>
-                <div><dt>Views</dt><dd class="t-num" style="font-size:4rem">1M+</dd></div>
-            </dl>
-            <p class="u-mt-m"><a class="btn btn--primary" href="#works">制作実績を見る</a></p>
+            <div class="stats__stage">
+                <div class="stats__window" aria-hidden="true">
+                    <canvas class="stats__canvas"></canvas>
+                    <div class="stats__hole"><span>NEXT CLIP</span><b>選ばれる理由</b></div>
+                </div>
+                <div class="stats__layer">
+                    <p class="stats__counter" aria-hidden="true"><b>●</b><span>FRAME COUNTER</span><span data-stats-tc>00:00:00:00</span></p>
+                    <h2 id="works-wall-title" class="stats__title">900本以上の動画を、<br>カタチにしてきました。</h2>
+                    <dl class="stats__facts">
+                        <div class="stats__fact stats__fact--main"><dt>制作本数</dt><dd><b class="t-num">900</b>本以上</dd></div>
+                        <div class="stats__fact"><dt>対応社数</dt><dd><b class="t-num">30</b>社以上</dd></div>
+                        <div class="stats__fact"><dt>再生回数</dt><dd><b class="t-num">100</b>万回再生超え</dd></div>
+                    </dl>
+                    <p class="stats__cta"><a class="btn btn--primary" href="#works"><span class="btn__dot" aria-hidden="true"></span>制作実績を見る</a></p>
+                </div>
+            </div>
         </section>
         <!-- /SEC:02 -->
 
         <!-- SEC:03 (owner H1) -->
         <section class="sec sec-reason" id="reason" data-clip="選ばれる理由" data-accent="cyan" aria-labelledby="reason-title">
-            <div class="sec__head">
-                <h2 id="reason-title">選ばれる理由</h2>
+            <div class="sec__head reason__head">
+                <h2 id="reason-title" class="reason__title">選ばれる理由</h2>
                 <p class="sec__lead">企画から納品まで、<span class="nb">目的に合わせて</span><span class="nb">必要な制作範囲を</span><span class="nb">整理します。</span><span class="nb">SNS動画、</span><span class="nb">採用PR、</span><span class="nb">AI映像まで、</span><span class="nb">使う場所に合わせて</span><span class="nb">伝わる形に</span><span class="nb">仕上げます。</span></p>
             </div>
-            <div class="plain-grid">
-                <article><h3>企画から相談できる</h3><p>目的・媒体・ターゲットを整理し、何をどう見せるべきかから一緒に設計します。</p></article>
-                <article><h3>SNSごとに最適化</h3><p>Instagram、TikTok、YouTube Shorts、X、Facebookなど、投稿先に合わせて尺や見せ方を調整します。</p></article>
-                <article><h3>撮影も編集も対応</h3><p>素材支給の編集から、撮影込みの制作まで対応。必要な範囲だけ相談できます。</p></article>
-                <article><h3>AI映像も活用</h3><p>画像生成、動画生成、AI音声、ナレーション、アニメーション表現なども制作に取り入れられます。</p></article>
+            <div class="reason__viewport">
+                <div class="reason__track">
+                    <article class="reason__panel" data-demo="board" aria-labelledby="reason-h-board">
+                        <div class="reason__text">
+                            <p class="reason__tag" aria-hidden="true">STORYBOARD</p>
+                            <h3 id="reason-h-board">企画から<span class="nb">相談できる</span></h3>
+                            <p>目的・媒体・ターゲットを整理し、何をどう見せるべきかから一緒に設計します。</p>
+                        </div>
+                        <div class="reason__demo board">
+                            <div class="board__sheet">
+                                <button type="button" class="board__cut" aria-label="絵コンテのカット1を描き直す">
+                                    <svg viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+                                        <path class="ink" d="M8 72 H152"/>
+                                        <path class="ink" d="M42 72 V36 H118 V72"/>
+                                        <path class="ink" d="M36 36 L46 25 H114 L124 36"/>
+                                        <path class="ink" d="M74 72 V50 H88 V72"/>
+                                        <path class="ink" d="M50 44 H66 V60 H50 Z M96 44 H112 V60 H96 Z"/>
+                                        <path class="ink" d="M58 31 H102"/>
+                                        <path class="mark" d="M18 13 H58 M51 8 L58 13 L51 18"/>
+                                    </svg>
+                                    <span><b>C-1</b>外観・引き</span>
+                                </button>
+                                <button type="button" class="board__cut" aria-label="絵コンテのカット2を描き直す">
+                                    <svg viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+                                        <path class="ink" d="M80 16 C92 16 94 28 94 32 C94 42 88 48 80 48 C72 48 66 42 66 32 C66 28 68 16 80 16 Z"/>
+                                        <path class="ink" d="M48 90 C50 64 62 56 80 56 C98 56 110 64 112 90"/>
+                                        <path class="ink" d="M74 31 h2 M84 31 h2 M76 40 C78 42 82 42 84 40"/>
+                                        <path class="ink" d="M8 8 H152 V82 H8 Z"/>
+                                        <path class="mark" d="M16 45 H36 M30 40 L36 45 L30 50 M144 45 H124 M130 40 L124 45 L130 50"/>
+                                    </svg>
+                                    <span><b>C-2</b>スタッフ・寄り</span>
+                                </button>
+                                <button type="button" class="board__cut" aria-label="絵コンテのカット3を描き直す">
+                                    <svg viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+                                        <path class="ink" d="M68 12 H94 Q99 12 99 17 V75 Q99 80 94 80 H68 Q63 80 63 75 V17 Q63 12 68 12 Z"/>
+                                        <path class="ink" d="M76 38 L90 46 L76 54 Z"/>
+                                        <path class="ink" d="M99 58 C112 56 122 64 128 84 M99 68 C108 68 114 72 118 84"/>
+                                        <path class="ink" d="M24 30 L44 40 M22 52 H44"/>
+                                        <path class="mark" d="M83 46 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 M83 46 m-20 0 a20 20 0 1 0 40 0"/>
+                                    </svg>
+                                    <span><b>C-3</b>手元・スマホ</span>
+                                </button>
+                                <button type="button" class="board__cut" aria-label="絵コンテのカット4を描き直す">
+                                    <svg viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+                                        <path class="ink" d="M60 24 H100 V56 H60 Z"/>
+                                        <path class="ink" d="M70 32 H82 C90 32 92 36 92 40 C92 44 90 48 82 48 H70 Z"/>
+                                        <path class="ink" d="M46 66 H114 M58 74 H102"/>
+                                        <path class="mark" d="M14 82 L40 60 M30 60 H40 V70 M146 82 L120 60 M130 60 H120 V70"/>
+                                    </svg>
+                                    <span><b>C-4</b>ロゴ・締め</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="reason__panel" data-demo="crop" aria-labelledby="reason-h-crop">
+                        <div class="reason__text">
+                            <p class="reason__tag" aria-hidden="true">REFRAME</p>
+                            <h3 id="reason-h-crop">SNSごとに<span class="nb">最適化</span></h3>
+                            <p>Instagram、TikTok、YouTube Shorts、X、Facebookなど、投稿先に合わせて尺や見せ方を調整します。</p>
+                        </div>
+                        <div class="reason__demo crop">
+                            <div class="crop__stage" data-cursor="drag">
+                                <video class="crop__video" muted playsinline loop preload="none" data-src="assets/ai-media/city-timelapse.mp4" poster="assets/ai-media/city-timelapse.jpg" aria-hidden="true"></video>
+                                <div class="crop__frame" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="crop__safe crop__safe--ui"></span><span class="crop__safe crop__safe--cap"></span><b class="crop__ratio">9:16</b></div>
+                            </div>
+                            <div class="crop__bar">
+                                <div class="crop__btns" role="group" aria-label="書き出しの比率">
+                                    <button type="button" data-ratio="9:16" aria-pressed="true">9:16</button>
+                                    <button type="button" data-ratio="1:1" aria-pressed="false">1:1</button>
+                                    <button type="button" data-ratio="16:9" aria-pressed="false">16:9</button>
+                                </div>
+                                <p class="crop__media" aria-live="polite">TikTok・Instagram・YouTube Shorts</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="reason__panel" data-demo="grade" aria-labelledby="reason-h-grade">
+                        <div class="reason__text">
+                            <p class="reason__tag" aria-hidden="true">COLOR GRADE</p>
+                            <h3 id="reason-h-grade">撮影も編集も<span class="nb">対応</span></h3>
+                            <p>素材支給の編集から、撮影込みの制作まで対応。必要な範囲だけ相談できます。</p>
+                        </div>
+                        <div class="reason__demo grade">
+                            <div class="grade__stage" data-cursor="drag" style="--x:50%">
+                                <img class="grade__after" src="assets/ai-media/food-sizzle.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+                                <img class="grade__before" src="assets/ai-media/food-sizzle.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+                                <span class="grade__line" aria-hidden="true"><i></i></span>
+                                <span class="grade__tag grade__tag--l" aria-hidden="true">LOG</span>
+                                <span class="grade__tag grade__tag--r" aria-hidden="true">GRADED</span>
+                                <input class="grade__range" type="range" min="0" max="100" value="50" aria-label="カラーグレーディング前後の比較位置">
+                            </div>
+                        </div>
+                    </article>
+                    <article class="reason__panel" data-demo="gen" aria-labelledby="reason-h-gen">
+                        <div class="reason__text">
+                            <p class="reason__tag" aria-hidden="true">GENERATIVE</p>
+                            <h3 id="reason-h-gen">AI映像も<span class="nb">活用</span></h3>
+                            <p>画像生成、動画生成、AI音声、ナレーション、アニメーション表現なども制作に取り入れられます。</p>
+                        </div>
+                        <div class="reason__demo gen">
+                            <div class="gen__stage" data-cursor="drag" data-cursor-label="なぞる">
+                                <video class="gen__video" muted playsinline loop preload="none" data-src="assets/ai-media/ramen-story.mp4" poster="assets/ai-media/ramen-story.jpg" aria-hidden="true"></video>
+                                <canvas class="gen__canvas" aria-hidden="true"></canvas>
+                                <span class="gen__tag gen__tag--l" aria-hidden="true">STILL</span>
+                                <span class="gen__tag gen__tag--r" aria-hidden="true">AI GENERATED</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="reason__pan" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             </div>
         </section>
         <!-- /SEC:03 -->
 
         <!-- SEC:04 (owner H1) -->
         <section class="sec sec-works" id="works" data-clip="制作実績" data-accent="green" aria-labelledby="works-title">
-            <div class="sec__head">
-                <h2 id="works-title">制作実績</h2>
+            <div class="sec__head works__head">
+                <h2 id="works-title" class="works__title">制作実績</h2>
                 <p class="sec__lead">SNSショート、<span class="nb">採用PR、</span><span class="nb">店舗紹介、</span><span class="nb">医療・学校系、</span><span class="nb">AI映像まで。</span><span class="nb">目的に合わせて、</span><span class="nb">伝わる形に</span><span class="nb">編集します。</span></p>
+                <p class="works__key" aria-hidden="true"><span class="works__key-v">9:16 縦型</span><span class="works__key-h">16:9 横型</span></p>
             </div>
-            <div class="filter-bar" id="workFilters" role="group" aria-label="制作実績カテゴリ">
+            <div class="works__filters" id="workFilters" role="group" aria-label="制作実績カテゴリ">
                 <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">すべて</button>
                 <button type="button" class="filter-button" data-filter="sns" aria-pressed="false">SNSショート</button>
                 <button type="button" class="filter-button" data-filter="recruit" aria-pressed="false">採用・求人</button>
@@ -193,8 +307,8 @@
                 <button type="button" class="filter-button" data-filter="ai" aria-pressed="false">AI映像</button>
                 <button type="button" class="filter-button" data-filter="event" aria-pressed="false">イベント・配信</button>
             </div>
-            <div class="work-grid" id="workGrid" aria-live="polite"></div>
-            <div class="works-actions u-mt-m">
+            <div class="works__sheet work-grid" id="workGrid" aria-live="polite"></div>
+            <div class="works__actions">
                 <button type="button" class="btn btn--ghost" id="loadMoreWorks">もっと見る</button>
                 <a class="btn btn--text" href="https://youtube.com/playlist?list=PLB2I6LBVOxi4Pj22zJPSdzmQNFcC7oBZR" target="_blank" rel="noopener">YouTubeで一覧を見る</a>
             </div>
@@ -203,114 +317,159 @@
 
         <!-- SEC:05 (owner H1) -->
         <section class="sec sec--light sec-problems" id="problems" data-clip="悩み" data-accent="red" aria-labelledby="problems-title">
-            <div class="sec__head">
-                <h2 id="problems-title">こんな悩み、<span class="nb">ありませんか？</span></h2>
-            </div>
-            <div class="plain-grid">
-                <article>
-                    <h3>SNSを<span class="nb">始めたいけど、</span><span class="nb">何を投稿すれば</span><span class="nb">いいか分からない</span></h3>
-                    <p>媒体、目的、ターゲットを整理し、投稿に使える動画の型から一緒に設計します。</p>
-                </article>
-                <article>
-                    <h3>採用動画を作りたいけど、<span class="nb">社内の魅力をどう見せれば</span><span class="nb">いいか分からない</span></h3>
-                    <p>社員インタビュー、職場紹介、求人導線まで、伝える順番を組み立てます。</p>
-                </article>
-                <article>
-                    <h3>AI動画や<span class="nb">ショート動画も</span><span class="nb">気になるけど、</span><span class="nb">自社で作る</span><span class="nb">時間がない</span></h3>
-                    <p>生成AI、既存素材、撮影素材を組み合わせ、実務で使える形へ落とし込みます。</p>
-                </article>
+            <div class="problems__paper">
+                <p class="problems__meta" aria-hidden="true"><span>台本</span><span>第1稿</span><span>赤入れ：ドーガづくり</span></p>
+                <h2 id="problems-title" class="problems__title">こんな悩み、<span class="nb">ありませんか？</span></h2>
+                <ol class="problems__script">
+                    <li class="problems__scene">
+                        <p class="problems__sn" aria-hidden="true">S#1</p>
+                        <div class="problems__body">
+                            <p class="problems__direction" aria-hidden="true">スマホの投稿画面を開いたまま、手が止まる。</p>
+                            <h3 class="problems__line">SNSを<span class="nb">始めたいけど、</span><span class="nb" data-mark="circle">何を投稿すれば</span><span class="nb">いいか分からない</span></h3>
+                        </div>
+                        <p class="problems__fix t-hand">媒体、目的、ターゲットを整理し、投稿に使える動画の型から一緒に設計します。</p>
+                    </li>
+                    <li class="problems__scene">
+                        <p class="problems__sn" aria-hidden="true">S#2</p>
+                        <div class="problems__body">
+                            <p class="problems__direction" aria-hidden="true">求人票を前に、腕を組んで黙り込む。</p>
+                            <h3 class="problems__line">採用動画を作りたいけど、<span class="nb">社内の魅力をどう見せれば</span><span class="nb" data-mark="strike">いいか分からない</span></h3>
+                        </div>
+                        <p class="problems__fix t-hand">社員インタビュー、職場紹介、求人導線まで、伝える順番を組み立てます。</p>
+                    </li>
+                    <li class="problems__scene">
+                        <p class="problems__sn" aria-hidden="true">S#3</p>
+                        <div class="problems__body">
+                            <p class="problems__direction" aria-hidden="true">保存した動画が増えていく。手は、動かない。</p>
+                            <h3 class="problems__line">AI動画や<span class="nb">ショート動画も</span><span class="nb">気になるけど、</span><span class="nb">自社で作る</span><span class="nb" data-mark="under">時間がない</span></h3>
+                        </div>
+                        <p class="problems__fix t-hand">生成AI、既存素材、撮影素材を組み合わせ、実務で使える形へ落とし込みます。</p>
+                    </li>
+                </ol>
+                <p class="problems__stamp" aria-hidden="true"><span>改稿</span></p>
             </div>
         </section>
         <!-- /SEC:05 -->
 
         <!-- SEC:06 (owner H2) -->
         <section class="sec sec-services" id="services" data-clip="依頼できること" data-accent="blue" aria-labelledby="services-title">
-            <div class="sec__head">
+            <div class="sw__head">
+                <p class="sw__slug" aria-hidden="true"><span>SWITCHER</span><span>6 INPUTS</span><span>ME 1</span></p>
                 <h2 id="services-title">依頼できること</h2>
                 <p class="sec__lead">企画だけ、<span class="nb">撮影だけ、</span><span class="nb">編集だけ、</span><span class="nb">継続運用まで。</span><span class="nb">必要な制作範囲に</span><span class="nb">合わせて</span><span class="nb">組み立てます。</span></p>
             </div>
-            <div class="plain-grid">
-                <article><p class="service-tag">Short</p><h3>SNSショート動画</h3><p>TikTok / Instagram Reels / YouTube Shorts / X / Facebook向け。企画・台本・撮影・編集・<span class="nb">投稿改善まで</span><span class="nb">対応します。</span></p></article>
-                <article><p class="service-tag">Recruit</p><h3>採用・求人動画</h3><p>社員インタビュー、職場紹介、学校・医療・店舗の採用PRに対応します。</p></article>
-                <article><p class="service-tag">PR</p><h3>企業・店舗PR動画</h3><p>商品紹介、サービス紹介、店舗紹介、イベント告知などに対応します。</p></article>
-                <article><p class="service-tag">Edit</p><h3>撮影・編集のみ</h3><p>素材支給での編集、撮影だけ、編集だけのご相談にも対応します。</p></article>
-                <article><p class="service-tag">AI</p><h3>生成AI × 映像制作</h3><p>AI画像、AI動画、AI音声、台本作成、ナレーション、アニメーション表現にも対応します。</p></article>
-                <article><p class="service-tag">Live</p><h3>ライブ配信・マルチカメラ</h3><p>ウェビナー、イベント、発表会、セミナー配信などに対応します。</p></article>
+            <div class="sw" data-sw>
+                <ol class="sw__inputs">
+                    <li class="sw__in" data-wipe="h">
+                        <div class="sw__mon sw__mon--triple" aria-hidden="true">
+                            <img src="assets/works/work-short-03.webp" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                            <img src="assets/switcher/character-short-360.jpg" data-video="assets/switcher/character-short-360.mp4" alt="" width="360" height="640" loading="lazy" decoding="async">
+                            <img src="assets/works/work-short-17.webp" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                        </div>
+                        <p class="service-tag">Short</p><h3>SNSショート動画</h3><p class="sw__desc">TikTok / Instagram Reels / YouTube Shorts / X / Facebook向け。企画・台本・撮影・編集・<span class="nb">投稿改善まで</span><span class="nb">対応します。</span></p>
+                    </li>
+                    <li class="sw__in" data-wipe="d">
+                        <div class="sw__mon" aria-hidden="true"><img src="assets/works/work-wide-09.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+                        <p class="service-tag">Recruit</p><h3>採用・求人動画</h3><p class="sw__desc">社員インタビュー、職場紹介、学校・医療・店舗の採用PRに対応します。</p>
+                    </li>
+                    <li class="sw__in" data-wipe="v">
+                        <div class="sw__mon" aria-hidden="true"><img src="assets/switcher/food-sizzle-640.jpg" data-video="assets/switcher/food-sizzle-640.mp4" alt="" width="640" height="360" loading="lazy" decoding="async"></div>
+                        <p class="service-tag">PR</p><h3>企業・店舗PR動画</h3><p class="sw__desc">商品紹介、サービス紹介、店舗紹介、イベント告知などに対応します。</p>
+                    </li>
+                    <li class="sw__in" data-wipe="box">
+                        <div class="sw__mon" aria-hidden="true"><img src="assets/switcher/city-timelapse-640.jpg" data-video="assets/switcher/city-timelapse-640.mp4" alt="" width="640" height="360" loading="lazy" decoding="async"></div>
+                        <p class="service-tag">Edit</p><h3>撮影・編集のみ</h3><p class="sw__desc">素材支給での編集、撮影だけ、編集だけのご相談にも対応します。</p>
+                    </li>
+                    <li class="sw__in" data-wipe="barn">
+                        <div class="sw__mon" aria-hidden="true"><img src="assets/switcher/fantasy-world-640.jpg" data-video="assets/switcher/fantasy-world-640.mp4" alt="" width="640" height="360" loading="lazy" decoding="async"></div>
+                        <p class="service-tag">AI</p><h3>生成AI × 映像制作</h3><p class="sw__desc">AI画像、AI動画、AI音声、台本作成、ナレーション、アニメーション表現にも対応します。</p>
+                    </li>
+                    <li class="sw__in" data-wipe="r">
+                        <div class="sw__mon" aria-hidden="true"><img src="assets/works/work-wide-06.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+                        <p class="service-tag">Live</p><h3>ライブ配信・マルチカメラ</h3><p class="sw__desc">ウェビナー、イベント、発表会、セミナー配信などに対応します。</p>
+                    </li>
+                </ol>
             </div>
         </section>
         <!-- /SEC:06 -->
 
         <!-- SEC:07 (owner H2) -->
         <section class="sec sec-process" id="process" data-clip="制作フロー" data-accent="cyan" aria-labelledby="process-title">
-            <div class="sec__head">
-                <h2 id="process-title">企画から納品まで、<br><span class="nb">必要な工程を</span><span class="nb">まとめて</span><span class="nb">対応します</span></h2>
+            <div class="pf">
+                <div class="pf__copy">
+                    <h2 id="process-title">企画から納品まで、<br><span class="nb">必要な工程を</span><span class="nb">まとめて</span><span class="nb">対応します</span></h2>
+                    <ol class="pf__steps">
+                        <li class="pf__step"><span class="pf__no t-mono">01</span><h3>企画</h3><p>目的・媒体・ターゲットを整理し、動画の方向性を決めます。</p></li>
+                        <li class="pf__step"><span class="pf__no t-mono">02</span><h3>台本</h3><p>伝える順番や見せ方を設計し、視聴者に伝わる構成を作ります。</p></li>
+                        <li class="pf__step"><span class="pf__no t-mono">03</span><h3>撮影</h3><p>必要なカットを現場で撮影します。スマホ素材や既存素材の活用も可能です。</p></li>
+                        <li class="pf__step"><span class="pf__no t-mono">04</span><h3>編集</h3><p>テンポよく見られるようにカットし、SNS向けに整えます。</p></li>
+                        <li class="pf__step"><span class="pf__no t-mono">05</span><h3>テロップ</h3><p>内容が伝わりやすく、視聴維持しやすいテロップを入れます。</p></li>
+                        <li class="pf__step"><span class="pf__no t-mono">06</span><h3>納品</h3><p>Instagram、TikTok、YouTube Shorts、X、Facebookなど、用途に合わせて書き出します。</p></li>
+                    </ol>
+                </div>
+                <div class="nle" aria-hidden="true"></div>
             </div>
-            <ol class="plain-grid">
-                <li><span class="t-mono">01</span><h3>企画</h3><p>目的・媒体・ターゲットを整理し、動画の方向性を決めます。</p></li>
-                <li><span class="t-mono">02</span><h3>台本</h3><p>伝える順番や見せ方を設計し、視聴者に伝わる構成を作ります。</p></li>
-                <li><span class="t-mono">03</span><h3>撮影</h3><p>必要なカットを現場で撮影します。スマホ素材や既存素材の活用も可能です。</p></li>
-                <li><span class="t-mono">04</span><h3>編集</h3><p>テンポよく見られるようにカットし、SNS向けに整えます。</p></li>
-                <li><span class="t-mono">05</span><h3>テロップ</h3><p>内容が伝わりやすく、視聴維持しやすいテロップを入れます。</p></li>
-                <li><span class="t-mono">06</span><h3>納品</h3><p>Instagram、TikTok、YouTube Shorts、X、Facebookなど、用途に合わせて書き出します。</p></li>
-            </ol>
         </section>
         <!-- /SEC:07 -->
 
         <!-- SEC:08 (owner H2) -->
         <section class="sec sec--light sec-pricing" id="pricing" data-clip="料金" data-accent="yellow" aria-labelledby="pricing-title">
-            <div class="sec__head">
-                <h2 id="pricing-title">TikTok運用<span class="nb">おまかせプラン</span></h2>
+            <div class="pr__head">
+                <h2 id="pricing-title"><span class="nb">TikTok運用</span><span class="nb">おまかせプラン</span></h2>
                 <p class="sec__lead">企画から<span class="nb">撮影・編集・</span><span class="nb">投稿・分析まで、</span><span class="nb">TikTok運用の</span><span class="nb">専門チームが</span><span class="nb">一貫対応します。</span></p>
             </div>
-            <p class="pricing-banner"><strong>初期費用0円</strong>アカウント立ち上げ・競合分析・戦略構築（通常は初期費用として頂く工程）を、<span class="nb">今なら0円で</span><span class="nb">ご提供します。</span></p>
-            <p class="pricing-common u-mt-s">全プラン共通：企画作成・台本作成・撮影・編集・投稿・コメント返信・レポーティングまで一貫対応</p>
-            <div class="plain-grid u-mt-m">
-                <article class="price-card" data-plan="light">
-                    <p class="price-label">Light</p>
+            <p class="pricing-banner pr__banner"><strong><span class="pr__zero">初期費用0円</span></strong><span class="pr__banner-text">アカウント立ち上げ・競合分析・戦略構築（通常は初期費用として頂く工程）を、<span class="nb">今なら0円で</span><span class="nb">ご提供します。</span></span></p>
+            <p class="pricing-common pr__common">全プラン共通：企画作成・台本作成・撮影・編集・投稿・コメント返信・レポーティングまで一貫対応</p>
+
+            <div class="pr__cal" aria-hidden="true"></div>
+
+            <div class="pr__plans">
+                <article class="price-card pr__plan" data-plan="light" data-posts="4" data-shoots="1">
+                    <p class="price-label pr__label t-mono">Light</p>
                     <h3>ライトプラン</h3>
-                    <p class="price"><span class="t-num" style="font-size:3rem">¥117,750</span><span> / 月（税込）</span></p>
-                    <p>まずは週1本の投稿から、無理なくTikTok運用を始めたい方へ。</p>
-                    <ul class="dots">
+                    <p class="price pr__price"><span class="t-num pr__num">¥117,750</span><span class="pr__per"> / 月（税込）</span></p>
+                    <p class="pr__lead">まずは週1本の投稿から、無理なくTikTok運用を始めたい方へ。</p>
+                    <ul class="dots pr__list">
                         <li>ショート動画 月4本（週1投稿）</li>
                         <li>撮影 月1回</li>
                         <li>月次レポート</li>
                     </ul>
-                    <a href="#contact">ライトプランを相談する</a>
+                    <a class="btn btn--ink pr__cta" href="#contact">ライトプランを相談する</a>
                 </article>
-                <article class="price-card featured" data-plan="standard">
-                    <p class="price-badge">いちばん選ばれています</p>
-                    <p class="price-label">Standard</p>
+                <article class="price-card featured pr__plan pr__plan--featured" data-plan="standard" data-posts="8" data-shoots="2">
+                    <p class="price-badge pr__badge">いちばん選ばれています</p>
+                    <p class="price-label pr__label t-mono">Standard</p>
                     <h3>スタンダードプラン</h3>
-                    <p class="price"><span class="t-num" style="font-size:3rem">¥157,000</span><span> / 月（税込）</span></p>
-                    <p>週2本の投稿ペースで、アカウントを安定して育てたい方へ。</p>
-                    <ul class="dots">
+                    <p class="price pr__price"><span class="t-num pr__num">¥157,000</span><span class="pr__per"> / 月（税込）</span></p>
+                    <p class="pr__lead">週2本の投稿ペースで、アカウントを安定して育てたい方へ。</p>
+                    <ul class="dots pr__list">
                         <li>ショート動画 月8本（週2投稿）</li>
                         <li>撮影 月2回</li>
                         <li>月次レポート＋改善提案</li>
                     </ul>
-                    <a href="#contact">スタンダードプランを相談する</a>
+                    <a class="btn btn--primary pr__cta" href="#contact">スタンダードプランを相談する</a>
                 </article>
-                <article class="price-card" data-plan="premium">
-                    <p class="price-label">Premium</p>
+                <article class="price-card pr__plan" data-plan="premium" data-posts="15" data-shoots="3">
+                    <p class="price-label pr__label t-mono">Premium</p>
                     <h3>プレミアムプラン</h3>
-                    <p class="price"><span class="t-num" style="font-size:3rem">¥235,500</span><span> / 月（税込）</span></p>
-                    <p>露出を最大化し、アカウントを最短で伸ばしたい方へ。</p>
-                    <ul class="dots">
+                    <p class="price pr__price"><span class="t-num pr__num">¥235,500</span><span class="pr__per"> / 月（税込）</span></p>
+                    <p class="pr__lead">露出を最大化し、アカウントを最短で伸ばしたい方へ。</p>
+                    <ul class="dots pr__list">
                         <li>ショート動画 月15本<span class="nb">（ほぼ毎日ペース）</span></li>
                         <li>撮影 月3回まで</li>
                         <li>週次レポート＋<span class="nb">月次戦略ミーティング</span></li>
                     </ul>
-                    <a href="#contact">プレミアムプランを相談する</a>
-                </article>
-                <article class="price-card price-card--wide" data-plan="custom">
-                    <p class="price-label">Custom</p>
-                    <h3>単発のご依頼・その他の映像制作</h3>
-                    <p>単発の動画制作・撮影・ライブ配信・アニメーション・AI動画制作にも対応しています（個別見積）。</p>
-                    <a href="#contact">内容を相談する</a>
+                    <a class="btn btn--ink pr__cta" href="#contact">プレミアムプランを相談する</a>
                 </article>
             </div>
-            <p class="pricing-note u-mt-m">表示価格はすべて税込です。撮影内容やご要望に応じたカスタマイズもお見積もりします。</p>
-            <div class="comparison-wrap u-mt-m" aria-label="料金比較表">
+            <article class="price-card price-card--wide pr__custom" data-plan="custom">
+                <p class="price-label pr__label t-mono">Custom</p>
+                <h3>単発のご依頼・その他の映像制作</h3>
+                <p>単発の動画制作・撮影・ライブ配信・アニメーション・AI動画制作にも対応しています（個別見積）。</p>
+                <a class="btn btn--ink pr__cta" href="#contact">内容を相談する</a>
+            </article>
+            <p class="pricing-note pr__note">表示価格はすべて税込です。撮影内容やご要望に応じたカスタマイズもお見積もりします。</p>
+            <div class="comparison-wrap pr__table" aria-label="料金比較表">
                 <table class="comparison-table">
                     <caption>プラン別の違いは3つだけ</caption>
                     <thead>
@@ -334,104 +493,136 @@
 
         <!-- SEC:09 (owner H2) -->
         <section class="sec sec-experience" id="experience" data-clip="Web・3D" data-accent="blue" aria-labelledby="demo-title">
-            <div class="sec__head">
-                <h2 id="demo-title">Web・3Dも<span class="nb">制作します</span></h2>
-                <p class="sec__lead">動画制作に加え、Webサイトや3D空間など、見て・触れて伝わる体験コンテンツの企画・制作にも対応しています。</p>
-            </div>
-            <article class="experience3d-card" aria-labelledby="experience3d-title">
-                <figure class="experience3d-card__visual">
-                    <picture>
-                        <source srcset="assets/space-demo/space-demo-1ldk.webp" type="image/webp">
-                        <img src="assets/space-demo/space-demo-1ldk.jpg" alt="3Dで再現した1LDKの室内を俯瞰した画面。リビング、ダイニング、寝室の間取りと家具が見える。" width="1600" height="900" loading="lazy" decoding="async">
-                    </picture>
-                </figure>
-                <div class="experience3d-card__body u-mt-s">
-                    <p class="experience3d-card__label t-mono">WALKABLE 3D / 360°</p>
-                    <h3 id="experience3d-title">歩ける3D／360°空間体験</h3>
-                    <p class="experience3d-card__summary">1LDKとスタジオを切り替えながら、室内を歩行・俯瞰・360°で体験。間取り図から移動したい場所を選び、空間のつながりを確かめられます。</p>
-                    <ul class="experience3d-card__features dots" aria-label="体験できる内容">
-                        <li>1LDK／スタジオ</li>
-                        <li>歩行・俯瞰</li>
-                        <li>360°ビュー</li>
-                    </ul>
-                    <p class="u-mt-s"><a class="btn btn--primary experience3d-card__cta" href="space-demo.html">3D空間を体験する</a></p>
+            <div class="xp">
+                <div class="xp__copy">
+                    <h2 id="demo-title">Web・3Dも<span class="nb">制作します</span></h2>
+                    <p class="sec__lead">動画制作に加え、Webサイトや3D空間など、見て・触れて伝わる体験コンテンツの企画・制作にも対応しています。</p>
                 </div>
-            </article>
+                <article class="experience3d-card xp__card" aria-labelledby="experience3d-title">
+                    <figure class="experience3d-card__visual xp__visual">
+                        <div class="xp__tilt">
+                            <div class="xp__plate">
+                                <picture>
+                                    <source srcset="assets/space-demo/space-demo-1ldk.webp" type="image/webp">
+                                    <img src="assets/space-demo/space-demo-1ldk.jpg" alt="3Dで再現した1LDKの室内を俯瞰した画面。リビング、ダイニング、寝室の間取りと家具が見える。" width="1600" height="900" loading="lazy" decoding="async">
+                                </picture>
+                            </div>
+                            <div class="xp__hud" aria-hidden="true">
+                                <span class="xp__tag xp__tag--a">1LDK</span>
+                                <span class="xp__tag xp__tag--b">360°</span>
+                                <span class="xp__tag xp__tag--c">WALK</span>
+                                <span class="xp__axis"><i></i><i></i></span>
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="experience3d-card__body xp__body">
+                        <p class="experience3d-card__label t-mono">WALKABLE 3D / 360°</p>
+                        <h3 id="experience3d-title">歩ける3D／360°空間体験</h3>
+                        <p class="experience3d-card__summary">1LDKとスタジオを切り替えながら、室内を歩行・俯瞰・360°で体験。間取り図から移動したい場所を選び、空間のつながりを確かめられます。</p>
+                        <ul class="experience3d-card__features xp__features" aria-label="体験できる内容">
+                            <li>1LDK／スタジオ</li>
+                            <li>歩行・俯瞰</li>
+                            <li>360°ビュー</li>
+                        </ul>
+                        <p class="xp__ctawrap"><a class="btn btn--primary experience3d-card__cta xp__cta" href="space-demo.html"><span class="xp__aperture" aria-hidden="true"></span>3D空間を体験する</a></p>
+                    </div>
+                </article>
+            </div>
         </section>
         <!-- /SEC:09 -->
 
         <!-- SEC:10 (owner H2) -->
         <section class="sec sec-signage" id="signage" data-clip="動画看板" data-accent="magenta" aria-labelledby="signage-title">
-            <div class="sec__head">
+            <div class="sg__head">
                 <h2 id="signage-title"><span>作った動画を、</span><span><span class="nb">お店で</span><span class="nb">「見てもらえる場所」まで。</span></span></h2>
                 <p class="sec__lead">動画を作って<span class="nb">終わりではなく、</span><span class="nb">店頭・受付・</span><span class="nb">商品横・展示会など、</span><span class="nb">実際にお客様の</span><span class="nb">目に触れる場所で</span><span class="nb">再生できる状態まで</span><span class="nb">サポートします。</span><span class="nb">機器選びから</span><span class="nb">設置・初期設定・</span><span class="nb">動画制作まで</span><span class="nb">まとめて</span><span class="nb">ご相談いただけます。</span></p>
             </div>
-            <div class="plain-grid">
-                <article class="signage-card signage-card--large" aria-labelledby="signage-large-title">
-                    <figure class="signage-visual">
-                        <picture>
-                            <source srcset="assets/signage/signage-large.avif" type="image/avif">
-                            <img src="assets/signage/signage-large.jpg" alt="店舗の入口に設置され、動画を表示する43インチ大型デジタルサイネージ" width="1536" height="1152" loading="lazy" decoding="async">
-                        </picture>
+            <div class="sg">
+                <div class="sg__stage">
+                    <figure class="signage-visual sg__scene sg__scene--large" data-scene="large" data-corners="386.7,166.9 705.1,170.8 728.4,824.0 408.1,850.2" data-video="assets/signage/loop-large.mp4" data-poster="assets/signage/loop-large.jpg">
+                        <div class="sg__photo">
+                            <picture>
+                                <source srcset="assets/signage/signage-large.avif" type="image/avif">
+                                <img src="assets/signage/signage-large.jpg" alt="店舗の入口に設置され、動画を表示する43インチ大型デジタルサイネージ" width="1536" height="1152" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <figcaption class="sg__cap t-mono" aria-hidden="true"><b>SCENE A</b> LARGE / 43"</figcaption>
                     </figure>
+                    <figure class="signage-visual sg__scene sg__scene--mini" data-scene="mini" data-corners="732.2,375.5 920.3,401.7 856.8,778.1 666.6,742.2" data-video="assets/signage/loop-mini.mp4" data-poster="assets/signage/loop-mini.jpg">
+                        <div class="sg__photo">
+                            <picture>
+                                <source srcset="assets/signage/signage-mini.avif" type="image/avif">
+                                <img src="assets/signage/signage-mini.jpg" alt="受付カウンターに置かれ、商品やサービスを動画で紹介する持ち運べる動画POP" width="1536" height="1152" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <figcaption class="sg__cap t-mono" aria-hidden="true"><b>SCENE B</b> MINI / POP</figcaption>
+                    </figure>
+                </div>
+                <article class="signage-card signage-card--large sg__card sg__card--large" data-scene="large" aria-labelledby="signage-large-title">
                     <div class="signage-card__body">
-                        <p class="signage-label t-mono">LARGE</p>
+                        <p class="signage-label sg__label t-mono">LARGE</p>
                         <h3 id="signage-large-title">43インチ 動画看板</h3>
-                        <p class="signage-catch">お店の前で、動画が営業してくれる。</p>
+                        <p class="signage-catch sg__catch">お店の前で、動画が営業してくれる。</p>
                         <p>店舗入口や店頭に置ける大型の動画サイネージです。サービス紹介、商品PR、採用、キャンペーンなど、伝えたい内容を<span class="nb">動画で</span><span class="nb">繰り返し表示できます。</span></p>
                         <p>機器選定・搬入・設置・初期設定・再生確認から、店舗用動画の制作までまとめて対応します。</p>
-                        <h4>主な利用場所</h4>
-                        <ul class="signage-list dots">
-                            <li>店舗入口・店内エントランス・受付</li>
-                            <li>ショールーム・イベント会場・展示スペース</li>
-                        </ul>
-                        <h4>できること</h4>
-                        <ul class="signage-list dots">
-                            <li>動画の自動・ループ・連続再生</li>
-                            <li>動画データの設定、搬入・設置、<span class="nb">操作方法の案内</span></li>
-                        </ul>
-                        <div class="signage-price" aria-label="LARGE導入価格の目安">
+                        <div class="sg__facts">
+                            <div>
+                                <h4>主な利用場所</h4>
+                                <ul class="signage-list dots">
+                                    <li>店舗入口・店内エントランス・受付</li>
+                                    <li>ショールーム・イベント会場・展示スペース</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>できること</h4>
+                                <ul class="signage-list dots">
+                                    <li>動画の自動・ループ・連続再生</li>
+                                    <li>動画データの設定、搬入・設置、<span class="nb">操作方法の案内</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="signage-price sg__price" aria-label="LARGE導入価格の目安">
                             <div class="signage-price__item"><span class="signage-price__label">機器代は実費</span> <span class="signage-price__value">（目安：150,000円〜）</span></div>
                             <div class="signage-price__item"><span class="signage-price__label">導入・設定サポート</span> <span class="signage-price__value">50,000円〜</span></div>
                             <div class="signage-price__item signage-price__item--estimate"><span class="signage-price__label">導入目安</span> <span class="signage-price__value">200,000円〜</span></div>
                         </div>
-                        <p class="signage-note">動画制作は内容・尺・素材に応じて別途です。表示価格はすべて税込です。用途・設置場所・動画内容に合わせて機器を選定し、必要な機器を実費ベースでご提案します。設置環境に応じて屋内用・屋外対応モデルをご提案します。</p>
+                        <p class="signage-note sg__note">動画制作は内容・尺・素材に応じて別途です。表示価格はすべて税込です。用途・設置場所・動画内容に合わせて機器を選定し、必要な機器を実費ベースでご提案します。設置環境に応じて屋内用・屋外対応モデルをご提案します。</p>
                         <a class="btn btn--ghost signage-cta" href="#contact">動画看板について相談する</a>
                     </div>
                 </article>
-                <article class="signage-card" aria-labelledby="signage-mini-title">
-                    <figure class="signage-visual">
-                        <picture>
-                            <source srcset="assets/signage/signage-mini.avif" type="image/avif">
-                            <img src="assets/signage/signage-mini.jpg" alt="受付カウンターに置かれ、商品やサービスを動画で紹介する持ち運べる動画POP" width="1536" height="1152" loading="lazy" decoding="async">
-                        </picture>
-                    </figure>
+                <article class="signage-card sg__card sg__card--mini" data-scene="mini" aria-labelledby="signage-mini-title">
                     <div class="signage-card__body">
-                        <p class="signage-label t-mono">MINI</p>
+                        <p class="signage-label sg__label t-mono">MINI</p>
                         <h3 id="signage-mini-title">持ち運べる動画POP</h3>
-                        <p class="signage-catch">あなたの事業を、置くだけで<span class="nb">動画で伝える。</span></p>
+                        <p class="signage-catch sg__catch">あなたの事業を、置くだけで<span class="nb">動画で伝える。</span></p>
                         <p>受付、レジ横、商品横、商談スペース、展示会などに置けるコンパクトな動画ディスプレイです。紙のPOPでは伝えにくいサービスの特徴や使い方を、映像・写真・テロップで<span class="nb">分かりやすく</span><span class="nb">伝えられます。</span></p>
-                        <h4>主な利用場所</h4>
-                        <ul class="signage-list dots">
-                            <li>レジ横・受付・商品棚・商談テーブル</li>
-                            <li>展示会・ポップアップ・美容室・<span class="nb">飲食店・営業先</span></li>
-                        </ul>
-                        <h4>できること</h4>
-                        <ul class="signage-list dots">
-                            <li>動画・写真・音声の再生、ループ・複数コンテンツの再生</li>
-                            <li>コンテンツ差し替え、初期設定、動画制作</li>
-                        </ul>
-                        <div class="signage-price" aria-label="MINI導入価格の目安">
+                        <div class="sg__facts">
+                            <div>
+                                <h4>主な利用場所</h4>
+                                <ul class="signage-list dots">
+                                    <li>レジ横・受付・商品棚・商談テーブル</li>
+                                    <li>展示会・ポップアップ・美容室・<span class="nb">飲食店・営業先</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>できること</h4>
+                                <ul class="signage-list dots">
+                                    <li>動画・写真・音声の再生、ループ・複数コンテンツの再生</li>
+                                    <li>コンテンツ差し替え、初期設定、動画制作</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="signage-price sg__price" aria-label="MINI導入価格の目安">
                             <div class="signage-price__item"><span class="signage-price__label">機器代は実費</span> <span class="signage-price__value">（目安：30,000円〜）</span></div>
                             <div class="signage-price__item"><span class="signage-price__label">初期設定・導入サポート</span> <span class="signage-price__value">15,000円〜</span></div>
                             <div class="signage-price__item signage-price__item--estimate"><span class="signage-price__label">導入目安</span> <span class="signage-price__value">45,000円〜</span></div>
                         </div>
-                        <p class="signage-note">動画制作は内容・尺・素材に応じて別途です。表示価格はすべて税込です。サービス紹介、商品紹介、Before / After、<span class="nb">料金・メニュー紹介、</span>採用動画、キャンペーン告知など、用途に合わせて<span class="nb">個別にご提案します。</span></p>
+                        <p class="signage-note sg__note">動画制作は内容・尺・素材に応じて別途です。表示価格はすべて税込です。サービス紹介、商品紹介、Before / After、<span class="nb">料金・メニュー紹介、</span>採用動画、キャンペーン告知など、用途に合わせて<span class="nb">個別にご提案します。</span></p>
                         <a class="btn btn--ghost signage-cta" href="#contact">動画看板について相談する</a>
                     </div>
                 </article>
             </div>
-            <div class="signage-support u-mt-l">
+            <div class="signage-support sg__support">
                 <h3>動画を作るだけでなく、<span class="nb">使われるところまで。</span></h3>
                 <p>「どの機器を選べばいいか分からない」「買ったあと、どう設定すればいいか分からない」そんな部分も含めてご相談いただけます。動画制作、機器選定、導入、設定まで、実際に使える状態を一緒につくります。</p>
             </div>
@@ -440,79 +631,113 @@
 
         <!-- SEC:11 (owner H2) -->
         <section class="sec sec-profile" id="profile" data-clip="プロフィール" data-accent="green" aria-labelledby="profile-title">
-            <h2 id="profile-title">和田隼弥&nbsp;/&nbsp;<span class="nb">ドーガづくり</span></h2>
-            <p class="sec__lead u-mt-s">SNS動画・採用PR・AI映像制作を中心に、企画・撮影・編集・投稿改善まで対応する映像クリエイター。Premiere Proを中心に、生成AI・アニメーション・ナレーション制作も活用し、目的に合わせた動画づくりを行っています。</p>
-            <dl class="profile-list plain-grid u-mt-m">
-                <div><dt>Works</dt><dd>900本以上</dd></div>
-                <div><dt>Clients</dt><dd>30社以上</dd></div>
-                <div><dt>Area</dt><dd>関西中心 / 全国オンライン可</dd></div>
-            </dl>
+            <div class="pfl">
+                <div class="slate" data-slate>
+                    <div class="slate__sticks" aria-hidden="true">
+                        <div class="slate__stick slate__stick--top"><i></i></div>
+                        <div class="slate__stick slate__stick--base"><i></i></div>
+                        <span class="slate__hinge"></span>
+                    </div>
+                    <div class="slate__board">
+                        <div class="slate__row slate__row--prod">
+                            <span class="slate__k" aria-hidden="true">PROD.</span>
+                            <p class="slate__v slate__v--prod">ドーガづくり</p>
+                        </div>
+                        <div class="slate__row slate__row--dir">
+                            <span class="slate__k" aria-hidden="true">DIRECTOR</span>
+                            <h2 id="profile-title" class="slate__v slate__name"><span class="nb">和田隼弥</span>&nbsp;/&nbsp;<span class="nb">ドーガづくり</span></h2>
+                        </div>
+                        <dl class="profile-list slate__grid">
+                            <div class="slate__cell"><dt class="slate__k">Works</dt><dd class="slate__v">900本以上</dd></div>
+                            <div class="slate__cell"><dt class="slate__k">Clients</dt><dd class="slate__v">30社以上</dd></div>
+                            <div class="slate__cell slate__cell--wide"><dt class="slate__k">Area</dt><dd class="slate__v">関西中心 / 全国オンライン可</dd></div>
+                        </dl>
+                        <div class="slate__foot" aria-hidden="true"><span>SCENE <b>11</b></span><span>TAKE <b>01</b></span><span>ROLL <b>A</b></span><span class="slate__tc">00:00:00:00</span></div>
+                    </div>
+                </div>
+                <div class="pfl__copy">
+                    <p class="pfl__kicker t-mono" aria-hidden="true">ROLE — VIDEO CREATOR</p>
+                    <p class="sec__lead pfl__lead">SNS動画・採用PR・AI映像制作を中心に、企画・撮影・編集・投稿改善まで対応する映像クリエイター。Premiere Proを中心に、生成AI・アニメーション・ナレーション制作も活用し、目的に合わせた動画づくりを行っています。</p>
+                </div>
+            </div>
         </section>
         <!-- /SEC:11 -->
 
         <!-- SEC:12 (owner H2) -->
         <section class="sec sec-faq" id="faq" data-clip="FAQ" data-accent="cyan" aria-labelledby="faq-title">
-            <div class="sec__head">
+            <div class="srt__head">
                 <h2 id="faq-title">よくある質問</h2>
+                <p class="srt__file t-mono" aria-hidden="true">dogazukuri_faq.srt — 11 cues — UTF-8</p>
             </div>
-            <div class="faq-list">
-                <details class="faq-item">
-                    <summary>何を作ればいいか決まっていなくても相談できますか？</summary>
-                    <p>可能です。目的や使いたい媒体、素材の有無を伺いながら、必要な動画の方向性から一緒に整理します。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>スマホで撮った素材でも<span class="nb">編集できますか？</span></summary>
-                    <p>可能です。スマホ素材、写真、既存動画を組み合わせたSNS向け動画にも対応しています。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>予算が少なくても相談できますか？</summary>
-                    <p>可能です。既存素材の編集や短尺動画など、予算に合わせた制作範囲をご提案します。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>SNS投稿までお願いできますか？</summary>
-                    <p>可能です。投稿文作成、投稿設計、簡易レポート、改善提案まで対応できます。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>AI動画やAI画像を使った<span class="nb">制作もできますか？</span></summary>
-                    <p>可能です。生成AIを活用した画像・動画・音声制作、ナレーション、アニメーション表現にも対応しています。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>ライブ配信やイベント撮影も依頼できますか？</summary>
-                    <p>可能です。セミナー、発表会、ウェビナー、イベント配信などに対応しています。カメラ台数、使用機材、拘束時間によって費用が変わるため、個別にお見積りします。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>動画看板の機器だけ購入できますか？</summary>
-                    <p>機器販売を目的としたサービスではなく、機器代実費と導入設定サポートを基本に、動画制作を含めて対応しています。用途に合う機器選びからご相談いただけます。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>動画は繰り返し再生できますか？</summary>
-                    <p>対応機種ではループ再生が可能です。複数の動画を順番に再生する設定なども、用途に合わせて対応します。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>動画はあとから変更できますか？</summary>
-                    <p>可能です。機種に応じてUSB等での差し替えや、対応モデルではネットワーク経由での更新も可能です。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>屋外にも置けますか？</summary>
-                    <p>設置環境に応じて屋外対応モデルをご提案します。必要な防水・防塵性能や画面の明るさが変わるため、環境を確認して機種を選定します。</p>
-                </details>
-                <details class="faq-item">
-                    <summary>LARGEとMINIの違いは？</summary>
-                    <p>LARGEは店舗入口や店内で目を引く大型タイプ、MINIは受付・レジ横・商品横・展示会などで使いやすい持ち運びタイプです。</p>
-                </details>
+            <div class="srt">
+                <div class="srt__cols t-mono" aria-hidden="true"><span>#</span><span>START --&gt; END</span><span>TEXT</span></div>
+                <div class="faq-list srt__list">
+                    <details class="faq-item srt__cue">
+                        <summary>何を作ればいいか決まっていなくても相談できますか？</summary>
+                        <p>可能です。目的や使いたい媒体、素材の有無を伺いながら、必要な動画の方向性から一緒に整理します。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>スマホで撮った素材でも<span class="nb">編集できますか？</span></summary>
+                        <p>可能です。スマホ素材、写真、既存動画を組み合わせたSNS向け動画にも対応しています。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>予算が少なくても相談できますか？</summary>
+                        <p>可能です。既存素材の編集や短尺動画など、予算に合わせた制作範囲をご提案します。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>SNS投稿までお願いできますか？</summary>
+                        <p>可能です。投稿文作成、投稿設計、簡易レポート、改善提案まで対応できます。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>AI動画やAI画像を使った<span class="nb">制作もできますか？</span></summary>
+                        <p>可能です。生成AIを活用した画像・動画・音声制作、ナレーション、アニメーション表現にも対応しています。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>ライブ配信やイベント撮影も依頼できますか？</summary>
+                        <p>可能です。セミナー、発表会、ウェビナー、イベント配信などに対応しています。カメラ台数、使用機材、拘束時間によって費用が変わるため、個別にお見積りします。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>動画看板の機器だけ購入できますか？</summary>
+                        <p>機器販売を目的としたサービスではなく、機器代実費と導入設定サポートを基本に、動画制作を含めて対応しています。用途に合う機器選びからご相談いただけます。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>動画は繰り返し再生できますか？</summary>
+                        <p>対応機種ではループ再生が可能です。複数の動画を順番に再生する設定なども、用途に合わせて対応します。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>動画はあとから変更できますか？</summary>
+                        <p>可能です。機種に応じてUSB等での差し替えや、対応モデルではネットワーク経由での更新も可能です。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>屋外にも置けますか？</summary>
+                        <p>設置環境に応じて屋外対応モデルをご提案します。必要な防水・防塵性能や画面の明るさが変わるため、環境を確認して機種を選定します。</p>
+                    </details>
+                    <details class="faq-item srt__cue">
+                        <summary>LARGEとMINIの違いは？</summary>
+                        <p>LARGEは店舗入口や店内で目を引く大型タイプ、MINIは受付・レジ横・商品横・展示会などで使いやすい持ち運びタイプです。</p>
+                    </details>
+                </div>
             </div>
         </section>
         <!-- /SEC:12 -->
 
         <!-- SEC:13 (owner H2) -->
         <section class="sec sec-contact" id="contact" data-clip="お問い合わせ" data-accent="red" aria-labelledby="contact-title">
-            <h2 id="contact-title">まだ内容が<span class="nb">固まって</span><span class="nb">いなくても</span><br><span class="nb">大丈夫です</span></h2>
-            <p class="sec__lead u-mt-s">作りたい動画の<span class="nb">イメージ、</span><span class="nb">使いたいSNS、</span><span class="nb">予算感などを</span><span class="nb">お聞きしながら、</span><span class="nb">必要な制作範囲を</span><span class="nb">一緒に整理します。</span></p>
-            <div class="contact-actions u-mt-m" style="display:flex;flex-wrap:wrap;gap:12px">
-                <a class="btn btn--primary" href="mailto:j.ajbj4@gmail.com">メールで相談する</a>
-                <a class="btn btn--ghost" href="https://x.com/junnya09" target="_blank" rel="noopener">Xで相談する</a>
-                <a class="btn btn--ghost" href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener">Instagramで相談する</a>
-                <a class="btn btn--ghost" href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener noreferrer">Facebookで相談する</a>
+            <div class="bars" aria-hidden="true">
+                <div class="bars__top"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="bars__mid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="bars__low"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <p class="ct__tone t-mono" aria-hidden="true"><span>BARS &amp; TONE</span><span>1kHz −20dBFS</span><span class="ct__tc">00:59:50:00</span></p>
+            <div class="ct__panel">
+                <h2 id="contact-title">まだ内容が<span class="nb">固まって</span><span class="nb">いなくても</span><br><span class="nb">大丈夫です</span></h2>
+                <p class="sec__lead ct__lead">作りたい動画の<span class="nb">イメージ、</span><span class="nb">使いたいSNS、</span><span class="nb">予算感などを</span><span class="nb">お聞きしながら、</span><span class="nb">必要な制作範囲を</span><span class="nb">一緒に整理します。</span></p>
+                <div class="contact-actions ct__actions">
+                    <a class="btn btn--primary ct__mail" href="mailto:j.ajbj4@gmail.com"><span class="btn__dot" aria-hidden="true"></span>メールで相談する</a>
+                    <a class="btn btn--ghost ct__sns" href="https://x.com/junnya09" target="_blank" rel="noopener">Xで相談する</a>
+                    <a class="btn btn--ghost ct__sns" href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener">Instagramで相談する</a>
+                    <a class="btn btn--ghost ct__sns" href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener noreferrer">Facebookで相談する</a>
+                </div>
             </div>
         </section>
         <!-- /SEC:13 -->
@@ -520,18 +745,48 @@
 
     <footer class="footer" id="footer">
         <!-- SEC:13 footer (owner H2: end-roll goes inside this marker) -->
-        <div class="footer-inner">
-            <p class="footer-brand t-mincho">ドーガづくり</p>
-            <p>SNS動画・採用PR・AI映像制作</p>
-            <nav aria-label="フッターナビゲーション" class="u-mt-s" style="display:flex;flex-wrap:wrap;gap:8px 20px">
-                <a href="#works">Works</a>
-                <a href="#services">Create</a>
-                <a href="ai-ad-media.html">AI広告支援ページ</a>
-                <a href="#pricing">Price</a>
-                <a href="#contact">Contact</a>
-                <a href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener noreferrer">Facebook</a>
-            </nav>
-            <p class="u-mt-s t-dim">&copy; 2026 ドーガづくり. All rights reserved.</p>
+        <div class="footer-inner roll">
+            <div class="roll__viewport">
+                <div class="roll__reel">
+                    <p class="footer-brand t-mincho roll__title">ドーガづくり</p>
+                    <p class="roll__sub">SNS動画・採用PR・AI映像制作</p>
+                    <dl class="roll__block">
+                        <dt>提供サービス</dt>
+                        <dd>SNSショート動画</dd>
+                        <dd>採用・求人動画</dd>
+                        <dd>企業・店舗PR動画</dd>
+                        <dd>撮影・編集のみ</dd>
+                        <dd>生成AI × 映像制作</dd>
+                        <dd>ライブ配信・マルチカメラ</dd>
+                        <dd>TikTok運用おまかせプラン</dd>
+                        <dd>動画看板・動画POP</dd>
+                        <dd>Web・3D</dd>
+                    </dl>
+                    <dl class="roll__block">
+                        <dt>制作</dt>
+                        <dd>和田隼弥</dd>
+                        <dt>エリア</dt>
+                        <dd>関西中心 / 全国オンライン可</dd>
+                    </dl>
+                    <dl class="roll__block">
+                        <dt>連絡先</dt>
+                        <dd><a href="mailto:j.ajbj4@gmail.com">j.ajbj4@gmail.com</a></dd>
+                        <dd><a href="https://x.com/junnya09" target="_blank" rel="noopener">X</a></dd>
+                        <dd><a href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener">Instagram</a></dd>
+                        <dd><a href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener noreferrer">Facebook</a></dd>
+                    </dl>
+                    <nav aria-label="フッターナビゲーション" class="roll__nav">
+                        <a href="#works">Works</a>
+                        <a href="#services">Create</a>
+                        <a href="ai-ad-media.html">AI広告支援ページ</a>
+                        <a href="#pricing">Price</a>
+                        <a href="#contact">Contact</a>
+                        <a href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    </nav>
+                    <p class="roll__end t-mincho" aria-hidden="true">終</p>
+                    <p class="roll__copy t-dim">&copy; 2026 ドーガづくり. All rights reserved.</p>
+                </div>
+            </div>
         </div>
         <!-- /SEC:13 footer -->
     </footer>

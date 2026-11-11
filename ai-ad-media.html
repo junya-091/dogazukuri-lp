@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI広告メディア支援 | ドーガづくり</title>
 <meta name="description" content="AI動画を活用した広告用動画の企画・制作・媒体別最適化。中小企業の継続発信を、再利用しやすい映像資産で支援します。">
 <link rel="canonical" href="https://junya-091.github.io/dogazukuri-lp/ai-ad-media.html">
@@ -10,455 +10,613 @@
 <meta property="og:description" content="AI動画で、広告表現をもっと自由に。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://junya-091.github.io/dogazukuri-lp/ai-ad-media.html">
-<meta property="og:image" content="https://junya-091.github.io/dogazukuri-lp/assets/ai-media/food-sizzle.jpg">
-<link rel="icon" href="favicon.svg">
-<link rel="stylesheet" href="styles.css?v=ab-finish-20261101-r2">
-<link rel="stylesheet" href="ai-ad-media.css?v=ab-finish-20261101-r2">
+<meta property="og:image" content="https://junya-091.github.io/dogazukuri-lp/assets/og/og-ai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>
+(function (d) {
+  var c = d.documentElement.classList, r = false, s = false;
+  c.add('js');
+  try { r = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  try { s = sessionStorage.getItem('dz-ai-intro-seen') === '1'; } catch (e) {}
+  if (r) c.add('reduced');
+  if (!r && !s && !/[?&]nointro\b/.test(location.search)) c.add('ai-intro');
+  setTimeout(function () { c.remove('ai-intro'); c.add('ai-failsafe'); }, 6000);
+})(document);
+</script>
+<link rel="stylesheet" href="css/fonts.css?v=onetake-20261111">
+<link rel="stylesheet" href="css/core.css?v=onetake-20261111">
+<link rel="stylesheet" href="css/ai.css?v=onetake-20261111">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"AI広告メディア支援","provider":{"@type":"Organization","name":"ドーガづくり"},"areaServed":"JP","description":"広告用AI動画の企画・制作・媒体別最適化"}</script>
 </head>
-<body class="ai-page">
+<body class="ai">
 <a class="skip-link" href="#main">本文へ移動</a>
-<header class="ai-header">
-<div class="ai-header-left">
-<a class="ai-brand" href="index.html">
-<img src="favicon.svg" alt="" width="38" height="38">
-<span>ドーガづくり</span>
-</a>
-<a class="ai-back-link" href="index.html">
-<span aria-hidden="true">←</span>
-<span class="ai-back-full">トップへ戻る</span>
-<span class="ai-back-short">戻る</span>
-</a>
+
+<!-- A0 intro: seed-noise flash (JS only, once per session, skipped on reduced motion) -->
+<div class="intro" aria-hidden="true">
+  <canvas class="intro__noise" width="160" height="90"></canvas>
+  <div class="intro__read">
+    <span class="intro__k">SEED</span>
+    <b class="intro__seed">0000000000</b>
+    <span class="intro__k intro__k--r">INIT LATENT</span>
+  </div>
 </div>
-<nav aria-label="メインナビゲーション">
-<a href="#showcase">実例</a>
-<a href="#flow">進め方</a>
-<a href="#faq">FAQ</a>
-<a class="ai-nav-cta" href="#contact">相談する</a>
-</nav>
+
+<header class="nav ai-nav" id="siteNav">
+  <span class="ai-nav__progress" aria-hidden="true"></span>
+  <div class="ai-nav__left">
+    <a href="index.html" class="brand" aria-label="ドーガづくり トップページへ">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect x="1" y="1" width="62" height="62" rx="3" fill="none" stroke="#26262b" stroke-width="2"/><path d="M17 14h17c12 0 21 7 21 18s-9 18-21 18H17V14zm11 10v20h6c6 0 10-4 10-10s-4-10-10-10h-6z" fill="url(#brandGen)"/><defs><linearGradient id="brandGen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3dbd"/><stop offset="1" stop-color="#2b5bff"/></linearGradient></defs></svg>
+      <span>
+        <span class="brand__name">ドーガづくり</span>
+        <span class="brand__sub">AI AD MEDIA</span>
+      </span>
+    </a>
+    <a class="ai-nav__back" href="index.html"><span aria-hidden="true">←</span> トップへ戻る</a>
+  </div>
+  <nav aria-label="メインナビゲーション">
+    <ul class="nav__links">
+      <li><a href="#showcase">実例</a></li>
+      <li><a href="#flow">進め方</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="btn btn--gen">相談する</a></li>
+    </ul>
+  </nav>
+  <span class="ai-nav__step" aria-hidden="true">STEP 00/30</span>
+  <button class="nav__toggle" type="button" aria-controls="siteMenu" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span></button>
 </header>
+
+<nav class="menu" id="siteMenu" aria-label="モバイルメニュー">
+  <a href="index.html"><span><small>←</small>トップへ戻る</span></a>
+  <a href="#showcase"><span><small>01</small>実例</span></a>
+  <a href="#flow"><span><small>02</small>進め方</span></a>
+  <a href="#faq"><span><small>03</small>FAQ</span></a>
+  <a href="#contact" class="menu__cta"><span><small>04</small>相談する</span></a>
+</nav>
+
 <main id="main">
-<section class="ai-hero">
-<div class="ai-hero-media" aria-hidden="true">
-<img id="aiHeroFallback" src="assets/works/work-wide-01.jpg" alt="">
-<iframe id="aiHeroVideo" data-hero-id="after-school" title="" tabindex="-1" data-src="https://www.youtube-nocookie.com/embed/_PX9zNt_RBM?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=_PX9zNt_RBM&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;enablejsapi=1" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-</div>
-<div class="ai-hero-scrim" aria-hidden="true"></div>
-<div class="ai-hero-inner">
-<div class="ai-hero-copy">
-<p class="eyebrow">AI AD MEDIA SUPPORT</p>
-<h1>AI動画で、<br><span class="copy-chunk">広告表現を</span><span class="copy-chunk">もっと自由に。</span></h1>
-<p class="lead"><span class="copy-line"><span class="copy-chunk">撮影や企画を</span><span class="copy-chunk">毎回ゼロから</span><span class="copy-chunk">始めず、</span><span class="copy-chunk">複数の媒体で</span><span class="copy-chunk">繰り返し使える</span><span class="copy-chunk">映像資産へ。</span></span><span class="copy-line"><span class="copy-chunk">中小企業の</span><span class="copy-chunk">広告用動画を、</span><span class="copy-chunk">企画・制作・</span><span class="copy-chunk">媒体別最適化まで</span><span class="copy-chunk">支援する。</span></span></p>
-<div class="ai-actions">
-<a class="ai-button primary" href="#contact">制作を相談する</a>
-<a class="ai-button secondary" href="#showcase">実例を見る</a>
-</div>
-</div>
-</div>
-</section>
-<section class="ai-section">
-<p class="eyebrow">CAPABILITIES</p>
-<h2><span class="copy-chunk">伝えたい内容に</span><span class="copy-chunk">合わせて、</span><span class="copy-chunk">表現を設計する</span></h2>
-<div class="cap-grid">
-<article>
-<span>01</span>
-<h3>商品・店舗PR</h3>
-<p>商品の質感や店舗の空気を、短い時間で印象に残る映像へ。</p>
-</article>
-<article>
-<span>02</span>
-<h3>キャラクター広告</h3>
-<p>ブランドの顔になるキャラクターを軸に、継続発信しやすい形へ。</p>
-</article>
-<article>
-<span>03</span>
-<h3>世界観・ストーリー</h3>
-<p>撮影だけでは難しい場所や演出も、目的に合わせて映像化。</p>
-</article>
-</div>
-</section>
-<section class="ai-section" id="showcase">
-<p class="eyebrow">SHOWCASE</p>
-<h2>AI動画実例</h2>
-<p class="section-lead">画面に入った映像だけを読み込み、ミュートで再生する。クリックやタップでも<span class="copy-chunk">再生・停止できる。</span></p>
-<div class="media-grid">
-<article class="media-card portrait" data-ai-media-id="character-short">
-<video muted loop playsinline preload="none" poster="assets/ai-media/character-short.jpg" data-src="assets/ai-media/character-short.mp4" aria-label="キャラクター型ショート広告">
-</video>
-<div>
-<p class="tag">CHARACTER / SHORT</p>
-<h3>キャラクター型<wbr>ショート広告</h3>
-<p>SNSで目を止めるキャラクター表現。</p>
-</div>
-</article>
-<article class="media-card" data-ai-media-id="city-timelapse">
-<video muted loop playsinline preload="none" poster="assets/ai-media/city-timelapse.jpg" data-src="assets/ai-media/city-timelapse.mp4" aria-label="都市開発タイムラプス">
-</video>
-<div>
-<p class="tag">CORPORATE / VISUALIZE</p>
-<h3>都市開発タイムラプス</h3>
-<p>変化や構想を短時間で伝える企業向け表現。</p>
-</div>
-</article>
-<article class="media-card" data-ai-media-id="ramen-story">
-<video muted loop playsinline preload="none" poster="assets/ai-media/ramen-story.jpg" data-src="assets/ai-media/ramen-story.mp4" aria-label="店舗ストーリー動画">
-</video>
-<div>
-<p class="tag">SHOP / STORY</p>
-<h3>店舗ストーリー動画</h3>
-<p>店舗の個性を物語として届ける映像。</p>
-</div>
-</article>
-<article class="media-card" data-ai-media-id="food-sizzle">
-<video muted loop playsinline preload="none" poster="assets/ai-media/food-sizzle.jpg" data-src="assets/ai-media/food-sizzle.mp4" aria-label="食品シズル広告">
-</video>
-<div>
-<p class="tag">FOOD / PRODUCT</p>
-<h3>食品シズル広告</h3>
-<p>質感とおいしさを印象的に見せる<span class="copy-chunk">商品広告。</span></p>
-</div>
-</article>
-<article class="media-card" data-ai-media-id="fantasy-world">
-<video muted loop playsinline preload="none" poster="assets/ai-media/fantasy-world.jpg" data-src="assets/ai-media/fantasy-world.mp4" aria-label="世界観型エンタメ映像">
-</video>
-<div>
-<p class="tag">WORLD / ENTERTAINMENT</p>
-<h3>世界観型エンタメ映像</h3>
-<p>現実の撮影では難しいスケールの演出。</p>
-</div>
-</article>
-<article class="media-card" data-ai-media-id="pov-city">
-<video muted loop playsinline preload="none" poster="assets/ai-media/pov-city.jpg" data-src="assets/ai-media/pov-city.mp4" aria-label="架空世界POVコンテンツ">
-</video>
-<div>
-<p class="tag">POV / LONG FORM</p>
-<h3>架空世界POVコンテンツ</h3>
-<p>没入感を軸にした<span class="copy-chunk">長尺コンテンツの</span><span class="copy-chunk">展開例。</span></p>
-</div>
-</article>
-</div>
-<div class="embed-showcase">
-<div class="embed-showcase-head">
-<p class="eyebrow">PUBLISHED WORKS</p>
-<h3>公開中の制作実績</h3>
-<p>AIアニメ、解説動画、SNS向け商品・採用コンテンツまで、各プレーヤーで<span class="copy-chunk">そのまま確認できる。</span></p>
-</div>
-<div class="embed-priority-grid" data-published-priority hidden></div>
-<div class="embed-wide-grid">
-<article class="embed-card" data-published-work-id="ai-whiteboard">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/MwvuvXKViIM?rel=0&amp;cc_load_policy=0" title="ホワイトボードアニメーション風" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>ホワイトボード<wbr>アニメーション風</h4>
-<a href="https://youtu.be/MwvuvXKViIM" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-contact-error">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/689KBL8jVkg?rel=0&amp;cc_load_policy=0" title="接触誤差" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>接触誤差</h4>
-<a href="https://youtu.be/689KBL8jVkg" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-laundromat">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/YobIW86xPCI?rel=0&amp;cc_load_policy=0" title="乾燥機が止まるまで" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>乾燥機が止まるまで</h4>
-<a href="https://youtu.be/YobIW86xPCI" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
 
-<article class="embed-card" data-published-work-id="ai-okashina-tomodachi">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/dXMUJbRWLv0?rel=0&amp;cc_load_policy=0" title="おかしなともだち" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>おかしなともだち</h4>
-<a href="https://youtu.be/dXMUJbRWLv0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-monday-dance">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/ui0d18JvLrM?rel=0&amp;cc_load_policy=0" title="月曜の憂鬱、踊って飛ばそう💃" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI MUSIC VIDEO / YOUTUBE</p>
-<h4>月曜の憂鬱、踊って飛ばそう💃</h4>
-<a href="https://youtu.be/ui0d18JvLrM" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-kidoku">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/CcHoSJJHOQg?rel=0&amp;cc_load_policy=0" title="既読つけない主義" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI MUSIC VIDEO / YOUTUBE</p>
-<h4>既読つけない主義</h4>
-<a href="https://youtu.be/CcHoSJJHOQg" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-kannai">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/qMFWEQl3GSY?rel=0&amp;cc_load_policy=0" title="館内では走らないで🌙" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>館内では走らないで🌙</h4>
-<a href="https://youtu.be/qMFWEQl3GSY" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-wan3-battle">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/pbDD7CZktT0?rel=0&amp;cc_load_policy=0" title="【AI戦闘アニメ】紅蓮の魔術師 VS 氷晶の魔導士｜Wan3.0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI ANIMATION / YOUTUBE</p>
-<h4>【AI戦闘アニメ】紅蓮の魔術師 VS 氷晶の魔導士｜Wan3.0</h4>
-<a href="https://youtu.be/pbDD7CZktT0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-kagawa-cm">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/feTTRg9m_Js?rel=0&amp;cc_load_policy=0" title="香川県西部をめぐる30秒CM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI COMMERCIAL / YOUTUBE</p>
-<h4>香川県西部をめぐる30秒CM</h4>
-<a href="https://youtu.be/feTTRg9m_Js" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="after-school">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/_PX9zNt_RBM?rel=0&amp;cc_load_policy=0" title="《放課後に残された僕らへ》" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI ANIMATION / YOUTUBE</p>
-<h4>《放課後に残された僕らへ》</h4>
-<a href="https://youtu.be/_PX9zNt_RBM" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-explainer">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/4jF-W4IyOpE?rel=0&amp;cc_load_policy=0" title="AI解説動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI EXPLAINER / YOUTUBE</p>
-<h4>AI解説動画</h4>
-<a href="https://youtu.be/4jF-W4IyOpE" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-kawaii">
-<div class="embed-frame embed-frame--preview">
-<img class="embed-preview-poster" src="assets/works/ai-kawaii.jpg" width="1280" height="720" alt="" aria-hidden="true" loading="lazy">
-<button class="embed-preview-button" type="button" data-load-embed aria-label="【AIアニメ】可愛い＝正義のYouTubeプレーヤーを読み込む">
-<span aria-hidden="true">▶</span><span>動画を読み込む</span>
-</button>
-<iframe loading="lazy" hidden data-click-to-load data-src="https://www.youtube-nocookie.com/embed/d0p2AaWFGf0?rel=0&amp;cc_load_policy=0" title="【AIアニメ】可愛い＝正義" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI ANIMATION / YOUTUBE</p>
-<h4>【AIアニメ】可愛い＝正義</h4>
-<a href="https://youtu.be/d0p2AaWFGf0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="fluorescent-noise">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/gGy_cj1ow_c?rel=0&amp;cc_load_policy=0" title="蛍光灯ノイズ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI MUSIC VIDEO / YOUTUBE</p>
-<h4>蛍光灯ノイズ</h4>
-<a href="https://youtu.be/gGy_cj1ow_c" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-shadow-dance">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/eP7ILm_4kB0?rel=0&amp;cc_load_policy=0" title="影も踊る夜｜CapCutハッカソン" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>影も踊る夜｜CapCutハッカソン</h4>
-<a href="https://youtu.be/eP7ILm_4kB0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-ten-sec-cm">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/YFCQCLu1mfk?rel=0&amp;cc_load_policy=0" title="10秒CM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI COMMERCIAL / YOUTUBE</p>
-<h4>10秒CM</h4>
-<a href="https://youtu.be/YFCQCLu1mfk" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-moonlight-financier">
-<div class="embed-frame">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/9-na9SnI3Pg?rel=0&amp;cc_load_policy=0" title="月灯フィナンシェ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI COMMERCIAL / YOUTUBE</p>
-<h4>月灯フィナンシェ</h4>
-<a href="https://youtu.be/9-na9SnI3Pg" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-</div>
-<div class="embed-vertical-grid">
-<article class="embed-card embed-card--portrait" data-published-work-id="ai-beat-delivery">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/CXVjPOJr_ac?rel=0&amp;cc_load_policy=0" title="ビート配達人" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>ビート配達人</h4>
-<a href="https://youtu.be/CXVjPOJr_ac" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
+<!-- A1 hero: prompt → denoise -->
+<section class="gen" id="top" data-accent="magenta" data-step-label="プロンプト" aria-labelledby="gen-title">
+  <div class="gen__stage" aria-hidden="true">
+    <img class="gen__poster" src="assets/ai-media/fluorescent-noise-1920.jpg" srcset="assets/ai-media/fluorescent-noise-960.jpg 960w, assets/ai-media/fluorescent-noise-1920.jpg 1920w" sizes="100vw" width="1920" height="1081" alt="" decoding="async" fetchpriority="high">
+    <canvas class="gen__canvas"></canvas>
+    <div class="gen__scrim"></div>
+  </div>
+  <div class="gen__meta" aria-hidden="true">
+    <div class="gen__row"><span>SEED</span><b data-gen-seed>2840193377</b></div>
+    <div class="gen__row"><span>STEP</span><b data-gen-step>30/30</b></div>
+    <div class="gen__ticks" data-gen-ticks></div>
+    <div class="gen__state" data-gen-state>DONE</div>
+  </div>
+  <div class="gen__dock">
+    <div class="gen__bar">
+      <span class="gen__label" aria-hidden="true">PROMPT</span>
+      <h1 class="gen__title" id="gen-title"><span class="gen__line">AI動画で、</span><span class="gen__line">広告表現を<span class="nb">もっと自由に。</span></span></h1>
+      <button class="gen__run" type="button" data-gen-run disabled>
+        <span class="gen__run-i" aria-hidden="true"></span>
+        <span class="gen__run-t">もう一度生成</span>
+      </button>
+    </div>
+    <div class="gen__foot">
+      <p class="gen__lead"><span class="nb">撮影や企画を</span><span class="nb">毎回ゼロから</span><span class="nb">始めず、</span><span class="nb">複数の媒体で</span><span class="nb">繰り返し使える</span><span class="nb">映像資産へ。</span><br class="gen__br"><span class="nb">中小企業の</span><span class="nb">広告用動画を、</span><span class="nb">企画・制作・</span><span class="nb">媒体別最適化まで</span><span class="nb">支援する。</span></p>
+      <div class="gen__actions">
+        <a class="btn btn--gen" href="#contact">制作を相談する</a>
+        <a class="btn btn--ghost" href="#showcase">実例を見る</a>
+        <a class="gen__full" href="https://youtu.be/IrjjmpI-zqk" target="_blank" rel="noopener" data-gen-full><span class="gen__full-i" aria-hidden="true"></span><span>フル尺を見る</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<article class="embed-card embed-card--portrait" data-published-work-id="ai-sim-cm">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/-VnOGsJUFc8?rel=0&amp;cc_load_policy=0" title="【非公式CM】日本通信SIM「合理的50GBプラン」｜50GB・月額2,178円" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI COMMERCIAL / YOUTUBE</p>
-<h4>【非公式CM】日本通信SIM「合理的50GBプラン」｜50GB・月額2,178円</h4>
-<a href="https://youtube.com/shorts/-VnOGsJUFc8" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card embed-card--portrait" data-published-work-id="ai-sibling-vlog">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/X8FRQRTve-U?rel=0&amp;cc_load_policy=0" title="妹×兄Vlog📱" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI VIDEO / YOUTUBE</p>
-<h4>妹×兄Vlog📱</h4>
-<a href="https://youtube.com/shorts/X8FRQRTve-U" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="ai-short-beauty">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.youtube-nocookie.com/embed/fBdeoHmu7kw?rel=0&amp;cc_load_policy=0" title="ショート美容" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI BEAUTY / YOUTUBE</p>
-<h4>ショート美容</h4>
-<a href="https://youtube.com/shorts/fBdeoHmu7kw" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="mushroom-revenge">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.instagram.com/reel/DY9wCyhBkIv/embed/" title="きのこ×復讐劇🍄" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">AI STORY / INSTAGRAM</p>
-<h4>きのこ×復讐劇🍄</h4>
-<a href="https://www.instagram.com/reel/DY9wCyhBkIv/" target="_blank" rel="noopener">Instagramで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="whitening-01">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.tiktok.com/player/v1/7563599286643019016?autoplay=0" title="ホワイトニング商品紹介 01" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">PRODUCT / TIKTOK</p>
-<h4>ホワイトニング商品紹介 01</h4>
-<a href="https://www.tiktok.com/@hanikoishitemasu/video/7563599286643019016" target="_blank" rel="noopener">TikTokで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="whitening-02">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.tiktok.com/player/v1/7542833594755157266?autoplay=0" title="ホワイトニング商品紹介 02" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">PRODUCT / TIKTOK</p>
-<h4>ホワイトニング商品紹介 02</h4>
-<a href="https://www.tiktok.com/@hanikoishitemasu/video/7542833594755157266" target="_blank" rel="noopener">TikTokで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-<article class="embed-card" data-published-work-id="beisoya-day">
-<div class="embed-frame embed-frame--vertical">
-<iframe loading="lazy" data-src="https://www.tiktok.com/player/v1/7595882830865894676?autoplay=0" title="美装屋の1日" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div class="embed-card-body">
-<p class="tag">RECRUIT / TIKTOK</p>
-<h4>美装屋の1日</h4>
-<a href="https://www.tiktok.com/@kameda_7777/video/7595882830865894676" target="_blank" rel="noopener">TikTokで見る <span aria-hidden="true">↗</span></a>
-</div>
-</article>
-</div>
-</div>
+<!-- A2 capabilities: latent-space morph -->
+<section class="lat" id="capabilities" data-accent="blue" data-step-label="潜在空間" aria-labelledby="lat-title">
+  <div class="lat__pin">
+    <div class="lat__head">
+      <h2 class="lat__title" id="lat-title"><span class="nb">伝えたい内容に</span><span class="nb">合わせて、</span><span class="nb">表現を設計する</span></h2>
+    </div>
+    <ol class="lat__list" role="list">
+      <li class="lat__item" data-lat="0">
+        <img class="lat__img" src="assets/ai-media/food-sizzle.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+        <span class="lat__n" aria-hidden="true">01</span>
+        <h3 class="lat__name">商品・店舗PR</h3>
+        <p class="lat__desc">商品の質感や店舗の空気を、短い時間で印象に残る映像へ。</p>
+      </li>
+      <li class="lat__item" data-lat="1">
+        <img class="lat__img" src="assets/ai-media/character-short.jpg" width="960" height="1706" alt="" loading="lazy" decoding="async">
+        <span class="lat__n" aria-hidden="true">02</span>
+        <h3 class="lat__name">キャラクター広告</h3>
+        <p class="lat__desc">ブランドの顔になるキャラクターを軸に、継続発信しやすい形へ。</p>
+      </li>
+      <li class="lat__item" data-lat="2">
+        <img class="lat__img" src="assets/ai-media/pov-city.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+        <span class="lat__n" aria-hidden="true">03</span>
+        <h3 class="lat__name">世界観・ストーリー</h3>
+        <p class="lat__desc">撮影だけでは難しい場所や演出も、目的に合わせて映像化。</p>
+      </li>
+    </ol>
+    <div class="lat__stage" aria-hidden="true">
+      <canvas class="lat__canvas"></canvas>
+      <p class="lat__scramble"></p>
+      <svg class="lat__map" viewBox="0 0 120 120" focusable="false">
+        <rect x="0.5" y="0.5" width="119" height="119" />
+        <path class="lat__path" d="" />
+        <g class="lat__anchors"></g>
+        <circle class="lat__dot" r="4" cx="0" cy="0" />
+      </svg>
+      <p class="lat__z"></p>
+    </div>
+  </div>
 </section>
-<section class="ai-section" id="flow">
-<p class="eyebrow">FLOW</p>
-<h2><span class="copy-chunk">企画から納品まで、</span><span class="copy-chunk">4つの工程</span></h2>
-<ol class="flow-grid">
-<li>
-<b>01</b>
-<h3>ヒアリング</h3>
-<p><span class="copy-chunk">目的・媒体・</span><span class="copy-chunk">届けたい相手を確認。</span></p>
-</li>
-<li>
-<b>02</b>
-<h3>企画・構成</h3>
-<p><span class="copy-chunk">表現と尺、</span><span class="copy-chunk">展開方法を設計。</span></p>
-</li>
-<li>
-<b>03</b>
-<h3>AI制作・編集</h3>
-<p><span class="copy-chunk">生成と編集を重ねて</span><span class="copy-chunk">品質を調整。</span></p>
-</li>
-<li>
-<b>04</b>
-<h3>媒体別納品</h3>
-<p><span class="copy-chunk">縦横比や尺を</span><span class="copy-chunk">媒体に合わせて</span><span class="copy-chunk">最適化。</span></p>
-</li>
-</ol>
-</section>
-<section class="ai-section faq" id="faq">
-<p class="eyebrow">FAQ</p>
-<h2>よくある質問</h2>
-<details>
-<summary>広告の出稿や予算運用も依頼できますか？</summary>
-<p>今回の支援範囲は、広告用動画の企画・制作・媒体別最適化だ。広告アカウントの運用代行は個別に相談してほしい。</p>
-</details>
-<details>
-<summary>素材がなくても相談できますか？</summary>
-<p>可能だ。伝えたい内容や参考イメージをもとに、必要な素材と制作方法を整理する。</p>
-</details>
-<details>
-<summary>料金はどのくらいですか？</summary>
-<p>尺、生成量、修正回数、用途によって変わるため個別見積となる。まずは目的と掲載媒体を知らせてほしい。</p>
-</details>
-</section>
-<section class="ai-contact" id="contact">
-<p class="eyebrow">CONTACT</p>
-<h2><span class="copy-chunk">広告表現の</span><span class="copy-chunk">相談から、</span><span class="copy-chunk">始めよう。</span></h2>
-<p>「こんな映像は作れる？」の段階でも大丈夫。目的と使いたい媒体を添えて連絡してほしい。</p>
-<a class="ai-button primary" href="mailto:j.ajbj4@gmail.com?subject=AI広告メディア支援の相談">メールで相談する</a>
-<div class="social-links">
-<a href="https://x.com/junnya09" target="_blank" rel="noopener">X</a>
-<a href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener">Facebook</a>
+
+<!-- A3 showcase: inertial film strip -->
+<section class="strip" id="showcase" data-accent="magenta" data-step-label="サンプル" aria-labelledby="strip-title">
+  <div class="strip__head">
+    <h2 class="strip__h" id="strip-title">AI動画実例</h2>
+    <p class="strip__lead"><span class="nb">画面に入った映像だけを読み込み、</span><span class="nb">ミュートで再生する。</span><span class="nb">クリックやタップでも</span><span class="nb">再生・停止できる。</span></p>
+    <div class="strip__ctrl" aria-hidden="true">
+      <button class="strip__nav" type="button" data-strip-prev tabindex="-1">←</button>
+      <span class="strip__count"><b data-strip-i>01</b> / <span data-strip-n>06</span></span>
+      <button class="strip__nav" type="button" data-strip-next tabindex="-1">→</button>
+    </div>
+  </div>
+  <div class="strip__view" tabindex="0" role="region" aria-roledescription="カルーセル" aria-label="AI動画実例（左右キーで切り替え）" data-cursor="drag">
+    <ol class="strip__track" role="list">
+<li class="strip__card strip__card--tall" data-ai-media-id="character-short">
+<div class="strip__media">
+<video muted loop playsinline preload="none" poster="assets/ai-media/character-short.jpg" src="assets/ai-media/character-short.mp4" aria-label="キャラクター型ショート広告"></video>
+<span class="strip__bar" aria-hidden="true"><i></i></span>
 </div>
+<div class="strip__cap">
+<p class="strip__tag">CHARACTER / SHORT</p>
+<h3 class="strip__title">キャラクター型<wbr/>ショート広告</h3>
+<p class="strip__desc">SNSで目を止めるキャラクター表現。</p>
+</div>
+</li>
+<li class="strip__card" data-ai-media-id="city-timelapse">
+<div class="strip__media">
+<video muted loop playsinline preload="none" poster="assets/ai-media/city-timelapse.jpg" src="assets/ai-media/city-timelapse.mp4" aria-label="都市開発タイムラプス"></video>
+<span class="strip__bar" aria-hidden="true"><i></i></span>
+</div>
+<div class="strip__cap">
+<p class="strip__tag">CORPORATE / VISUALIZE</p>
+<h3 class="strip__title">都市開発タイムラプス</h3>
+<p class="strip__desc">変化や構想を短時間で伝える企業向け表現。</p>
+</div>
+</li>
+<li class="strip__card" data-ai-media-id="ramen-story">
+<div class="strip__media">
+<video muted loop playsinline preload="none" poster="assets/ai-media/ramen-story.jpg" src="assets/ai-media/ramen-story.mp4" aria-label="店舗ストーリー動画"></video>
+<span class="strip__bar" aria-hidden="true"><i></i></span>
+</div>
+<div class="strip__cap">
+<p class="strip__tag">SHOP / STORY</p>
+<h3 class="strip__title">店舗ストーリー動画</h3>
+<p class="strip__desc">店舗の個性を物語として届ける映像。</p>
+</div>
+</li>
+<li class="strip__card" data-ai-media-id="food-sizzle">
+<div class="strip__media">
+<video muted loop playsinline preload="none" poster="assets/ai-media/food-sizzle.jpg" src="assets/ai-media/food-sizzle.mp4" aria-label="食品シズル広告"></video>
+<span class="strip__bar" aria-hidden="true"><i></i></span>
+</div>
+<div class="strip__cap">
+<p class="strip__tag">FOOD / PRODUCT</p>
+<h3 class="strip__title">食品シズル広告</h3>
+<p class="strip__desc">質感とおいしさを印象的に見せる<span class="nb">商品広告。</span></p>
+</div>
+</li>
+<li class="strip__card" data-ai-media-id="fantasy-world">
+<div class="strip__media">
+<video muted loop playsinline preload="none" poster="assets/ai-media/fantasy-world.jpg" src="assets/ai-media/fantasy-world.mp4" aria-label="世界観型エンタメ映像"></video>
+<span class="strip__bar" aria-hidden="true"><i></i></span>
+</div>
+<div class="strip__cap">
+<p class="strip__tag">WORLD / ENTERTAINMENT</p>
+<h3 class="strip__title">世界観型エンタメ映像</h3>
+<p class="strip__desc">現実の撮影では難しいスケールの演出。</p>
+</div>
+</li>
+<li class="strip__card" data-ai-media-id="pov-city">
+<div class="strip__media">
+<video muted loop playsinline preload="none" poster="assets/ai-media/pov-city.jpg" src="assets/ai-media/pov-city.mp4" aria-label="架空世界POVコンテンツ"></video>
+<span class="strip__bar" aria-hidden="true"><i></i></span>
+</div>
+<div class="strip__cap">
+<p class="strip__tag">POV / LONG FORM</p>
+<h3 class="strip__title">架空世界POVコンテンツ</h3>
+<p class="strip__desc">没入感を軸にした<span class="nb">長尺コンテンツの</span><span class="nb">展開例。</span></p>
+</div>
+</li>
+    </ol>
+  </div>
 </section>
+
+<!-- A4 published works: render queue -->
+<section class="q" id="published" data-accent="blue" data-step-label="レンダーキュー" aria-labelledby="q-title">
+  <div class="q__head">
+    <h2 class="q__h" id="q-title">公開中の制作実績</h2>
+    <p class="q__lead">AIアニメ、解説動画、SNS向け商品・採用コンテンツまで、各プレーヤーで<span class="nb">そのまま確認できる。</span></p>
+    <div class="q__filters" role="group" aria-label="媒体で絞り込む" hidden>
+      <button type="button" class="q__f" data-filter="all" aria-pressed="true">すべて <span class="q__fc" data-count="all"></span></button>
+      <button type="button" class="q__f" data-filter="youtube" aria-pressed="false">YouTube <span class="q__fc" data-count="youtube"></span></button>
+      <button type="button" class="q__f" data-filter="instagram" aria-pressed="false">Instagram <span class="q__fc" data-count="instagram"></span></button>
+      <button type="button" class="q__f" data-filter="tiktok" aria-pressed="false">TikTok <span class="q__fc" data-count="tiktok"></span></button>
+    </div>
+  </div>
+  <ol class="q__grid" role="list">
+<li class="q__item q__item--wide" data-published-work-id="ai-whiteboard" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-whiteboard.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/MwvuvXKViIM?rel=0&amp;cc_load_policy=0" data-title="ホワイトボードアニメーション風" aria-label="ホワイトボードアニメーション風をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">ホワイトボード<wbr/>アニメーション風</h3>
+<a class="q__link" href="https://youtu.be/MwvuvXKViIM" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-contact-error" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-contact-error.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/689KBL8jVkg?rel=0&amp;cc_load_policy=0" data-title="接触誤差" aria-label="接触誤差をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">接触誤差</h3>
+<a class="q__link" href="https://youtu.be/689KBL8jVkg" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-laundromat" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-laundromat.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/YobIW86xPCI?rel=0&amp;cc_load_policy=0" data-title="乾燥機が止まるまで" aria-label="乾燥機が止まるまでをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">乾燥機が止まるまで</h3>
+<a class="q__link" href="https://youtu.be/YobIW86xPCI" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-okashina-tomodachi" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-okashina-tomodachi.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/dXMUJbRWLv0?rel=0&amp;cc_load_policy=0" data-title="おかしなともだち" aria-label="おかしなともだちをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">おかしなともだち</h3>
+<a class="q__link" href="https://youtu.be/dXMUJbRWLv0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-monday-dance" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-monday-dance.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/ui0d18JvLrM?rel=0&amp;cc_load_policy=0" data-title="月曜の憂鬱、踊って飛ばそう💃" aria-label="月曜の憂鬱、踊って飛ばそう💃をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI MUSIC VIDEO / YOUTUBE</p>
+<h3 class="q__title">月曜の憂鬱、踊って飛ばそう💃</h3>
+<a class="q__link" href="https://youtu.be/ui0d18JvLrM" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-kidoku" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-kidoku.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/CcHoSJJHOQg?rel=0&amp;cc_load_policy=0" data-title="既読つけない主義" aria-label="既読つけない主義をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI MUSIC VIDEO / YOUTUBE</p>
+<h3 class="q__title">既読つけない主義</h3>
+<a class="q__link" href="https://youtu.be/CcHoSJJHOQg" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-kannai" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-kannai.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/qMFWEQl3GSY?rel=0&amp;cc_load_policy=0" data-title="館内では走らないで🌙" aria-label="館内では走らないで🌙をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">館内では走らないで🌙</h3>
+<a class="q__link" href="https://youtu.be/qMFWEQl3GSY" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-wan3-battle" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-wan3-battle.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/pbDD7CZktT0?rel=0&amp;cc_load_policy=0" data-title="【AI戦闘アニメ】紅蓮の魔術師 VS 氷晶の魔導士｜Wan3.0" aria-label="【AI戦闘アニメ】紅蓮の魔術師 VS 氷晶の魔導士｜Wan3.0をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI ANIMATION / YOUTUBE</p>
+<h3 class="q__title">【AI戦闘アニメ】紅蓮の魔術師 VS 氷晶の魔導士｜Wan3.0</h3>
+<a class="q__link" href="https://youtu.be/pbDD7CZktT0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-kagawa-cm" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-kagawa-cm.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/feTTRg9m_Js?rel=0&amp;cc_load_policy=0" data-title="香川県西部をめぐる30秒CM" aria-label="香川県西部をめぐる30秒CMをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI COMMERCIAL / YOUTUBE</p>
+<h3 class="q__title">香川県西部をめぐる30秒CM</h3>
+<a class="q__link" href="https://youtu.be/feTTRg9m_Js" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="after-school" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/after-school.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/_PX9zNt_RBM?rel=0&amp;cc_load_policy=0" data-title="《放課後に残された僕らへ》" aria-label="《放課後に残された僕らへ》をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI ANIMATION / YOUTUBE</p>
+<h3 class="q__title">《放課後に残された僕らへ》</h3>
+<a class="q__link" href="https://youtu.be/_PX9zNt_RBM" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-explainer" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-explainer.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/4jF-W4IyOpE?rel=0&amp;cc_load_policy=0" data-title="AI解説動画" aria-label="AI解説動画をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI EXPLAINER / YOUTUBE</p>
+<h3 class="q__title">AI解説動画</h3>
+<a class="q__link" href="https://youtu.be/4jF-W4IyOpE" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-kawaii" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-kawaii.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/d0p2AaWFGf0?rel=0&amp;cc_load_policy=0" data-title="【AIアニメ】可愛い＝正義" aria-label="【AIアニメ】可愛い＝正義をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI ANIMATION / YOUTUBE</p>
+<h3 class="q__title">【AIアニメ】可愛い＝正義</h3>
+<a class="q__link" href="https://youtu.be/d0p2AaWFGf0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="fluorescent-noise" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/fluorescent-noise.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/gGy_cj1ow_c?rel=0&amp;cc_load_policy=0" data-title="蛍光灯ノイズ" aria-label="蛍光灯ノイズをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI MUSIC VIDEO / YOUTUBE</p>
+<h3 class="q__title">蛍光灯ノイズ</h3>
+<a class="q__link" href="https://youtu.be/gGy_cj1ow_c" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-shadow-dance" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-shadow-dance.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/eP7ILm_4kB0?rel=0&amp;cc_load_policy=0" data-title="影も踊る夜｜CapCutハッカソン" aria-label="影も踊る夜｜CapCutハッカソンをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">影も踊る夜｜CapCutハッカソン</h3>
+<a class="q__link" href="https://youtu.be/eP7ILm_4kB0" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-ten-sec-cm" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-ten-sec-cm.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/YFCQCLu1mfk?rel=0&amp;cc_load_policy=0" data-title="10秒CM" aria-label="10秒CMをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI COMMERCIAL / YOUTUBE</p>
+<h3 class="q__title">10秒CM</h3>
+<a class="q__link" href="https://youtu.be/YFCQCLu1mfk" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="ai-moonlight-financier" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-moonlight-financier.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/9-na9SnI3Pg?rel=0&amp;cc_load_policy=0" data-title="月灯フィナンシェ" aria-label="月灯フィナンシェをこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI COMMERCIAL / YOUTUBE</p>
+<h3 class="q__title">月灯フィナンシェ</h3>
+<a class="q__link" href="https://youtu.be/9-na9SnI3Pg" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="ai-beat-delivery" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/ai-beat-delivery.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-beat-delivery.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/CXVjPOJr_ac?rel=0&amp;cc_load_policy=0" data-title="ビート配達人" aria-label="ビート配達人をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">ビート配達人</h3>
+<a class="q__link" href="https://youtu.be/CXVjPOJr_ac" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="ai-sim-cm" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/ai-sim-cm.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-sim-cm.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/-VnOGsJUFc8?rel=0&amp;cc_load_policy=0" data-title="【非公式CM】日本通信SIM「合理的50GBプラン」｜50GB・月額2,178円" aria-label="【非公式CM】日本通信SIM「合理的50GBプラン」｜50GB・月額2,178円をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI COMMERCIAL / YOUTUBE</p>
+<h3 class="q__title">【非公式CM】日本通信SIM「合理的50GBプラン」｜50GB・月額2,178円</h3>
+<a class="q__link" href="https://youtube.com/shorts/-VnOGsJUFc8" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="ai-sibling-vlog" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/ai-sibling-vlog.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-sibling-vlog.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/X8FRQRTve-U?rel=0&amp;cc_load_policy=0" data-title="妹×兄Vlog📱" aria-label="妹×兄Vlog📱をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI VIDEO / YOUTUBE</p>
+<h3 class="q__title">妹×兄Vlog📱</h3>
+<a class="q__link" href="https://youtube.com/shorts/X8FRQRTve-U" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="ai-short-beauty" data-media="youtube">
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/ai-short-beauty.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/ai-short-beauty.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<button class="q__play" type="button" data-embed="https://www.youtube-nocookie.com/embed/fBdeoHmu7kw?rel=0&amp;cc_load_policy=0" data-title="ショート美容" aria-label="ショート美容をこの場で再生"><span class="q__play-i" aria-hidden="true"></span></button>
+</div>
+<div class="q__body">
+<p class="q__tag">AI BEAUTY / YOUTUBE</p>
+<h3 class="q__title">ショート美容</h3>
+<a class="q__link" href="https://youtube.com/shorts/fBdeoHmu7kw" target="_blank" rel="noopener">YouTubeで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--wide" data-published-work-id="mushroom-revenge" data-media="instagram">
+<div class="q__thumb">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/mushroom-revenge.jpg" width="640" height="360" alt="" loading="lazy" decoding="async">
+<a class="q__ext" href="https://www.instagram.com/reel/DY9wCyhBkIv/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><span class="q__play-i q__play-i--ext" aria-hidden="true"></span></a>
+</div>
+<div class="q__body">
+<p class="q__tag">AI STORY / INSTAGRAM</p>
+<h3 class="q__title">きのこ×復讐劇🍄</h3>
+<a class="q__link" href="https://www.instagram.com/reel/DY9wCyhBkIv/" target="_blank" rel="noopener">Instagramで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="whitening-01" data-media="tiktok" hidden>
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/whitening-01.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/whitening-01.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<a class="q__ext" href="https://www.tiktok.com/@hanikoishitemasu/video/7563599286643019016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><span class="q__play-i q__play-i--ext" aria-hidden="true"></span></a>
+</div>
+<div class="q__body">
+<p class="q__tag">PRODUCT / TIKTOK</p>
+<h3 class="q__title">ホワイトニング商品紹介 01</h3>
+<a class="q__link" href="https://www.tiktok.com/@hanikoishitemasu/video/7563599286643019016" target="_blank" rel="noopener">TikTokで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="whitening-02" data-media="tiktok" hidden>
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/whitening-02.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/whitening-02.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<a class="q__ext" href="https://www.tiktok.com/@hanikoishitemasu/video/7542833594755157266" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><span class="q__play-i q__play-i--ext" aria-hidden="true"></span></a>
+</div>
+<div class="q__body">
+<p class="q__tag">PRODUCT / TIKTOK</p>
+<h3 class="q__title">ホワイトニング商品紹介 02</h3>
+<a class="q__link" href="https://www.tiktok.com/@hanikoishitemasu/video/7542833594755157266" target="_blank" rel="noopener">TikTokで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+<li class="q__item q__item--tall" data-published-work-id="beisoya-day" data-media="tiktok">
+<div class="q__thumb">
+<img class="q__img q__img--bg" src="assets/ai-media/thumbs/beisoya-day.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<img class="q__img q__img--base" src="assets/ai-media/thumbs/beisoya-day.jpg" width="360" height="640" alt="" loading="lazy" decoding="async">
+<a class="q__ext" href="https://www.tiktok.com/@kameda_7777/video/7595882830865894676" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><span class="q__play-i q__play-i--ext" aria-hidden="true"></span></a>
+</div>
+<div class="q__body">
+<p class="q__tag">RECRUIT / TIKTOK</p>
+<h3 class="q__title">美装屋の1日</h3>
+<a class="q__link" href="https://www.tiktok.com/@kameda_7777/video/7595882830865894676" target="_blank" rel="noopener">TikTokで見る <span aria-hidden="true">↗</span></a>
+</div>
+</li>
+  </ol>
+</section>
+
+<!-- A5 flow: node graph -->
+<section class="graph" id="flow" data-accent="magenta" data-step-label="ノードグラフ" aria-labelledby="graph-title">
+  <div class="graph__head">
+    <h2 class="graph__h" id="graph-title"><span class="nb">企画から納品まで、</span><span class="nb">4つの工程</span></h2>
+    <p class="graph__hint" aria-hidden="true">ノードはドラッグで動かせる</p>
+  </div>
+  <div class="graph__board">
+    <svg class="graph__wires" aria-hidden="true" focusable="false"></svg>
+    <ol class="graph__nodes" role="list">
+      <li class="node" data-node="0">
+        <div class="node__head"><b class="node__n">01</b><h3 class="node__t">ヒアリング</h3><span class="node__st" aria-hidden="true"></span></div>
+        <p class="node__d"><span class="nb">目的・媒体・</span><span class="nb">届けたい相手を確認。</span></p>
+        <span class="node__port node__port--in" aria-hidden="true"></span><span class="node__port node__port--out" aria-hidden="true"></span>
+      </li>
+      <li class="node" data-node="1">
+        <div class="node__head"><b class="node__n">02</b><h3 class="node__t">企画・構成</h3><span class="node__st" aria-hidden="true"></span></div>
+        <p class="node__d"><span class="nb">表現と尺、</span><span class="nb">展開方法を設計。</span></p>
+        <span class="node__port node__port--in" aria-hidden="true"></span><span class="node__port node__port--out" aria-hidden="true"></span>
+      </li>
+      <li class="node" data-node="2">
+        <div class="node__head"><b class="node__n">03</b><h3 class="node__t">AI制作・編集</h3><span class="node__st" aria-hidden="true"></span></div>
+        <p class="node__d"><span class="nb">生成と編集を重ねて</span><span class="nb">品質を調整。</span></p>
+        <span class="node__port node__port--in" aria-hidden="true"></span><span class="node__port node__port--out" aria-hidden="true"></span>
+      </li>
+      <li class="node" data-node="3">
+        <div class="node__head"><b class="node__n">04</b><h3 class="node__t">媒体別納品</h3><span class="node__st" aria-hidden="true"></span></div>
+        <p class="node__d"><span class="nb">縦横比や尺を</span><span class="nb">媒体に合わせて</span><span class="nb">最適化。</span></p>
+        <span class="node__port node__port--in" aria-hidden="true"></span><span class="node__port node__port--out" aria-hidden="true"></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- A6 FAQ: prompt / response chat -->
+<section class="chat" id="faq" data-accent="blue" data-step-label="チャット" aria-labelledby="chat-title">
+  <div class="chat__side">
+    <h2 class="chat__h" id="chat-title">よくある質問</h2>
+    <div class="chat__chips" role="group" aria-label="質問を選ぶ" hidden></div>
+  </div>
+  <div class="chat__win">
+    <div class="chat__bar" aria-hidden="true"><i></i><i></i><i></i><span>QUESTION → ANSWER</span></div>
+    <div class="chat__log">
+      <div class="qa" data-qa="0">
+        <h3 class="qa__q">広告の出稿や予算運用も依頼できますか？</h3>
+        <p class="qa__a">今回の支援範囲は、広告用動画の企画・制作・媒体別最適化だ。広告アカウントの運用代行は個別に相談してほしい。</p>
+      </div>
+      <div class="qa" data-qa="1">
+        <h3 class="qa__q">素材がなくても相談できますか？</h3>
+        <p class="qa__a">可能だ。伝えたい内容や参考イメージをもとに、必要な素材と制作方法を整理する。</p>
+      </div>
+      <div class="qa" data-qa="2">
+        <h3 class="qa__q">料金はどのくらいですか？</h3>
+        <p class="qa__a">尺、生成量、修正回数、用途によって変わるため個別見積となる。まずは目的と掲載媒体を知らせてほしい。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A7 contact: prompt-bar CTA -->
+<section class="cta" id="contact" data-accent="magenta" data-step-label="送信" aria-labelledby="cta-title">
+  <div class="cta__glow" aria-hidden="true"></div>
+  <h2 class="cta__h" id="cta-title"><span class="nb">広告表現の</span><span class="nb">相談から、</span><span class="nb">始めよう。</span></h2>
+  <p class="cta__lead"><span class="nb">「こんな映像は作れる？」の段階でも大丈夫。</span><span class="nb">目的と使いたい媒体を添えて</span><span class="nb">連絡してほしい。</span></p>
+  <a class="cta__bar" href="mailto:j.ajbj4@gmail.com?subject=AI広告メディア支援の相談">
+    <span class="cta__ex" aria-hidden="true"><span class="cta__ex-k">例</span><span class="cta__typed" data-cta-typed>新商品の魅力を、短い縦型動画で伝えたい</span><span class="cta__caret"></span></span>
+    <span class="cta__send">メールで相談する<span class="cta__send-i" aria-hidden="true">↵</span></span>
+  </a>
+  <ul class="cta__social" role="list">
+    <li><a href="https://x.com/junnya09" target="_blank" rel="noopener">X</a></li>
+    <li><a href="https://www.instagram.com/junya_movie" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/profile.php?id=100086534133767" target="_blank" rel="noopener">Facebook</a></li>
+  </ul>
+</section>
+
 </main>
-<footer class="ai-footer">
-<a href="index.html">ドーガづくり トップへ戻る</a>
-<p>&copy; 2026 ドーガづくり</p>
+
+<footer class="ai-foot">
+  <a href="index.html">ドーガづくり トップへ戻る</a>
+  <p>&copy; 2026 ドーガづくり</p>
 </footer>
-<script src="variant-config.js" defer>
-</script>
-<script src="ai-ad-media.js?v=ab-finish-20261101-r2" defer>
-</script>
-<script src="hero-bg.js" defer>
-</script>
+
+<div class="sticky-cta"><a class="btn btn--gen" href="#contact">制作を相談する</a></div>
+
+<div class="ghud" aria-hidden="true">
+  <div class="ghud__seed"><span>SEED</span><b data-ghud-seed>2840193377</b></div>
+  <div class="ghud__track"><div class="ghud__cells" data-ghud-cells></div></div>
+  <div class="ghud__step"><span>STEP</span><b data-ghud-step>00/30</b></div>
+  <div class="ghud__name"><i data-ghud-idx>A1</i><b data-ghud-name>プロンプト</b></div>
+</div>
+
+<script src="variant-config.js" defer></script>
+<script src="lib/gsap.min.js?v=onetake-20261111" defer></script>
+<script src="lib/ScrollTrigger.min.js?v=onetake-20261111" defer></script>
+<script src="lib/CustomEase.min.js?v=onetake-20261111" defer></script>
+<script src="lib/lenis.min.js?v=onetake-20261111" defer></script>
+<script type="module" src="js/ai.js?v=onetake-20261111"></script>
 </body>
 </html>
