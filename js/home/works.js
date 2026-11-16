@@ -16,8 +16,16 @@ import { filteredWorks, categoriesFor, categoryLabels, hasVideoUrl, initialVisib
 const thumb = (item, size) => item.image.replace(/^assets\/works\//, 'assets/works/thumb/').replace(/\.(jpe?g|png)$/i, `-${size}.webp`);
 const AR = { wide: 16 / 9, short: 9 / 16 };
 
-/** Interleave the (already priority-sorted) list: wide units of 1–2, short units of 1–3. */
+/** Priority works (variant workPriorityIds) come first as their own interleaved block, then the rest. */
 function arrange(items) {
+  const v = window.DOGAZUKURI_VARIANT;
+  const pri = new Set(v && Array.isArray(v.workPriorityIds) ? v.workPriorityIds : []);
+  if (!pri.size) return interleave(items);
+  return interleave(items.filter((i) => pri.has(i.id))).concat(interleave(items.filter((i) => !pri.has(i.id))));
+}
+
+/** Interleave the (already priority-sorted) list: wide units of 1–2, short units of 1–3. */
+function interleave(items) {
   const w = items.filter((i) => i.aspect !== 'short');
   const s = items.filter((i) => i.aspect === 'short');
   if (!w.length || !s.length) return items.slice();
