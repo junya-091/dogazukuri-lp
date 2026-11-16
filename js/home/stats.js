@@ -209,7 +209,7 @@ export function init(ctx) {
       }
     }
     if (holeEl) {
-      const ha = clamp((z - 0.5) / 0.35, 0, 1) * (1 - clamp((z - 0.94) / 0.06, 0, 1));
+      const ha = clamp((z - 0.45) / 0.3, 0, 1);
       holeEl.style.opacity = ha.toFixed(3);
     }
   };
@@ -265,20 +265,20 @@ export function init(ctx) {
   const mmq = gsap.matchMedia();
   mmq.add('(min-width: 768px)', () => {
     const fx = (p) => {
-      st.zoom = clamp((p - 0.28) / 0.72, 0, 1);
+      st.zoom = clamp((p - 0.18) / 0.82, 0, 1);
       const z = st.zoom;
       // the copy rides the same dolly: pushed outward from the hole, gone before the hole closes in
       if (L) {
         const s = 1 + Math.pow(z, 1.6) * 3.2;
         const ox = L.hole.x, oy = L.hole.y;
-        gsap.set(layer, { transformOrigin: `${ox}px ${oy}px`, scale: s, opacity: 1 - clamp((z - 0.08) / 0.32, 0, 1) });
+        gsap.set(layer, { transformOrigin: `${ox}px ${oy}px`, scale: s, opacity: 1 - clamp((z - 0.3) / 0.4, 0, 1) });
       }
       if (z > 0 && !counted) { st.n = TARGET; st.plus = 1; counted = true; section.classList.add('is-counted'); }
     };
     const trig = ScrollTrigger.create({
       trigger: stage,
       start: 'top top',
-      end: () => `+=${Math.round(window.innerHeight * 1.35)}`,
+      end: () => `+=${Math.round(window.innerHeight * 1.0)}`,
       pin: true,
       pinSpacing: true,
       anticipatePin: 1,

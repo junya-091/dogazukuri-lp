@@ -62,7 +62,9 @@
   .stats__fact--main { grid-column: 1 / -1; }
   .stats__cta .btn { width: 100%; }
 }
-.stats__hole b { font-family: var(--font-ja); font-weight: 700; letter-spacing: .1em; color: var(--chalk); }
+.stats__hole { flex-direction: column; gap: 14px; text-align: center; }
+.stats__hole::before, .stats__hole::after { width: 1px; height: 40px; }
+.stats__hole b { font-family: var(--font-ja); font-weight: 900; letter-spacing: .04em; color: var(--chalk); font-size: clamp(2.2rem, 5.2vw, 4.8rem); line-height: 1.1; }
 @media (min-width: 768px) { .js .stats__layer { padding-bottom: calc(var(--hud-h) + 26px); } }
 
 /* ---------- SEC 03 #reason — whip-pan ---------- */
